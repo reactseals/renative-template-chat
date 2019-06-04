@@ -1,0 +1,20 @@
+{
+  "globalConfigFolder": "~/.rnv",
+  "appConfigsFolder": "./appConfigs",
+  "platformTemplatesFolder": "RNV_HOME/platformTemplates",
+  "entryFolder": "./",
+  "platformAssetsFolder": "./platformAssets",
+  "platformBuildsFolder": "./platformBuilds",
+  "projectPlugins": "./projectConfig/plugins",
+  "projectConfigFolder": "./projectConfig",
+  "defaultPorts": {},
+  "defaultProjectConfigs": {
+    "supportedPlatforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "template": "renative-template-hello-world",
+    "defaultAppId": "com.reactseals.chat"
+  }
+}

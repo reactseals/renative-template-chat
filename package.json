@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "title": "test",
+  "version": "0.1.0",
+  "dependencies": {
+    "react-native-gesture-handler": "1.2.2",
+    "react-native-gifted-chat": "^0.9.3",
+    "renative": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "renative-template-hello-world": "latest",
+    "rnv": "0.23.0-alpha.9"
+  }
+}
