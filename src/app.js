@@ -4,7 +4,7 @@ import { createApp } from 'renative';
 import { navStructure } from './nav';
 import Fonts from '../platformAssets/runtime/fontManager';
 import ScreenHome from './home';
-import ScreenMyPage from './chat';
+import ScreenMyPage from './login';
 import ScreenModal from './screenModal';
 import Menu from './menu';
 
