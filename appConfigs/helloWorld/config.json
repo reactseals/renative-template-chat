@@ -1,8 +1,8 @@
 {
   "id": "helloWorld",
   "common": {
-    "id": "com.mycompany.test",
-    "title": "test",
+    "id": "com.mycompany.chat",
+    "title": "chat",
     "description": "Cross-platform application project based on ReNative",
     "author": {
       "name": "Pavel Jacko",
@@ -58,6 +58,19 @@
           "signingConfig": "Release",
           "bundleAssets": true,
           "bundleIsDev": true
+        }
+      }
+    },
+    "macos": {
+      "entryFile": "index.macos",
+      "buildSchemes": {
+        "debug": {
+          "id": "renative.helloworld.debug",
+          "bundleAssets": false
+        },
+        "release": {
+          "bundleAssets": true,
+          "bundleIsDev": false
         }
       }
     },

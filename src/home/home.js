@@ -8,7 +8,7 @@ import styles from './home.styles';
 const Home = () => (
   <View style={styles.center}>
     <Image
-      source={require('../assets/img/logo.png')}
+      source={require('../assets/img/chatlogo.png')}
       style={styles.img}
       resizeMode="contain"
     />

@@ -8,7 +8,7 @@ export default StyleSheet.create({
     backgroundColor: '#05668D',
   },
   img: {
-    height: 180,
+    height: 200,
   },
   button: {
     backgroundColor: '#fb8357',
@@ -16,7 +16,7 @@ export default StyleSheet.create({
     width: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 5,
+    margin: 15,
     borderRadius: 4,
   },
 });
