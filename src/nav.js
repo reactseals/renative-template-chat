@@ -88,18 +88,6 @@ const navStructure = {
         },
         stacks: ['stacks.MyPage2'],
       },
-      Login: {
-        screen: 'ScreenLogin',
-        tabMenu: {
-          position: 'bottom',
-          isVisibleIn: [IOS, ANDROID],
-          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
-        },
-        navigationOptions: {
-          title: 'My Page',
-        },
-        stacks: ['stacks.MyPage2'],
-      },
       Chat: {
         screen: 'ScreenChat',
         tabMenu: {
