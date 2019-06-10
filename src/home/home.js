@@ -6,7 +6,7 @@ import { Api } from 'renative';
 import styles from './home.styles';
 
 const Home = () => (
-  <View style={styles.center}>
+  <View style={styles.container}>
     <Image
       source={require('../assets/img/chatlogo.png')}
       style={styles.img}
@@ -16,7 +16,16 @@ const Home = () => (
     <TouchableOpacity
       style={styles.button}
       onPress={() => {
-        Api.navigation.navigate('MyPage');
+        Api.navigation.navigate('Login');
+      }}
+    >
+      <Text>Log in</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() => {
+        Api.navigation.navigate('Chat');
       }}
     >
       <Text>Let's Chat</Text>

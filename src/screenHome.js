@@ -94,15 +94,15 @@ v
           style={styleButton}
           title="Try Me!"
           onPress={() => {
-                this.setState({ bgColor: this.state.bgColor === '#666666' ? Theme.color1 : '#666666' });
-              }}
+            this.setState({ bgColor: this.state.bgColor === '#666666' ? Theme.color1 : '#666666' });
+          }}
         />
         <Button
           style={styleButton}
           title="Now Try Me!"
           onPress={() => {
-                Api.navigation.navigate('MyPage2');
-              }}
+            Api.navigation.navigate('MyPage2');
+          }}
         />
         <View style={{ marginTop: 20, flexDirection: 'row' }}>
           <Icon iconFont="fontAwesome" iconName="github" iconColor={Theme.color3} style={stylesObbj.icon} />

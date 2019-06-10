@@ -88,6 +88,30 @@ const navStructure = {
         },
         stacks: ['stacks.MyPage2'],
       },
+      Login: {
+        screen: 'ScreenLogin',
+        tabMenu: {
+          position: 'bottom',
+          isVisibleIn: [IOS, ANDROID],
+          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+        },
+        navigationOptions: {
+          title: 'My Page',
+        },
+        stacks: ['stacks.MyPage2'],
+      },
+      Chat: {
+        screen: 'ScreenChat',
+        tabMenu: {
+          position: 'bottom',
+          isVisibleIn: [IOS, ANDROID],
+          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+        },
+        navigationOptions: {
+          title: 'Chat',
+        },
+        stacks: ['stacks.MyPage2'],
+      },
     },
     navigationOptions: {
       headerTitleStyle: {
@@ -117,18 +141,18 @@ const navStructure = {
   },
   stacks: {
     screens: {
-      MyPage2: {
-        screen: 'ScreenMyPage',
+      Chat: {
+        screen: 'Chat',
         navigationOptions: {
-          title: 'My Page 2',
+          title: 'Chat',
         },
       },
-      MyPage3: {
-        screen: 'ScreenMyPage',
-        navigationOptions: {
-          title: 'My Page 3',
-        },
-      },
+      // MyPage3: {
+      //   screen: 'ScreenMyPage',
+      //   navigationOptions: {
+      //     title: 'My Page 3',
+      //   },
+      // },
     },
     navigationOptions: {
       headerStyle: {

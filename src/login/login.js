@@ -8,59 +8,54 @@ import firebase from '../config/Firebase';
 
 export default class Login extends Component {
   state = {
+    nickname: '',
     email: '',
-    password: '',
   }
 
-  handleEmail = (text) => {
-    this.setState({ email: text });
+  handleNickname = (text) => {
+    this.setState({ nickname: text });
   }
 
   handlePassword = (text) => {
-    this.setState({ password: text });
+    this.setState({ email: text });
   }
 
-  login = (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        Api.navigation.navigate('Home');
-      })
-      .catch(err => alert(err));
+  login = () => {
+    const { nickname, email } = this.state;
+    firebase.database().ref(`users/${nickname}`).set({ name: email });
   };
-
 
   render() {
     console.log('Log in');
-    const { email, password } = this.state;
+    const { nickname, email } = this.state;
+    console.log(email);
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.container}>
           <TextInput
             style={styles.input}
             underlineColorAndroid="transparent"
-            placeholder="Email"
+            placeholder="Nickname"
             placeholderTextColor="#8D99AE"
-            selectionColor="#1b9958"
+            selectionColor="#fb8357"
             autoCapitalize="none"
-            onChangeText={this.handleEmail}
+            onChangeText={this.handleNickname}
           />
 
           <TextInput
             style={styles.input}
             underlineColorAndroid="transparent"
-            placeholder="Password"
+            placeholder="Email"
             placeholderTextColor="#8D99AE"
-            selectionColor="#1b9958"
+            selectionColor="#fb8357"
             autoCapitalize="none"
             secureTextEntry
-            onChangeText={this.handlePassword}
+            onChangeText={this.email}
           />
 
           <TouchableOpacity
             style={styles.button}
-            onPress={() => this.login(email, password)}
-            onFocus={() => this.activeStyle(this.loginButton)}
-            onBlur={() => this.inactiveStyle(this.loginButton)}
+            onPress={() => this.login(nickname, email)}
           >
             <Text style={styles.text}>Sign In</Text>
           </TouchableOpacity>
