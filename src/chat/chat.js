@@ -11,11 +11,15 @@ export default class Chat extends Component {
   constructor() {
     super();
     this.state = {
+      nickname: '',
+      email: '',
       msg: '',
       messages: {},
+      isUserLaggedIn: null,
     };
 
     this.chatRoom = firebase.database().ref().child('chatrooms').child('global');
+
     this.handleNewMessages = (snap) => {
       console.log(snap.val());
       // if not null then update state
@@ -33,49 +37,104 @@ export default class Chat extends Component {
     this.chatRoom.off('value', this.handleNewMessages);
   }
 
+  handleNickname = (text) => {
+    this.setState({ nickname: text });
+  }
+
+  handleEmail = (text) => {
+    this.setState({ email: text });
+  }
+
+
+  // Login
+  handleLogin = (nickname, email) => {
+    firebase.database().ref().child('nicknames').push({ nickname, email });
+    this.setState({ isUserLaggedIn: true });
+  };
+
   // Add message to state
   handleMessage = (text) => {
     this.setState({ msg: text });
   }
 
+  // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
-    const { msg } = this.state;
+    const { msg, nickname } = this.state;
     if (e.key === 'Enter') {
-      // send the msg
+      // Send the message from chat input field
       this.chatRoom.push({
-        // sender: this.state.nickname,
+        nickname,
         msg,
       });
-      // clear input field
+      // Clear chat message input field
       this.setState({ msg: '' });
     }
   };
 
+  // Push messsage on press
   handleButtonPress = () => {
-    const { msg } = this.state;
+    const { msg, nickname } = this.state;
+    // Send the message from chat input field
     this.chatRoom.push({
+      nickname,
       msg,
     });
-    // clear input field
+    // Clear chat message input field
     this.setState({ msg: '' });
   }
 
   render() {
-    const { users, msg, messages } = this.state;
-    console.log('Chat');
-    console.log(msg);
-    console.log(messages);
+    const {
+      nickname, email, msg, messages, isUserLaggedIn,
+    } = this.state;
+    if (!isUserLaggedIn) {
+      return (
+        <View style={{ flex: 1 }}>
+          <View style={styles.container}>
+            <TextInput
+              style={styles.loginInput}
+              underlineColorAndroid="transparent"
+              placeholder="Nickname"
+              placeholderTextColor="#8D99AE"
+              selectionColor="#fb8357"
+              autoCapitalize="none"
+              onChangeText={this.handleNickname}
+            />
+
+            <TextInput
+              style={styles.loginInput}
+              underlineColorAndroid="transparent"
+              placeholder="Email"
+              placeholderTextColor="#8D99AE"
+              selectionColor="#fb8357"
+              autoCapitalize="none"
+              onChangeText={this.handleEmail}
+            />
+
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => this.handleLogin(nickname, email)}
+            >
+              <Text style={styles.text}>Sign In</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <ScrollView>
           {Object.keys(messages).map(message => (
-            <Text>{messages[message].msg}</Text>
+            <View key={message}>
+              <Text>{messages[message].nickname}</Text>
+              <Text>{messages[message].msg}</Text>
+            </View>
           ))}
         </ScrollView>
         <View style={styles.inputContainer}>
           <TextInput
             value={msg}
-            style={styles.input}
+            style={styles.chatInput}
             selectionColor="#fb8357"
             placeholder="Type a message ..."
             placeholderTextColor="#8D99AE"
@@ -87,7 +146,7 @@ export default class Chat extends Component {
             iconFont="ionicons"
             iconName="md-send"
             iconColor={Theme.color3}
-                // style={styles.icon}
+              // style={styles.icon}
             style={{ width: 40, height: 40, alignSelf: 'center' }}
             onPress={() => { this.handleButtonPress(); }}
           />

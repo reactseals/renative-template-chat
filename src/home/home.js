@@ -16,15 +16,6 @@ const Home = () => (
     <TouchableOpacity
       style={styles.button}
       onPress={() => {
-        Api.navigation.navigate('Login');
-      }}
-    >
-      <Text>Log in</Text>
-    </TouchableOpacity>
-
-    <TouchableOpacity
-      style={styles.button}
-      onPress={() => {
         Api.navigation.navigate('Chat');
       }}
     >
