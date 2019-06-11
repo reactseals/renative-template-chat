@@ -5,11 +5,11 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#05668D',
+    backgroundColor: '#05668d',
   },
   chatContainer: {
     flex: 1,
-    backgroundColor: '#05668D',
+    backgroundColor: '#05668d',
   },
   inputContainer: {
     width: '100%',
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     borderColor: '#fb8357',
     borderWidth: 1,
     alignItems: 'center',
-    color: '#EDF2F4',
+    color: '#edf2f4',
     textAlign: 'center',
   },
   button: {
@@ -43,11 +43,11 @@ export default StyleSheet.create({
     borderColor: '#fb8357',
     borderWidth: 1,
     alignItems: 'center',
-    color: '#EDF2F4',
+    color: '#edf2f4',
     textAlign: 'left',
   },
   message: {
-    backgroundColor: '#fb8357',
+    backgroundColor: '#bcb6ae',
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -56,7 +56,14 @@ export default StyleSheet.create({
     borderRadius: 20,
     alignSelf: 'flex-start',
   },
-  myMessage: {
+  nicknameText: {
+    color: '#135069',
+    fontWeight: 'bold',
+  },
+  text: {
+    color: '#edf2f4',
+  },
+  userMessage: {
     backgroundColor: '#222222',
     padding: 8,
     marginLeft: 10,
@@ -66,12 +73,12 @@ export default StyleSheet.create({
     borderRadius: 20,
     alignSelf: 'flex-end',
   },
-  nicknameText: {
-    color: '#FB8D62',
+  userNicknameText: {
+    color: '#fb8d62',
     fontWeight: 'bold',
   },
-  text: {
-    color: '#EDF2F4',
+  userText: {
+    color: '#edf2f4',
   },
   icon: {
     height: 40,

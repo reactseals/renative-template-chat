@@ -45,7 +45,6 @@ export default class Chat extends Component {
     this.setState({ email: text });
   }
 
-
   // Login
   handleLogin = (nickname, email) => {
     firebase.database().ref().child('nicknames').push({ nickname, email });
@@ -79,10 +78,10 @@ export default class Chat extends Component {
       nickname,
       msg,
     });
+    // this.scrollViewscrollTo({ x: 0, y: 0, animated: true });
     // Clear chat message input field
     this.setState({ msg: '' });
   }
-  // if (this.state.messages[message]["sender"] === this.state.nickname)
 
   render() {
     const {
@@ -124,17 +123,22 @@ export default class Chat extends Component {
     }
     return (
       <View style={styles.chatContainer}>
-        <ScrollView>
+        <ScrollView
+          ref={(view) => { this.scrollView = view; }}
+          onContentSizeChange={() => {
+            this.scrollView.scrollToEnd({ animated: true });
+          }}
+        >
           {Object.keys(messages).map(message => (
             <View key={message}>
               {nickname === messages[message].nickname ? (
-                <View style={styles.myMessage}>
-                  <Text style={styles.nicknameText}>{messages[message].nickname}</Text>
-                  <Text style={styles.text}>{messages[message].msg}</Text>
+                <View style={styles.userMessage}>
+                  <Text style={styles.userNicknameText}>{messages[message].nickname}</Text>
+                  <Text style={styles.userText}>{messages[message].msg}</Text>
                 </View>
               ) : (
                 <View style={styles.message}>
-                  <Text>{messages[message].nickname}</Text>
+                  <Text style={styles.nicknameText}>{messages[message].nickname}</Text>
                   <Text>{messages[message].msg}</Text>
                 </View>
               )}
@@ -151,6 +155,7 @@ export default class Chat extends Component {
             outline="none"
             onChangeText={this.handleMessage}
             onKeyPress={this.handleKeyPress}
+            autoFocus
           />
           <Icon
             iconFont="ionicons"
