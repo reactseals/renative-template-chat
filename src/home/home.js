@@ -23,5 +23,4 @@ const Home = () => (
     </TouchableOpacity>
   </View>
 );
-
 export default Home;

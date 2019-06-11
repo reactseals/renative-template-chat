@@ -1,10 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
+  loginContainer: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#05668D',
+  },
+  chatContainer: {
+    flex: 1,
     backgroundColor: '#05668D',
   },
   inputContainer: {
@@ -21,6 +25,15 @@ export default StyleSheet.create({
     color: '#EDF2F4',
     textAlign: 'center',
   },
+  button: {
+    backgroundColor: '#fb8357',
+    height: 40,
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 5,
+    borderRadius: 10,
+  },
   chatInput: {
     flex: 1,
     height: 40,
@@ -33,18 +46,32 @@ export default StyleSheet.create({
     color: '#EDF2F4',
     textAlign: 'left',
   },
-  button: {
+  message: {
     backgroundColor: '#fb8357',
-    height: 40,
-    width: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 5,
-    borderRadius: 10,
+    padding: 8,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    borderRadius: 20,
+    alignSelf: 'flex-start',
+  },
+  myMessage: {
+    backgroundColor: '#222222',
+    padding: 8,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    borderRadius: 20,
+    alignSelf: 'flex-end',
+  },
+  nicknameText: {
+    color: '#FB8D62',
+    fontWeight: 'bold',
   },
   text: {
     color: '#EDF2F4',
-    fontWeight: 'bold',
   },
   icon: {
     height: 40,
