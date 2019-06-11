@@ -37,10 +37,12 @@ export default class Chat extends Component {
     this.chatRoom.off('value', this.handleNewMessages);
   }
 
+  // Add nickname to state
   handleNickname = (text) => {
     this.setState({ nickname: text });
   }
 
+  // Add email to state
   handleEmail = (text) => {
     this.setState({ email: text });
   }
@@ -59,7 +61,7 @@ export default class Chat extends Component {
   // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
     const { msg, nickname } = this.state;
-    if (e.key === 'Enter') {
+    if (msg.trim() !== '' && e.key === 'Enter') {
       // Send the message from chat input field
       this.chatRoom.push({
         nickname,
@@ -73,14 +75,15 @@ export default class Chat extends Component {
   // Push messsage on press
   handleButtonPress = () => {
     const { msg, nickname } = this.state;
+    if (msg.trim() !== '') {
     // Send the message from chat input field
-    this.chatRoom.push({
-      nickname,
-      msg,
-    });
-    // this.scrollViewscrollTo({ x: 0, y: 0, animated: true });
-    // Clear chat message input field
-    this.setState({ msg: '' });
+      this.chatRoom.push({
+        nickname,
+        msg,
+      });
+      // Clear chat message input field
+      this.setState({ msg: '' });
+    }
   }
 
   render() {
