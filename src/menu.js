@@ -74,16 +74,16 @@ Menu
           }}
         />
         <Button
-          title="My Page"
+          title="Chat"
           iconFont="ionicons"
-          iconName="md-book"
+          iconName="md-list-box"
           iconColor={Theme.color3}
           style={styles.button}
           onPress={() => {
-            Api.navigation.navigate('MyPage');
+            Api.navigation.navigate('Chat');
           }}
         />
-        <Button
+        {/* <Button
           title="My Modal"
           iconFont="ionicons"
           iconName="ios-albums"
@@ -92,7 +92,7 @@ Menu
           onPress={() => {
             Api.navigation.navigate('MyModal');
           }}
-        />
+        /> */}
       </View>
     );
   }

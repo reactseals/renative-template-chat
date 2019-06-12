@@ -37,15 +37,15 @@ const navStructure = {
       },
       sideMenu: {
         position: 'left',
-        isVisibleIn: [MACOS, WINDOWS],
+        isVisibleIn: [MACOS, WINDOWS, WEB],
         component: 'Menu',
         options: {
-          menuWidth: 250,
+          menuWidth: 200,
         },
         navigationOptions: {},
       },
       topMenu: {
-        isVisibleIn: [TVOS, ANDROID_TV, TIZEN, FIREFOX_TV, WEB, WEBOS],
+        isVisibleIn: [TVOS, ANDROID_TV, TIZEN, FIREFOX_TV, WEBOS],
         component: 'Menu',
         options: {
           menuHeight: 100,
@@ -74,7 +74,7 @@ const navStructure = {
         navigationOptions: {
           title: 'Home',
         },
-        stacks: ['stacks.MyPage2', 'stacks.MyPage3'],
+        stacks: ['Chat', 'stacks.MyPage2', 'stacks.MyPage3'],
       },
       MyPage: {
         screen: 'ScreenMyPage',

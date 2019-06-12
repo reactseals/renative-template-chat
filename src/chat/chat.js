@@ -16,13 +16,22 @@ export default class Chat extends Component {
       msg: '',
       messages: {},
       isUserLaggedIn: null,
+      typingListener: false,
     };
 
+    // Chat room ref
     this.chatRoom = firebase.database().ref().child('chatrooms').child('global');
 
+    // Login info ref
+    this.loginInfo = firebase.database().ref().child('nicknames');
+
+    // Typing listener ref
+    this.typingListenerFirebase = firebase.database().ref().child('typingListener');
+
+    // Handle new messages
     this.handleNewMessages = (snap) => {
       console.log(snap.val());
-      // if not null then update state
+      // Update state if not null
       if (snap.val()) this.setState({ messages: snap.val() });
     };
   }
@@ -49,14 +58,35 @@ export default class Chat extends Component {
 
   // Login
   handleLogin = (nickname, email) => {
-    firebase.database().ref().child('nicknames').push({ nickname, email });
+    this.loginInfo.push({ nickname, email });
     this.setState({ isUserLaggedIn: true });
   };
 
   // Add message to state
   handleMessage = (text) => {
     this.setState({ msg: text });
+    // this.typingListener();
   }
+
+  typingListener = () => {
+    const { msg, typingListener } = this.state;
+    if (msg.length > 0) {
+      this.setState({ typingListener: true });
+    } else {
+      this.setState({ typingListener: false });
+    }
+  }
+
+
+  // Typing listener
+  // typingListener = () => {
+  //   const { msg, typingListener } = this.state;
+  //   if (msg.trim() !== '') {
+  //     this.messageListener.push({ typingListener });
+  //   } else {
+  //     this.messageListener.push({ typingListener });
+  //   }
+  // }
 
   // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
@@ -87,9 +117,16 @@ export default class Chat extends Component {
   }
 
   render() {
+    console.log(this.state.msg.length);
+    console.log(this.state.typingListener);
     const {
       nickname, email, msg, messages, isUserLaggedIn,
     } = this.state;
+    // if (msg.trim() !== '') {
+    //   this.setState({ typingListener: true });
+    // } else {
+    //   this.setState({ typingListener: false });
+    // }
     if (!isUserLaggedIn) {
       return (
         <View style={{ flex: 1 }}>
