@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, ScrollView, TouchableOpacity,
+  View, Text, TextInput, ScrollView, TouchableOpacity, Image,
 } from 'react-native';
 import { Icon, Api } from 'renative';
 import styles from './chat.styles';
-import firebase from '../config/Firebase';
+import firebase from '../../projectConfig/firebase';
 import Theme from '../theme';
 
 export default class Chat extends Component {
@@ -16,7 +16,6 @@ export default class Chat extends Component {
       msg: '',
       messages: {},
       isUserLaggedIn: null,
-      typingListener: false,
     };
 
     // Chat room ref
@@ -25,24 +24,19 @@ export default class Chat extends Component {
     // Login info ref
     this.loginInfo = firebase.database().ref().child('nicknames');
 
-    // Typing listener ref
-    this.typingListenerFirebase = firebase.database().ref().child('typingListener');
 
     // Handle new messages
     this.handleNewMessages = (snap) => {
-      console.log(snap.val());
       // Update state if not null
       if (snap.val()) this.setState({ messages: snap.val() });
     };
   }
 
   componentDidMount() {
-    // subscribe
     this.chatRoom.on('value', this.handleNewMessages);
   }
 
   componentWillUnmount() {
-    // unsubscribe
     this.chatRoom.off('value', this.handleNewMessages);
   }
 
@@ -65,28 +59,7 @@ export default class Chat extends Component {
   // Add message to state
   handleMessage = (text) => {
     this.setState({ msg: text });
-    // this.typingListener();
   }
-
-  typingListener = () => {
-    const { msg, typingListener } = this.state;
-    if (msg.length > 0) {
-      this.setState({ typingListener: true });
-    } else {
-      this.setState({ typingListener: false });
-    }
-  }
-
-
-  // Typing listener
-  // typingListener = () => {
-  //   const { msg, typingListener } = this.state;
-  //   if (msg.trim() !== '') {
-  //     this.messageListener.push({ typingListener });
-  //   } else {
-  //     this.messageListener.push({ typingListener });
-  //   }
-  // }
 
   // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
@@ -117,16 +90,9 @@ export default class Chat extends Component {
   }
 
   render() {
-    console.log(this.state.msg.length);
-    console.log(this.state.typingListener);
     const {
       nickname, email, msg, messages, isUserLaggedIn,
     } = this.state;
-    // if (msg.trim() !== '') {
-    //   this.setState({ typingListener: true });
-    // } else {
-    //   this.setState({ typingListener: false });
-    // }
     if (!isUserLaggedIn) {
       return (
         <View style={{ flex: 1 }}>
@@ -185,6 +151,7 @@ export default class Chat extends Component {
             </View>
           ))}
         </ScrollView>
+
         <View style={styles.inputContainer}>
           <TextInput
             value={msg}
@@ -207,6 +174,8 @@ export default class Chat extends Component {
           />
         </View>
       </View>
+
+
     );
   }
 }
