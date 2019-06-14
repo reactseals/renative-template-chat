@@ -4,8 +4,7 @@ import {
 } from 'react-native';
 import { Api, Button, Icon } from 'renative';
 import { isTopMenuBased } from './nav';
-import Theme from './theme';
-import colors from './themes/lightTheme/lightColors';
+import colors from './themes/darkTheme/darkColors';
 
 let isTop;
 
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     width: '100%',
     height: '100%',
-    backgroundColor: colors.colorDarkBlue,
+    backgroundColor: colors.color13,
     alignItems: 'center',
     borderRightWidth: 1,
     borderRightColor: '#AAAAAA',
@@ -25,7 +24,7 @@ const styles = StyleSheet.create({
     paddingLeft: 40,
     width: '100%',
     height: '100%',
-    backgroundColor: colors.colorDarkBlue,
+    backgroundColor: colors.color13,
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#AAAAAA',
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'TimeBurner',
-    color: colors.colorWhite,
+    color: colors.color14,
     fontSize: 20,
     marginTop: 10,
     textAlign: 'left',
@@ -64,7 +63,7 @@ Menu
           title="Home"
           iconFont="ionicons"
           iconName="md-home"
-          iconColor={colors.colorWhite}
+          iconColor={colors.color14}
           style={styles.button}
           onPress={() => {
             Api.navigation.navigate('Home', {
@@ -78,7 +77,7 @@ Menu
           title="Chat"
           iconFont="ionicons"
           iconName="md-list-box"
-          iconColor={colors.colorWhite}
+          iconColor={colors.color14}
           style={styles.button}
           onPress={() => {
             Api.navigation.navigate('Chat');

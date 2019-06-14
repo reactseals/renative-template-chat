@@ -18,7 +18,7 @@ import {
   KAIOS,
 } from 'renative';
 import Theme from './theme';
-import colors from './themes/lightTheme/lightColors';
+import colors from './themes/darkTheme/darkColors';
 
 const isDrawerMenuBased = () => navStructure.root.menus.drawerMenu.isVisibleIn.includes(Api.platform);
 const isTopMenuBased = () => navStructure.root.menus.topMenu.isVisibleIn.includes(Api.platform);
@@ -31,7 +31,7 @@ const navStructure = {
         isVisibleIn: [IOS, ANDROID],
         component: 'Menu',
         options: {
-          drawerBackgroundColor: Theme.color1,
+          drawerBackgroundColor: colors.color13,
           drawerWidth: 250,
         },
         navigationOptions: {},
@@ -104,13 +104,13 @@ const navStructure = {
     },
     navigationOptions: {
       headerTitleStyle: {
-        color: colors.colorWhite,
+        color: colors.color14,
         fontFamily: Theme.primaryFontFamily,
       },
       headerStyle: {
-        backgroundColor: colors.colorDarkBlue,
+        backgroundColor: colors.color13,
         borderBottomWidth: isTopMenuBased ? 0 : 1,
-        color: Theme.color3,
+        color: colors.color7,
       },
       headerLeft: (n) => {
         if (!isDrawerMenuBased()) return null;
@@ -118,7 +118,7 @@ const navStructure = {
           <Icon
             iconFont="ionicons"
             iconName="md-menu"
-            iconColor={colors.colorWhite}
+            iconColor={colors.color14}
             style={{ width: 40, height: 40, marginLeft: 10 }}
             onPress={() => {
               Api.navigation.openDrawer();
