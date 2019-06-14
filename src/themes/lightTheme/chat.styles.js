@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../colors';
+import colors from './lightColors';
 
 export default StyleSheet.create({
   loginContainer: {
@@ -9,7 +9,6 @@ export default StyleSheet.create({
   },
   chatContainer: {
     flex: 1,
-    backgroundColor: colors.colorWhite,
   },
   inputContainer: {
     width: '100%',
@@ -19,14 +18,14 @@ export default StyleSheet.create({
     margin: 15,
     height: 40,
     width: 200,
-    borderColor: colors.colorGreen,
+    borderColor: colors.color3,
     borderWidth: 1,
     alignItems: 'center',
-    color: colors.colorBlack,
+    color: colors.color7,
     textAlign: 'center',
   },
   button: {
-    backgroundColor: colors.colorGreen,
+    backgroundColor: colors.color3,
     height: 40,
     width: 100,
     justifyContent: 'center',
@@ -40,14 +39,14 @@ export default StyleSheet.create({
     borderRadius: 20,
     margin: 10,
     paddingLeft: 10,
-    borderColor: colors.colorDarkGreen,
+    borderColor: colors.color4,
     borderWidth: 1,
     alignItems: 'center',
-    color: colors.colorBlack,
+    color: colors.color7,
     textAlign: 'left',
   },
   message: {
-    backgroundColor: colors.colorWhite,
+    backgroundColor: colors.color1,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -57,14 +56,14 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
   },
   nicknameText: {
-    color: colors.colorBlue,
+    color: colors.color5,
     fontWeight: 'bold',
   },
   text: {
-    color: colors.colorBlack,
+    color: colors.color7,
   },
   userMessage: {
-    backgroundColor: colors.colorDarkGreen,
+    backgroundColor: colors.color4,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -74,11 +73,11 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
   },
   userNicknameText: {
-    color: colors.colorDarkYellow,
+    color: colors.color11,
     fontWeight: 'bold',
   },
   userText: {
-    color: colors.colorWhite,
+    color: colors.color1,
   },
   icon: {
     height: 40,

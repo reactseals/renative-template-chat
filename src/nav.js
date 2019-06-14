@@ -18,7 +18,7 @@ import {
   KAIOS,
 } from 'renative';
 import Theme from './theme';
-import colors from './themes/colors';
+import colors from './themes/lightTheme/lightColors';
 
 const isDrawerMenuBased = () => navStructure.root.menus.drawerMenu.isVisibleIn.includes(Api.platform);
 const isTopMenuBased = () => navStructure.root.menus.topMenu.isVisibleIn.includes(Api.platform);

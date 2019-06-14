@@ -3,9 +3,9 @@ import {
   View, Text, TextInput, ScrollView, TouchableOpacity, ImageBackground,
 } from 'react-native';
 import { Icon, Api } from 'renative';
-import styles from '../themes/lightTheme/chat.styles';
+import styles from '../themes/darkTheme/chat.styles';
 import firebase from '../../projectConfig/firebase';
-import colors from '../themes/colors';
+import colors from '../themes/darkTheme/darkColors';
 
 export default class Chat extends Component {
   constructor() {
@@ -96,7 +96,7 @@ export default class Chat extends Component {
     if (!isUserLaggedIn) {
       return (
         <ImageBackground
-          source={require('../assets/img/lightBackground.jpg')}
+          source={require('../assets/img/darkBackground.jpg')}
           style={styles.loginContainer}
         >
           <View style={styles.loginContainer}>
@@ -105,7 +105,7 @@ export default class Chat extends Component {
               underlineColorAndroid="transparent"
               placeholder="Nickname"
               placeholderTextColor={colors.colorLightGrey}
-              selectionColor={colors.colorGreen}
+              selectionColor={colors.color3}
               autoCapitalize="none"
               onChangeText={this.handleNickname}
             />
@@ -115,7 +115,7 @@ export default class Chat extends Component {
               underlineColorAndroid="transparent"
               placeholder="Email"
               placeholderTextColor={colors.colorLightGrey}
-              selectionColor={colors.colorGreen}
+              selectionColor={colors.color3}
               autoCapitalize="none"
               onChangeText={this.handleEmail}
             />
@@ -132,8 +132,8 @@ export default class Chat extends Component {
     }
     return (
       <ImageBackground
-        source={require('../assets/img/lightBackground.jpg')}
-        style={styles.loginContainer}
+        source={require('../assets/img/darkBackground.jpg')}
+        style={styles.chatContainer}
       >
         <ScrollView
           ref={(view) => { this.scrollView = view; }}
@@ -173,7 +173,7 @@ export default class Chat extends Component {
           <Icon
             iconFont="ionicons"
             iconName="md-send"
-            iconColor={colors.colorDarkGreen}
+            iconColor={colors.color3}
               // style={styles.icon}
             style={{ width: 40, height: 40, alignSelf: 'center' }}
             onPress={() => { this.handleButtonPress(); }}

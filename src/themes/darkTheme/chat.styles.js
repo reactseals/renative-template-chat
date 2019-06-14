@@ -1,15 +1,14 @@
 import { StyleSheet } from 'react-native';
+import colors from './darkColors';
 
 export default StyleSheet.create({
   loginContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#05668d',
   },
   chatContainer: {
     flex: 1,
-    backgroundColor: '#05668d',
   },
   inputContainer: {
     width: '100%',
@@ -19,14 +18,14 @@ export default StyleSheet.create({
     margin: 15,
     height: 40,
     width: 200,
-    borderColor: '#fb8357',
+    borderColor: colors.color3,
     borderWidth: 1,
     alignItems: 'center',
-    color: '#edf2f4',
+    color: colors.color7,
     textAlign: 'center',
   },
   button: {
-    backgroundColor: '#fb8357',
+    backgroundColor: colors.color3,
     height: 40,
     width: 100,
     justifyContent: 'center',
@@ -40,14 +39,14 @@ export default StyleSheet.create({
     borderRadius: 20,
     margin: 10,
     paddingLeft: 10,
-    borderColor: '#fb8357',
+    borderColor: colors.color3,
     borderWidth: 1,
     alignItems: 'center',
-    color: '#edf2f4',
+    color: colors.color7,
     textAlign: 'left',
   },
   message: {
-    backgroundColor: '#bcb6ae',
+    backgroundColor: colors.color7,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -61,10 +60,10 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   text: {
-    color: '#edf2f4',
+    color: colors.color1,
   },
   userMessage: {
-    backgroundColor: '#222222',
+    backgroundColor: colors.color1,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -74,11 +73,11 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
   },
   userNicknameText: {
-    color: '#fb8d62',
+    color: colors.color3,
     fontWeight: 'bold',
   },
   userText: {
-    color: '#edf2f4',
+    color: colors.color7,
   },
   icon: {
     height: 40,

@@ -3,16 +3,16 @@ import {
   View, Text, TouchableOpacity, Image, ImageBackground,
 } from 'react-native';
 import { Api } from 'renative';
-import styles from '../themes/lightTheme/home.styles';
+import styles from '../themes/darkTheme/home.styles';
 
 const Home = () => (
   <ImageBackground
-    source={require('../assets/img/lightBackground.jpg')}
+    source={require('../assets/img/darkBackground.jpg')}
     style={styles.container}
   >
 
     <Image
-      source={require('../assets/img/logoLight.png')}
+      source={require('../assets/img/logoDark.png')}
       style={styles.img}
       resizeMode="contain"
     />
