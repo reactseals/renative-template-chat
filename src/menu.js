@@ -5,7 +5,7 @@ import {
 import { Api, Button, Icon } from 'renative';
 import { isTopMenuBased } from './nav';
 import Theme from './theme';
-import colors from './themes/lightTheme/colors';
+import colors from './themes/colors';
 
 let isTop;
 

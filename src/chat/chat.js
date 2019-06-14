@@ -5,7 +5,7 @@ import {
 import { Icon, Api } from 'renative';
 import styles from '../themes/lightTheme/chat.styles';
 import firebase from '../../projectConfig/firebase';
-import colors from '../themes/lightTheme/colors';
+import colors from '../themes/colors';
 
 export default class Chat extends Component {
   constructor() {

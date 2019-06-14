@@ -18,7 +18,7 @@ import {
   KAIOS,
 } from 'renative';
 import Theme from './theme';
-import colors from './themes/lightTheme/colors';
+import colors from './themes/colors';
 
 const isDrawerMenuBased = () => navStructure.root.menus.drawerMenu.isVisibleIn.includes(Api.platform);
 const isTopMenuBased = () => navStructure.root.menus.topMenu.isVisibleIn.includes(Api.platform);
@@ -118,7 +118,7 @@ const navStructure = {
           <Icon
             iconFont="ionicons"
             iconName="md-menu"
-            iconColor={Theme.color3}
+            iconColor={colors.colorWhite}
             style={{ width: 40, height: 40, marginLeft: 10 }}
             onPress={() => {
               Api.navigation.openDrawer();
