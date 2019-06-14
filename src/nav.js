@@ -18,6 +18,7 @@ import {
   KAIOS,
 } from 'renative';
 import Theme from './theme';
+import colors from './themes/lightTheme/colors';
 
 const isDrawerMenuBased = () => navStructure.root.menus.drawerMenu.isVisibleIn.includes(Api.platform);
 const isTopMenuBased = () => navStructure.root.menus.topMenu.isVisibleIn.includes(Api.platform);
@@ -103,11 +104,11 @@ const navStructure = {
     },
     navigationOptions: {
       headerTitleStyle: {
-        color: Theme.color3,
+        color: colors.colorWhite,
         fontFamily: Theme.primaryFontFamily,
       },
       headerStyle: {
-        backgroundColor: Theme.color1,
+        backgroundColor: colors.colorDarkBlue,
         borderBottomWidth: isTopMenuBased ? 0 : 1,
         color: Theme.color3,
       },

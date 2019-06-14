@@ -5,6 +5,7 @@ import {
 import { Api, Button, Icon } from 'renative';
 import { isTopMenuBased } from './nav';
 import Theme from './theme';
+import colors from './themes/lightTheme/colors';
 
 let isTop;
 
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     width: '100%',
     height: '100%',
-    backgroundColor: Theme.color1,
+    backgroundColor: colors.colorDarkBlue,
     alignItems: 'center',
     borderRightWidth: 1,
     borderRightColor: '#AAAAAA',
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     paddingLeft: 40,
     width: '100%',
     height: '100%',
-    backgroundColor: Theme.color1,
+    backgroundColor: colors.colorDarkBlue,
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#AAAAAA',
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'TimeBurner',
-    color: Theme.color4,
+    color: colors.colorWhite,
     fontSize: 20,
     marginTop: 10,
     textAlign: 'left',
@@ -63,7 +64,7 @@ Menu
           title="Home"
           iconFont="ionicons"
           iconName="md-home"
-          iconColor={Theme.color3}
+          iconColor={colors.colorWhite}
           style={styles.button}
           onPress={() => {
             Api.navigation.navigate('Home', {
@@ -77,7 +78,7 @@ Menu
           title="Chat"
           iconFont="ionicons"
           iconName="md-list-box"
-          iconColor={Theme.color3}
+          iconColor={colors.colorWhite}
           style={styles.button}
           onPress={() => {
             Api.navigation.navigate('Chat');

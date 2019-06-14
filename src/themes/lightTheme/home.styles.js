@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
+import colors from './colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#05668d',
   },
   img: {
     height: 200,
   },
   button: {
-    backgroundColor: '#fb8357',
+    backgroundColor: colors.colorGreen,
     height: 40,
     width: 100,
     justifyContent: 'center',

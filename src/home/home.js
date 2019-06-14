@@ -1,14 +1,18 @@
 import React from 'react';
 import {
-  View, Text, TouchableOpacity, Image,
+  View, Text, TouchableOpacity, Image, ImageBackground,
 } from 'react-native';
 import { Api } from 'renative';
-import styles from './home.styles';
+import styles from '../themes/lightTheme/home.styles';
 
 const Home = () => (
-  <View style={styles.container}>
+  <ImageBackground
+    source={require('../assets/img/lightBackground.jpg')}
+    style={styles.container}
+  >
+
     <Image
-      source={require('../assets/img/chatlogo.png')}
+      source={require('../assets/img/logoLight.png')}
       style={styles.img}
       resizeMode="contain"
     />
@@ -21,6 +25,6 @@ const Home = () => (
     >
       <Text>Let's Chat</Text>
     </TouchableOpacity>
-  </View>
+  </ImageBackground>
 );
 export default Home;

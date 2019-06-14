@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, ScrollView, TouchableOpacity, Image,
+  View, Text, TextInput, ScrollView, TouchableOpacity, ImageBackground,
 } from 'react-native';
 import { Icon, Api } from 'renative';
-import styles from './chat.styles';
+import styles from '../themes/lightTheme/chat.styles';
 import firebase from '../../projectConfig/firebase';
-import Theme from '../theme';
+import colors from '../themes/lightTheme/colors';
 
 export default class Chat extends Component {
   constructor() {
@@ -95,14 +95,17 @@ export default class Chat extends Component {
     } = this.state;
     if (!isUserLaggedIn) {
       return (
-        <View style={{ flex: 1 }}>
+        <ImageBackground
+          source={require('../assets/img/lightBackground.jpg')}
+          style={styles.loginContainer}
+        >
           <View style={styles.loginContainer}>
             <TextInput
               style={styles.loginInput}
               underlineColorAndroid="transparent"
               placeholder="Nickname"
-              placeholderTextColor="#8D99AE"
-              selectionColor="#fb8357"
+              placeholderTextColor={colors.colorLightGrey}
+              selectionColor={colors.colorGreen}
               autoCapitalize="none"
               onChangeText={this.handleNickname}
             />
@@ -111,8 +114,8 @@ export default class Chat extends Component {
               style={styles.loginInput}
               underlineColorAndroid="transparent"
               placeholder="Email"
-              placeholderTextColor="#8D99AE"
-              selectionColor="#fb8357"
+              placeholderTextColor={colors.colorLightGrey}
+              selectionColor={colors.colorGreen}
               autoCapitalize="none"
               onChangeText={this.handleEmail}
             />
@@ -121,14 +124,17 @@ export default class Chat extends Component {
               style={styles.button}
               onPress={() => this.handleLogin(nickname, email)}
             >
-              <Text style={styles.text}>Sign In</Text>
+              <Text style={styles.buttonText}>Sign In</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </ImageBackground>
       );
     }
     return (
-      <View style={styles.chatContainer}>
+      <ImageBackground
+        source={require('../assets/img/lightBackground.jpg')}
+        style={styles.loginContainer}
+      >
         <ScrollView
           ref={(view) => { this.scrollView = view; }}
           onContentSizeChange={() => {
@@ -145,7 +151,7 @@ export default class Chat extends Component {
               ) : (
                 <View style={styles.message}>
                   <Text style={styles.nicknameText}>{messages[message].nickname}</Text>
-                  <Text>{messages[message].msg}</Text>
+                  <Text style={styles.text}>{messages[message].msg}</Text>
                 </View>
               )}
             </View>
@@ -158,7 +164,7 @@ export default class Chat extends Component {
             style={styles.chatInput}
             selectionColor="#fb8357"
             placeholder="Type a message ..."
-            placeholderTextColor="#8D99AE"
+            placeholderTextColor={colors.colorDarkGrey}
             outline="none"
             onChangeText={this.handleMessage}
             onKeyPress={this.handleKeyPress}
@@ -167,13 +173,13 @@ export default class Chat extends Component {
           <Icon
             iconFont="ionicons"
             iconName="md-send"
-            iconColor={Theme.color3}
+            iconColor={colors.colorDarkGreen}
               // style={styles.icon}
             style={{ width: 40, height: 40, alignSelf: 'center' }}
             onPress={() => { this.handleButtonPress(); }}
           />
         </View>
-      </View>
+      </ImageBackground>
 
 
     );
