@@ -25,5 +25,28 @@
     <a href="https://twitter.com/renative"><img src="https://img.shields.io/twitter/follow/renative.svg?style=social" /></a>
 </p>
 
+<img src="https://github.com/pavjacko/renative/blob/master/docs/ic_configuration.png?raw=true" width=50 height=50 />
 
+## Firebase Setup
+
+1. Create Firebase project: https://firebase.google.com/docs/storage/web/start
+
+2. Get your Firebase config file or object: https://support.google.com/firebase/answer/7015592
+
+## Configuration
+
+`rnv` will create Firebase config file at this location: `<your-project>/projectConfig/firebase.js`
+
+Open the file and edit Firebase configuration with:
+
+```
+const config = {s
+  apiKey: '<your-api-key>',
+  authDomain: '<your-auth-domain>',
+  databaseURL: '<your-database-url>',
+  projectId: '<your-cloud-firestore-project>',
+  storageBucket: '<your-storage-bucket>',
+  messagingSenderId: '<your-sender-id>',
+  appId: '<your-app-id>',
+};
 
