@@ -1,4 +1,4 @@
-# renative-template-chat
+# ReNative Chat Template
 
 <p align='center'>
   <img src="https://live.staticflickr.com/65535/48060712588_fc802ab218_o.png" width="250">
@@ -40,7 +40,7 @@
 Open the file and edit Firebase configuration with:
 
 ```
-const config = {s
+const config = {
   apiKey: '<your-api-key>',
   authDomain: '<your-auth-domain>',
   databaseURL: '<your-database-url>',
