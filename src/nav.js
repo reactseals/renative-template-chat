@@ -17,6 +17,7 @@ import {
   TIZEN_WATCH,
   KAIOS,
 } from 'renative';
+import LinearGradient from 'react-native-linear-gradient';
 import Theme from './theme';
 import colors from './themes/darkTheme/darkColors';
 
@@ -108,10 +109,18 @@ const navStructure = {
         fontFamily: Theme.primaryFontFamily,
       },
       headerStyle: {
-        backgroundColor: colors.color13,
+        // backgroundColor: 'red',
         borderBottomWidth: isTopMenuBased ? 0 : 1,
         color: colors.color7,
       },
+      headerBackground: (
+        <LinearGradient
+          colors={['#a13388', '#10356c']}
+          style={{ flex: 1 }}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+        />
+      ),
       headerLeft: (n) => {
         if (!isDrawerMenuBased()) return null;
         return (

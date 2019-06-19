@@ -24,12 +24,12 @@ const Home = () => (
         Api.navigation.navigate('Chat');
       }}
     >
-      <Text>Let's Chat</Text>
+      <Text style={styles.text}>Let's Chat</Text>
     </TouchableOpacity>
 
-    <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+    <LinearGradient colors={['#8e8e93', '#1c1c1e']} style={styles.linearGradient}>
       <Text style={styles.buttonText}>
-    Sign in with Facebook
+    Let's Chat
       </Text>
     </LinearGradient>
 

@@ -11,13 +11,16 @@ export default StyleSheet.create({
     height: 200,
   },
   button: {
-    backgroundColor: colors.color3,
+    backgroundColor: '#8e8e93',
     height: 40,
     width: 100,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 15,
     borderRadius: 4,
+  },
+  text: {
+    color: 'white',
   },
   linearGradient: {
     paddingLeft: 15,
