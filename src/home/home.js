@@ -3,6 +3,7 @@ import {
   View, Text, TouchableOpacity, Image, ImageBackground,
 } from 'react-native';
 import { Api } from 'renative';
+import LinearGradient from 'react-native-linear-gradient';
 import styles from '../themes/darkTheme/home.styles';
 
 const Home = () => (
@@ -25,6 +26,13 @@ const Home = () => (
     >
       <Text>Let's Chat</Text>
     </TouchableOpacity>
+
+    <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
+      <Text style={styles.buttonText}>
+    Sign in with Facebook
+      </Text>
+    </LinearGradient>
+
   </ImageBackground>
 );
 export default Home;
