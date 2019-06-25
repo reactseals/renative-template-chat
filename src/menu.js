@@ -3,8 +3,9 @@ import {
   Text, Image, View, TouchableOpacity, StyleSheet, ScrollView, Platform,
 } from 'react-native';
 import { Api, Button, Icon } from 'renative';
+import LinearGradient from 'react-native-linear-gradient';
 import { isTopMenuBased } from './nav';
-import colors from './themes/darkTheme/darkColors';
+import colors from './themes/greyTheme/colors';
 
 let isTop;
 
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     width: '100%',
     height: '100%',
-    backgroundColor: colors.color13,
+    // backgroundColor: colors.color13,
     alignItems: 'center',
     borderRightWidth: 1,
     borderRightColor: '#AAAAAA',
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     paddingLeft: 40,
     width: '100%',
     height: '100%',
-    backgroundColor: colors.color13,
+    // backgroundColor: colors.color13,
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#AAAAAA',
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'TimeBurner',
-    color: colors.color14,
+    color: colors.textColor,
     fontSize: 20,
     marginTop: 10,
     textAlign: 'left',
@@ -55,35 +56,43 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <View style={[isTop ? styles.containerHorizontal : styles.containerVertical, this.props.style]}>
-        <Text style={styles.text}>
-Menu
-        </Text>
-        <Button
-          title="Home"
-          iconFont="ionicons"
-          iconName="md-home"
-          iconColor={colors.color14}
-          style={styles.button}
-          onPress={() => {
-            Api.navigation.navigate('Home', {
-              onSuccess: () => {
+      <LinearGradient
+        colors={[colors.activeColorTertiary, colors.activeColorSecondary]}
+        style={{ flex: 1 }}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+      >
+        <View style={[isTop ? styles.containerHorizontal : styles.containerVertical, this.props.style]}>
 
-              },
-            });
-          }}
-        />
-        <Button
-          title="Chat"
-          iconFont="ionicons"
-          iconName="md-list-box"
-          iconColor={colors.color14}
-          style={styles.button}
-          onPress={() => {
-            Api.navigation.navigate('Chat');
-          }}
-        />
-        {/* <Button
+
+          <Text style={styles.text}>
+Menu
+          </Text>
+          <Button
+            title="Home"
+            iconFont="ionicons"
+            iconName="md-home"
+            iconColor={colors.activeColorPrimary}
+            style={styles.button}
+            onPress={() => {
+              Api.navigation.navigate('Home', {
+                onSuccess: () => {
+
+                },
+              });
+            }}
+          />
+          <Button
+            title="Chat Grey"
+            iconFont="ionicons"
+            iconName="md-list-box"
+            iconColor={colors.activeColorPrimary}
+            style={styles.button}
+            onPress={() => {
+              Api.navigation.navigate('ChatGrey');
+            }}
+          />
+          {/* <Button
           title="My Modal"
           iconFont="ionicons"
           iconName="ios-albums"
@@ -93,7 +102,10 @@ Menu
             Api.navigation.navigate('MyModal');
           }}
         /> */}
-      </View>
+
+        </View>
+      </LinearGradient>
+
     );
   }
 }

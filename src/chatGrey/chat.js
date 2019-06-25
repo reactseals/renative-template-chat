@@ -3,9 +3,9 @@ import {
   View, Text, TextInput, ScrollView, TouchableOpacity, ImageBackground,
 } from 'react-native';
 import { Icon, Api } from 'renative';
-import styles from '../themes/darkTheme/chat.styles';
+import styles from '../themes/greyTheme/chat.styles';
 import firebase from '../../projectConfig/firebase';
-import colors from '../themes/darkTheme/darkColors';
+import colors from '../themes/greyTheme/colors';
 
 export default class Chat extends Component {
   constructor() {
@@ -89,52 +89,77 @@ export default class Chat extends Component {
     }
   }
 
+  activeStyle = (element) => {
+    element.setNativeProps({
+      style: {
+        borderColor: colors.activeColorPrimary,
+        backgroundColor: colors.activeColorSecondary,
+        // shadow
+        shadowColor: 'rgba(0,0,0, .4)', // IOS
+        shadowOffset: { height: 1, width: 1 }, // IOS
+        shadowOpacity: 1, // IOS
+        shadowRadius: 1, // IOS
+      },
+    });
+  }
+
+  inactiveStyle = (element) => {
+    element.setNativeProps({
+      style: {
+        borderColor: colors.activeColorSecondary,
+        backgroundColor: colors.backgroundColor,
+        // shadow
+        shadowOpacity: 0,
+      },
+    });
+  }
+
+
   render() {
     const {
       nickname, email, msg, messages, isUserLaggedIn,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
-        <ImageBackground
-          source={require('../assets/img/darkBackground.jpg')}
-          style={styles.loginContainer}
-        >
-          <View style={styles.loginContainer}>
-            <TextInput
-              style={styles.loginInput}
-              underlineColorAndroid="transparent"
-              placeholder="Nickname"
-              placeholderTextColor={colors.colorLightGrey}
-              selectionColor={colors.color3}
-              autoCapitalize="none"
-              onChangeText={this.handleNickname}
-            />
+        <View style={styles.loginContainer}>
 
-            <TextInput
-              style={styles.loginInput}
-              underlineColorAndroid="transparent"
-              placeholder="Email"
-              placeholderTextColor={colors.colorLightGrey}
-              selectionColor={colors.color3}
-              autoCapitalize="none"
-              onChangeText={this.handleEmail}
-            />
+          <TextInput
+            ref={component => this.nicknameInput = component}
+            onFocus={() => this.activeStyle(this.nicknameInput)}
+            onBlur={() => this.inactiveStyle(this.nicknameInput)}
+            style={styles.loginInput}
+            underlineColorAndroid="transparent"
+            placeholder="Nickname"
+            placeholderTextColor={colors.activeColorPrimary}
+            selectionColor={colors.activeColorPrimary}
+            autoCapitalize="none"
+            onChangeText={this.handleNickname}
+          />
 
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => this.handleLogin(nickname, email)}
-            >
-              <Text style={styles.buttonText}>Sign In</Text>
-            </TouchableOpacity>
-          </View>
-        </ImageBackground>
+          <TextInput
+            ref={component => this.emailInput = component}
+            onFocus={() => this.activeStyle(this.emailInput)}
+            onBlur={() => this.inactiveStyle(this.emailInput)}
+            style={styles.loginInput}
+            underlineColorAndroid="transparent"
+            placeholder="Email"
+            placeholderTextColor={colors.activeColorPrimary}
+            selectionColor={colors.activeColorPrimary}
+            autoCapitalize="none"
+            onChangeText={this.handleEmail}
+          />
+
+          <TouchableOpacity
+            style={styles.loginButton}
+            onPress={() => this.handleLogin(nickname, email)}
+          >
+            <Text style={styles.userText}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
       );
     }
     return (
-      <ImageBackground
-        source={require('../assets/img/darkBackground.jpg')}
-        style={styles.chatContainer}
-      >
+      <View style={styles.chatContainer}>
         <ScrollView
           ref={(view) => { this.scrollView = view; }}
           onContentSizeChange={() => {
@@ -160,11 +185,14 @@ export default class Chat extends Component {
 
         <View style={styles.inputContainer}>
           <TextInput
+            ref={component => this.messageInput = component}
+            onFocus={() => this.activeStyle(this.messageInput)}
+            onBlur={() => this.inactiveStyle(this.messageInput)}
             value={msg}
             style={styles.chatInput}
-            selectionColor="#fb8357"
+            selectionColor={colors.activeColorPrimary}
             placeholder="Type a message ..."
-            placeholderTextColor={colors.colorDarkGrey}
+            placeholderTextColor={colors.activeColorPrimary}
             outline="none"
             onChangeText={this.handleMessage}
             onKeyPress={this.handleKeyPress}
@@ -173,13 +201,13 @@ export default class Chat extends Component {
           <Icon
             iconFont="ionicons"
             iconName="md-send"
-            iconColor={colors.color3}
+            iconColor={colors.activeColorPrimary}
               // style={styles.icon}
             style={{ width: 40, height: 40, alignSelf: 'center' }}
             onPress={() => { this.handleButtonPress(); }}
           />
         </View>
-      </ImageBackground>
+      </View>
 
 
     );

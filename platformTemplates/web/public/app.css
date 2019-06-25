@@ -10,7 +10,8 @@
   width: 7px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #fb8d62;
+  background-color: #636366;
+  /* background-color: #fb8d62; */
   /* background-color: #56933a; */
   border-radius: 30px;
 }

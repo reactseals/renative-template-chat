@@ -1,14 +1,12 @@
 import { StyleSheet } from 'react-native';
-import colors from './darkColors';
+import colors from './colors';
 
 export default StyleSheet.create({
   loginContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  chatContainer: {
-    flex: 1,
+    backgroundColor: colors.backgroundColor,
   },
   inputContainer: {
     width: '100%',
@@ -18,20 +16,31 @@ export default StyleSheet.create({
     margin: 15,
     height: 40,
     width: 200,
-    borderColor: colors.color3,
+    borderColor: colors.activeColorSecondary,
     borderWidth: 1,
     alignItems: 'center',
-    color: colors.color7,
+    color: colors.textColor,
     textAlign: 'center',
+    borderRadius: 10,
   },
-  button: {
-    backgroundColor: colors.color3,
+  loginButton: {
+    backgroundColor: colors.activeBackgroundColor,
     height: 40,
     width: 100,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
     borderRadius: 10,
+    color: colors.textColor,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, // IOS
+  },
+  chatContainer: {
+    flex: 1,
+    backgroundColor: colors.backgroundColor,
   },
   chatInput: {
     flex: 1,
@@ -39,14 +48,14 @@ export default StyleSheet.create({
     borderRadius: 20,
     margin: 10,
     paddingLeft: 10,
-    borderColor: colors.color3,
+    borderColor: colors.activeColorSecondary,
     borderWidth: 1,
     alignItems: 'center',
-    color: colors.color7,
+    color: colors.textColor,
     textAlign: 'left',
   },
   message: {
-    backgroundColor: colors.color7,
+    backgroundColor: colors.messageBackground,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -56,14 +65,14 @@ export default StyleSheet.create({
     alignSelf: 'flex-start',
   },
   nicknameText: {
-    color: '#135069',
+    color: colors.nicknameColor,
     fontWeight: 'bold',
   },
   text: {
-    color: colors.color1,
+    color: colors.chatTextColor,
   },
   userMessage: {
-    backgroundColor: colors.color1,
+    backgroundColor: colors.userMessageBackground,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
@@ -73,31 +82,15 @@ export default StyleSheet.create({
     alignSelf: 'flex-end',
   },
   userNicknameText: {
-    color: colors.color3,
+    color: colors.userNicknameColor,
     fontWeight: 'bold',
   },
   userText: {
-    color: colors.color7,
+    color: colors.textColor,
   },
   icon: {
     height: 40,
     width: 40,
     alignSelf: 'center',
   },
-
-
-  // /* Text and background color for light mode */
-  // body {
-  //   color: #333;
-  // }
-
-  // /* Text and background color for dark mode */
-  // @media (prefers-color-scheme: dark) {
-  //   body {
-  //     color: #ddd;
-  //     background-color: #222;
-  //   }
-  // }
-
-
 });

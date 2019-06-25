@@ -19,7 +19,7 @@ import {
 } from 'renative';
 import LinearGradient from 'react-native-linear-gradient';
 import Theme from './theme';
-import colors from './themes/darkTheme/darkColors';
+import colors from './themes/greyTheme/colors';
 
 const isDrawerMenuBased = () => navStructure.root.menus.drawerMenu.isVisibleIn.includes(Api.platform);
 const isTopMenuBased = () => navStructure.root.menus.topMenu.isVisibleIn.includes(Api.platform);
@@ -78,20 +78,56 @@ const navStructure = {
         },
         stacks: ['Chat', 'stacks.MyPage2', 'stacks.MyPage3'],
       },
-      MyPage: {
-        screen: 'ScreenMyPage',
+      // MyPage: {
+      //   screen: 'ScreenMyPage',
+      //   tabMenu: {
+      //     position: 'bottom',
+      //     isVisibleIn: [IOS, ANDROID],
+      //     screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+      //   },
+      //   navigationOptions: {
+      //     title: 'My Page',
+      //   },
+      //   stacks: ['stacks.MyPage2'],
+      // },
+      ScreenWelcomeLightBlue: {
+        screen: 'ScreenWelcomeLightBlue',
         tabMenu: {
           position: 'bottom',
           isVisibleIn: [IOS, ANDROID],
           screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
         },
         navigationOptions: {
-          title: 'My Page',
+          title: 'Chat',
         },
         stacks: ['stacks.MyPage2'],
       },
-      Chat: {
-        screen: 'ScreenChat',
+      ScreenChatLightBlue: {
+        screen: 'ScreenChatLightBlue',
+        tabMenu: {
+          position: 'bottom',
+          isVisibleIn: [IOS, ANDROID],
+          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+        },
+        navigationOptions: {
+          title: 'Chat',
+        },
+        stacks: ['stacks.MyPage2'],
+      },
+      ScreenWelcomeGrey: {
+        screen: 'ScreenWelcomeGrey',
+        tabMenu: {
+          position: 'bottom',
+          isVisibleIn: [IOS, ANDROID],
+          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+        },
+        navigationOptions: {
+          title: 'Chat',
+        },
+        stacks: ['stacks.MyPage2'],
+      },
+      ScreenChatGrey: {
+        screen: 'ScreenChatGrey',
         tabMenu: {
           position: 'bottom',
           isVisibleIn: [IOS, ANDROID],
@@ -105,20 +141,18 @@ const navStructure = {
     },
     navigationOptions: {
       headerTitleStyle: {
-        color: colors.color14,
+        color: colors.textColor,
         fontFamily: Theme.primaryFontFamily,
       },
       headerStyle: {
-        // backgroundColor: 'red',
         borderBottomWidth: isTopMenuBased ? 0 : 1,
-        color: colors.color7,
       },
       headerBackground: (
         <LinearGradient
-          colors={['#a13388', '#10356c']}
+          colors={[colors.activeColorTertiary, colors.activeColorSecondary]}
           style={{ flex: 1 }}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
+          // start={{ x: 0, y: 0 }}
+          // end={{ x: 1, y: 0 }}
         />
       ),
       headerLeft: (n) => {
@@ -127,7 +161,7 @@ const navStructure = {
           <Icon
             iconFont="ionicons"
             iconName="md-menu"
-            iconColor={colors.color14}
+            iconColor={colors.activeColorPrimary}
             style={{ width: 40, height: 40, marginLeft: 10 }}
             onPress={() => {
               Api.navigation.openDrawer();

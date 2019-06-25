@@ -1,26 +1,29 @@
 import { StyleSheet } from 'react-native';
-import colors from './darkColors';
+import colors from './colors';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.backgroundColor,
   },
   img: {
     height: 200,
   },
   button: {
-    backgroundColor: '#8e8e93',
+    backgroundColor: colors.activeBackgroundColor,
     height: 40,
     width: 100,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 15,
     borderRadius: 4,
-  },
-  text: {
-    color: 'white',
+    // shadow
+    shadowColor: 'rgba(0, 0, 0, .4)', // IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, // IOS
   },
   linearGradient: {
     paddingLeft: 15,
@@ -32,7 +35,6 @@ export default StyleSheet.create({
     fontFamily: 'Gill Sans',
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
+    color: colors.buttonTextColor,
   },
 });
