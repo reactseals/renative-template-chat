@@ -35,11 +35,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 15,
     borderRadius: 4,
-    // shadow
-    shadowColor: 'rgba(0, 0, 0, .4)', // IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 1, // IOS
   },
   buttonLightBlueText: {
     fontSize: 18,
@@ -48,26 +43,50 @@ const styles = StyleSheet.create({
     margin: 10,
     color: '#fafafa',
   },
+  buttonLightGreen: {
+    backgroundColor: '#6fbf49',
+    height: 45,
+    width: 110,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 15,
+    borderRadius: 4,
+    // shadow
+    shadowColor: 'rgba(0, 0, 0, .4)', // IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, // IOS
+  },
+  buttonLightGreenText: {
+    fontSize: 18,
+    fontFamily: 'Optima',
+    textAlign: 'center',
+    margin: 10,
+    color: '#fafafa',
+  },
 });
 
-const Home = () => (
+const Home = props => (
   <View style={styles.container}>
     <TouchableOpacity
       style={styles.buttonDarkGrey}
-      onPress={() => {
-        Api.navigation.navigate('ScreenWelcomeGrey');
-      }}
+      onPress={() => props.navigation.navigate('WelcomeGrey')}
     >
       <Text style={styles.buttonDarkGreyText}>Dark Grey</Text>
     </TouchableOpacity>
 
     <TouchableOpacity
       style={styles.buttonLightBlue}
-      onPress={() => {
-        Api.navigation.navigate('ScreenWelcomeLightBlue');
-      }}
+      onPress={() => props.navigation.navigate('WelcomeLightBlue')}
     >
       <Text style={styles.buttonLightBlueText}>Light Blue</Text>
+    </TouchableOpacity>
+
+    <TouchableOpacity
+      style={styles.buttonLightGreen}
+      onPress={() => props.navigation.navigate('WelcomeLightGreen')}
+    >
+      <Text style={styles.buttonLightGreenText}>Light Green</Text>
     </TouchableOpacity>
 
   </View>

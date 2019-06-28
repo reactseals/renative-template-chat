@@ -7,7 +7,7 @@ export default {
   textColor: '#edf2f4',
   userNicknameColor: '#dfbf4c',
   userMessageBackground: '#222222',
-  nicknameColor: '#487f2e',
+  nicknameColor: '#105a67',
   messageBackground: '#b4b4b4',
   chatTextColor: '#222222',
 };

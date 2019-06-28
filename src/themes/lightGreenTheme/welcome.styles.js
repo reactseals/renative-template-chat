@@ -19,14 +19,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     margin: 15,
     borderRadius: 4,
-    shadowColor: 'rgba(0, 0, 0, .4)',
-    shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 3,
-  },
-  text: {
-    color: colors.textColor,
+    // shadow
+    shadowColor: 'rgba(0, 0, 0, .4)', // IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, // IOS
   },
   linearGradient: {
     paddingLeft: 15,
@@ -35,10 +32,10 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    fontFamily: 'Gill Sans',
+    fontFamily: 'Optima',
+    fontWeight: 'bold',
     textAlign: 'center',
     margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
+    color: colors.buttonTextColor,
   },
 });

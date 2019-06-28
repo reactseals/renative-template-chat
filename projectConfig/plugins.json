@@ -16,6 +16,8 @@
     "react-native-linear-gradient": "source:rnv",
     "react-native-web-linear-gradient": {
       "version": "1.0.5"
-    }
+    },
+    "react-native-image-picker": "source:rnv",
+    "react-native-image-crop-picker": "source:rnv"
   }
 }

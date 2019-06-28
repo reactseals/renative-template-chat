@@ -27,11 +27,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     margin: 5,
     borderRadius: 10,
-    // shadow
-    shadowColor: 'rgba(0,0,0, .4)', // IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 1, // IOS
   },
   loginButtonText: {
     fontSize: 18,
@@ -43,6 +38,9 @@ export default StyleSheet.create({
   chatContainer: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
+  },
+  chatMessagesContainer: {
+    marginBottom: 20,
   },
   inputContainer: {
     width: '100%',
@@ -56,7 +54,6 @@ export default StyleSheet.create({
     height: 28,
     borderRadius: 20,
     margin: 10,
-    paddingLeft: 10,
     alignItems: 'center',
     color: colors.textColor,
     textAlign: 'left',
@@ -95,9 +92,21 @@ export default StyleSheet.create({
   userText: {
     color: colors.textColor,
   },
-  icon: {
-    height: 40,
+  sendIconContainer: {
+    position: 'absolute',
+    backgroundColor: colors.activeBackgroundColor,
     width: 40,
-    alignSelf: 'center',
+    height: 40,
+    bottom: 30,
+    right: 10,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  test: {
+    width: 40,
+    height: 40,
+    marginLeft: 10,
   },
 });

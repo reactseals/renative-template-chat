@@ -19,11 +19,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     margin: 15,
     borderRadius: 4,
-    // shadow
-    shadowColor: 'rgba(0, 0, 0, .4)', // IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 1, // IOS
   },
   linearGradient: {
     paddingLeft: 15,

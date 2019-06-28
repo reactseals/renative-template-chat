@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, ScrollView, TouchableOpacity, TouchableHighlight,
+  View, Text, TextInput, ScrollView, TouchableOpacity, Image,
 } from 'react-native';
-import { Icon, Api } from 'renative';
+import { Icon } from 'renative';
+import EmojiPicker from 'emoji-picker-react';
+import ImagePicker from 'react-native-image-crop-picker';
+import styles from '../themes/greyTheme/chat.styles';
 import firebase from '../../projectConfig/firebase';
-import styles from '../themes/lightBlueTheme/chat.styles';
-import colors from '../themes/lightBlueTheme/colors';
+import colors from '../themes/greyTheme/colors';
 
 export default class Chat extends Component {
   constructor() {
@@ -16,6 +18,8 @@ export default class Chat extends Component {
       msg: '',
       messages: {},
       isUserLaggedIn: null,
+      emojiClicked: null,
+      avatar: null,
     };
 
     // Chat room ref
@@ -23,6 +27,9 @@ export default class Chat extends Component {
 
     // Login info ref
     this.loginInfo = firebase.database().ref().child('nicknames');
+
+    // Avatar info ref
+    this.avatarInfo = firebase.storage().ref().child('images');
 
     // Handle new messages
     this.handleNewMessages = (snap) => {
@@ -50,8 +57,8 @@ export default class Chat extends Component {
   }
 
   // Login
-  handleLogin = (nickname, email) => {
-    this.loginInfo.push({ nickname, email });
+  handleLogin = (nickname, email, avatar) => {
+    this.loginInfo.push({ nickname, email, avatar });
     this.setState({ isUserLaggedIn: true });
   };
 
@@ -62,12 +69,13 @@ export default class Chat extends Component {
 
   // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
-    const { msg, nickname } = this.state;
+    const { msg, nickname, avatar } = this.state;
     if (msg.trim() !== '' && e.key === 'Enter') {
       // Send the message from chat input field
       this.chatRoom.push({
         nickname,
         msg,
+        avatar,
       });
       // Clear chat message input field
       this.setState({ msg: '' });
@@ -76,22 +84,36 @@ export default class Chat extends Component {
 
   // Push messsage on press
   handleButtonPress = () => {
-    const { msg, nickname } = this.state;
+    const { msg, nickname, avatar } = this.state;
     if (msg.trim() !== '') {
     // Send the message from chat input field
       this.chatRoom.push({
         nickname,
         msg,
+        avatar,
       });
       // Clear chat message input field
       this.setState({ msg: '' });
     }
   }
 
+  handleEmoji = (emojiClicked) => {
+    if (!emojiClicked) {
+      this.setState({ emojiClicked: true });
+    } else {
+      this.setState({ emojiClicked: null });
+    }
+  }
+
+
   activeStyle = (element) => {
     element.setNativeProps({
       style: {
         backgroundColor: colors.activeColorSecondary,
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: { height: 1, width: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 1,
       },
     });
   }
@@ -100,18 +122,45 @@ export default class Chat extends Component {
     element.setNativeProps({
       style: {
         backgroundColor: colors.backgroundColor,
+        shadowOpacity: 0,
       },
+    });
+  }
+
+  test = () => {
+    ImagePicker.openPicker({
+      width: 100,
+      height: 100,
+      cropping: true,
+    }).then((image) => {
+      this.setState({ avatar: image });
     });
   }
 
 
   render() {
     const {
-      nickname, email, msg, messages, isUserLaggedIn,
+      nickname, email, msg, messages, isUserLaggedIn, emojiClicked, avatar,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
         <View style={styles.loginContainer}>
+
+
+          {avatar ? (
+            <TouchableOpacity
+              onPress={() => this.test()}
+            >
+              <Image style={{ width: 100, height: 100 }} borderRadius={50} source={{ uri: `${avatar.path}` }} />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => this.test()}
+            >
+              <Image style={{ width: 100, height: 100 }} source={require('../assets/img/avatarIconGrey.png')} />
+            </TouchableOpacity>
+          )}
+
           <TextInput
             ref={component => this.nicknameInput = component}
             onFocus={() => this.activeStyle(this.nicknameInput)}
@@ -140,29 +189,40 @@ export default class Chat extends Component {
 
           <TouchableOpacity
             style={styles.loginButton}
-            onPress={() => this.handleLogin(nickname, email)}
+            onPress={() => this.handleLogin(nickname, email, avatar)}
           >
-            <Text style={styles.loginButtonText}>Sign In</Text>
+            <Text style={styles.userText}>Sign In</Text>
           </TouchableOpacity>
         </View>
       );
     }
     return (
-      <View style={styles.chatContainer}>
+      <View style={styles.chatContainerWeb}>
         <ScrollView
           ref={(view) => { this.scrollView = view; }}
           onContentSizeChange={() => {
             this.scrollView.scrollToEnd({ animated: true });
           }}
-          style={styles.chatMessagesContainer}
         >
           {Object.keys(messages).map(message => (
             <View key={message}>
               {nickname === messages[message].nickname ? (
-                <View style={styles.userMessage}>
-                  <Text style={styles.userNicknameText}>{messages[message].nickname}</Text>
-                  <Text style={styles.userText}>{messages[message].msg}</Text>
+                <View>
+                  {avatar ? (
+                    <View style={styles.userMessageContainerWithAvatar}>
+                      <View style={styles.userMessageWithAvatar}>
+                        <Text style={styles.userText}>{messages[message].msg}</Text>
+                      </View>
+                      <Image style={{ width: 60, height: 60 }} borderRadius={30} source={{ uri: `${avatar.path}` }} />
+                    </View>
+                  ) : (
+                    <View style={styles.userMessageNoAvatar}>
+                      <Text style={styles.userNicknameText}>{messages[message].nickname}</Text>
+                      <Text style={styles.userText}>{messages[message].msg}</Text>
+                    </View>
+                  )}
                 </View>
+
               ) : (
                 <View style={styles.message}>
                   <Text style={styles.nicknameText}>{messages[message].nickname}</Text>
@@ -173,36 +233,22 @@ export default class Chat extends Component {
           ))}
         </ScrollView>
 
-        <TouchableOpacity
-          style={styles.sendIconContainer}
-          onPress={() => { this.handleButtonPress(); }}
-        >
-          <Icon
-            disabled
-            iconFont="ionicons"
-            iconName="md-send"
-            iconColor={colors.backgroundColor}
-            style={{
-              width: 30, height: 30, marginLeft: 10, alignSelf: 'center',
-            }}
-          />
-        </TouchableOpacity>
+        <View style={styles.inputContainerWeb}>
 
-        <View style={styles.inputContainer}>
           <Icon
             iconFont="fontAwesome"
             iconName="smile-o"
-            iconColor={colors.activeBackgroundColor}
+            iconColor={colors.activeColorPrimary}
             style={{
               width: 30, height: 30, alignSelf: 'center', marginLeft: 10,
             }}
-            onPress={() => { this.handleButtonPress(); }}
+            onPress={() => { this.handleEmoji(emojiClicked); }}
           />
 
           <Icon
             iconFont="fontAwesome"
             iconName="paperclip"
-            iconColor={colors.activeBackgroundColor}
+            iconColor={colors.activeColorPrimary}
             style={{
               width: 30, height: 30, alignSelf: 'center', marginLeft: 10,
             }}
@@ -210,6 +256,9 @@ export default class Chat extends Component {
           />
 
           <TextInput
+            ref={component => this.messageInput = component}
+            onFocus={() => this.activeStyle(this.messageInput)}
+            onBlur={() => this.inactiveStyle(this.messageInput)}
             value={msg}
             style={styles.chatInput}
             selectionColor={colors.activeColorPrimary}
@@ -220,10 +269,23 @@ export default class Chat extends Component {
             onKeyPress={this.handleKeyPress}
             autoFocus
           />
+
+          <Icon
+            iconFont="ionicons"
+            iconName="md-send"
+            iconColor={colors.activeColorPrimary}
+              // style={styles.icon}
+            style={{ width: 35, height: 35, alignSelf: 'center' }}
+            onPress={() => { this.handleButtonPress(); }}
+          />
         </View>
+
+        {emojiClicked ? (
+          <EmojiPicker onEmojiClick={console.log('test')} />
+        ) : (
+          null
+        )}
       </View>
-
-
     );
   }
 }

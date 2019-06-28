@@ -1,28 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { IS_WEB } from 'rnv-platform-info';
 import colors from './colors';
 
-
-let position;
-if (IS_WEB) {
-  position = 'fixed';
-}
 export default StyleSheet.create({
   loginContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.backgroundColor,
-  },
-  inputContainer: {
-    width: '100%',
-    flexDirection: 'row',
-  },
-  inputContainerWeb: {
-    width: '100%',
-    flexDirection: 'row',
-    position,
-    bottom: 0,
     backgroundColor: colors.backgroundColor,
   },
   loginInput: {
@@ -38,37 +21,45 @@ export default StyleSheet.create({
   },
   loginButton: {
     backgroundColor: colors.activeBackgroundColor,
-    height: 40,
+    height: 41,
     width: 100,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 5,
     borderRadius: 10,
-    color: colors.textColor,
-    shadowColor: 'rgba(0,0,0, .4)',
-    shadowOffset: { height: 1, width: 1 },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 3,
+    // shadow
+    shadowColor: 'rgba(0,0,0, .4)', // IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, // IOS
+  },
+  loginButtonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    fontFamily: 'Optima',
+    textAlign: 'center',
+    margin: 10,
+    color: colors.buttonTextColor,
   },
   chatContainer: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
   },
-  chatContainerWeb: {
-    flex: 1,
-    backgroundColor: colors.backgroundColor,
-    paddingBottom: 60,
-    height: 500,
+  chatMessagesContainer: {
+    marginBottom: 20,
+  },
+  inputContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    borderTopColor: 'black',
+    borderTopWidth: 1,
+    marginTop: 10,
   },
   chatInput: {
     flex: 1,
-    height: 40,
+    height: 28,
     borderRadius: 20,
     margin: 10,
-    paddingLeft: 10,
-    borderColor: colors.activeColorSecondary,
-    borderWidth: 1,
     alignItems: 'center',
     color: colors.textColor,
     textAlign: 'left',
@@ -86,28 +77,13 @@ export default StyleSheet.create({
   nicknameText: {
     color: colors.nicknameColor,
     fontWeight: 'bold',
-    marginBottom: 3,
+    fontFamily: 'Optima',
+    fontSize: 17,
   },
   text: {
     color: colors.chatTextColor,
   },
-  userMessageContainerWithAvatar: {
-    flexDirection: 'row',
-    alignSelf: 'flex-end',
-    margin: 10,
-  },
-  userMessageWithAvatar: {
-    backgroundColor: colors.userMessageBackground,
-    padding: 8,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
-    borderRadius: 20,
-    alignSelf: 'center',
-    maxWidth: '80%',
-  },
-  userMessageNoAvatar: {
+  userMessage: {
     backgroundColor: colors.userMessageBackground,
     padding: 8,
     marginLeft: 10,
@@ -120,14 +96,27 @@ export default StyleSheet.create({
   userNicknameText: {
     color: colors.userNicknameColor,
     fontWeight: 'bold',
-    marginBottom: 3,
+    fontFamily: 'Optima',
+    fontSize: 17,
   },
   userText: {
-    color: colors.textColor,
+    color: colors.userChatTextColor,
   },
-  icon: {
-    height: 40,
+  sendIconContainer: {
+    position: 'absolute',
+    backgroundColor: colors.activeBackgroundColor,
     width: 40,
-    alignSelf: 'center',
+    height: 40,
+    bottom: 30,
+    right: 10,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 1,
+  },
+  test: {
+    width: 40,
+    height: 40,
+    marginLeft: 10,
   },
 });

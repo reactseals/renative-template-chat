@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TextInput, ScrollView, TouchableOpacity, TouchableHighlight,
+  View, Text, TextInput, ScrollView, TouchableOpacity,
 } from 'react-native';
 import { Icon, Api } from 'renative';
 import firebase from '../../projectConfig/firebase';
-import styles from '../themes/lightBlueTheme/chat.styles';
-import colors from '../themes/lightBlueTheme/colors';
+import styles from '../themes/lightGreenTheme/chat.styles';
+import colors from '../themes/lightGreenTheme/colors';
+
+const options = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 
 export default class Chat extends Component {
   constructor() {
@@ -23,6 +32,10 @@ export default class Chat extends Component {
 
     // Login info ref
     this.loginInfo = firebase.database().ref().child('nicknames');
+
+    // Avatar info ref
+    this.avatarInfo = firebase.database().ref().child('avatars');
+
 
     // Handle new messages
     this.handleNewMessages = (snap) => {
@@ -154,7 +167,6 @@ export default class Chat extends Component {
           onContentSizeChange={() => {
             this.scrollView.scrollToEnd({ animated: true });
           }}
-          style={styles.chatMessagesContainer}
         >
           {Object.keys(messages).map(message => (
             <View key={message}>
@@ -173,22 +185,26 @@ export default class Chat extends Component {
           ))}
         </ScrollView>
 
-        <TouchableOpacity
-          style={styles.sendIconContainer}
-          onPress={() => { this.handleButtonPress(); }}
-        >
+        <View style={styles.inputContainer}>
+          <TextInput
+            value={msg}
+            style={styles.chatInput}
+            selectionColor={colors.activeColorPrimary}
+            placeholder="Type a message ..."
+            placeholderTextColor={colors.activeColorPrimary}
+            outline="none"
+            onChangeText={this.handleMessage}
+            onKeyPress={this.handleKeyPress}
+            autoFocus
+          />
           <Icon
-            disabled
             iconFont="ionicons"
             iconName="md-send"
-            iconColor={colors.backgroundColor}
-            style={{
-              width: 30, height: 30, marginLeft: 10, alignSelf: 'center',
-            }}
+            iconColor={colors.activeBackgroundColor}
+              // style={styles.icon}
+            style={{ width: 35, height: 35, alignSelf: 'center' }}
+            onPress={() => { this.handleButtonPress(); }}
           />
-        </TouchableOpacity>
-
-        <View style={styles.inputContainer}>
           <Icon
             iconFont="fontAwesome"
             iconName="smile-o"
@@ -207,18 +223,6 @@ export default class Chat extends Component {
               width: 30, height: 30, alignSelf: 'center', marginLeft: 10,
             }}
             onPress={() => { this.handleButtonPress(); }}
-          />
-
-          <TextInput
-            value={msg}
-            style={styles.chatInput}
-            selectionColor={colors.activeColorPrimary}
-            placeholder="Type a message ..."
-            placeholderTextColor={colors.activeColorPrimary}
-            outline="none"
-            onChangeText={this.handleMessage}
-            onKeyPress={this.handleKeyPress}
-            autoFocus
           />
         </View>
       </View>

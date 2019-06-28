@@ -89,7 +89,7 @@ Menu
             iconColor={colors.activeColorPrimary}
             style={styles.button}
             onPress={() => {
-              Api.navigation.navigate('ChatGrey');
+              Api.navigation.navigate('ScreenWelcomeGrey');
             }}
           />
           {/* <Button

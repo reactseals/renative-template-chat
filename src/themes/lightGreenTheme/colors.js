@@ -1,0 +1,15 @@
+export default {
+  backgroundColor: '#fafafa',
+  activeBackgroundColor: '#6fbf49',
+  activeColorPrimary: '#838388',
+  activeColorSecondary: '#b9eda1',
+  activeColorTertiary: '#48484a',
+  textColor: '#222627',
+  buttonTextColor: '#edf2f4',
+  userNicknameColor: '#222222',
+  userMessageBackground: '#6fbf49',
+  userChatTextColor: '#ffffff',
+  nicknameColor: '#16889b',
+  messageBackground: '#ffffff',
+  chatTextColor: '#222222',
+};

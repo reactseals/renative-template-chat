@@ -90,6 +90,30 @@ const navStructure = {
       //   },
       //   stacks: ['stacks.MyPage2'],
       // },
+      ScreenWelcomeLightGreen: {
+        screen: 'ScreenWelcomeLightGreen',
+        tabMenu: {
+          position: 'bottom',
+          isVisibleIn: [IOS, ANDROID],
+          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+        },
+        navigationOptions: {
+          title: 'Chat',
+        },
+        stacks: ['stacks.MyPage2'],
+      },
+      ScreenChatLightGreen: {
+        screen: 'ScreenChatLightGreen',
+        tabMenu: {
+          position: 'bottom',
+          isVisibleIn: [IOS, ANDROID],
+          screens: ['root.MyPage2', 'root.MyPage', 'stacks.MyPage2', 'stacks.MyPage3'],
+        },
+        navigationOptions: {
+          title: 'Chat',
+        },
+        stacks: ['stacks.MyPage2'],
+      },
       ScreenWelcomeLightBlue: {
         screen: 'ScreenWelcomeLightBlue',
         tabMenu: {
