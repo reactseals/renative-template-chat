@@ -2,8 +2,8 @@ import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screenHome';
-import WelcomeGreyScreen from '../screens/welcomeGrey';
-import ChatGreyScreen from '../screens/chatGrey';
+import WelcomeGreyScreen from '../screens/mobile/welcomeGrey';
+import ChatGreyScreen from '../screens/mobile/chatGrey';
 import greyColors from '../themes/greyTheme/colors';
 
 const greyHeaderBackground = (

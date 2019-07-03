@@ -2,14 +2,14 @@ import React from 'react';
 import {
   View, Text, TouchableOpacity, Image,
 } from 'react-native';
-import styles from '../../themes/greyTheme/welcome.styles';
+import styles from '../../../themes/greyTheme/welcome.styles';
 
 console.disableYellowBox = true;
 
 const Home = props => (
   <View style={styles.container}>
     <Image
-      source={require('../../assets/img/logoGreyColors.png')}
+      source={require('../../../assets/img/logoGreyColors.png')}
       style={styles.img}
       resizeMode="contain"
     />

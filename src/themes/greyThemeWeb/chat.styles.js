@@ -141,4 +141,9 @@ export default StyleSheet.create({
   userText: {
     color: colors.textColor,
   },
+  icon: {
+    height: 40,
+    width: 40,
+    alignSelf: 'center',
+  },
 });

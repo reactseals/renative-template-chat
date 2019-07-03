@@ -7,10 +7,10 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import { Icon } from 'renative';
 import EmojiSelector, { Categories } from 'react-native-emoji-selector';
 import { IS_IOS } from 'rnv-platform-info';
-import styles from '../../themes/greyTheme/chat.styles';
-import firebase from '../../../projectConfig/firebase';
-import Activity from '../../components/activity';
-import colors from '../../themes/greyTheme/colors';
+import styles from '../../../themes/greyTheme/chat.styles';
+import firebase from '../../../../projectConfig/firebase';
+import Activity from '../../../components/activity';
+import colors from '../../../themes/greyTheme/colors';
 
 console.disableYellowBox = true;
 
@@ -197,7 +197,7 @@ export default class Chat extends Component {
             <TouchableOpacity
               onPress={() => this.setAvatar()}
             >
-              <Image style={{ width: 100, height: 100 }} source={require('../../assets/img/avatarIconGrey.png')} />
+              <Image style={{ width: 100, height: 100 }} source={require('../../../assets/img/avatarIconGrey.png')} />
             </TouchableOpacity>
           )}
 

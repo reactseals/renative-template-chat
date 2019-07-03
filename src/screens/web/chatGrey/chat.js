@@ -241,7 +241,7 @@ export default class Chat extends Component {
 
 
     return (
-      <View style={styles.chatContainer}>
+      <View style={styles.chatContainerWeb}>
         {!messages ? (
           <Activity />
         ) : (
@@ -274,7 +274,7 @@ export default class Chat extends Component {
                     <View>
                       {messages[message].avatarUrl ? (
                         <View style={styles.messageContainerWithAvatar}>
-                          <Image style={{ width: 60, height: 60 }} borderRadius={30} source={{ uri: `${messages[message].avatarUrl}` }} />
+                          <Image style={{ width: 60, height: 60, borderRadius: 30 }} source={{ uri: `${messages[message].avatarUrl}` }} />
                           <View style={styles.messageWithAvatar}>
                             <Text style={styles.text}>{messages[message].msg}</Text>
                           </View>
@@ -291,7 +291,7 @@ export default class Chat extends Component {
               ))}
             </ScrollView>
 
-            <View style={styles.inputContainer}>
+            <View style={styles.inputContainerWeb}>
               <Icon
                 iconFont="fontAwesome"
                 iconName="smile-o"
