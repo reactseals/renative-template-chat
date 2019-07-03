@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   View, Text, TextInput, ScrollView, Image, TouchableOpacity,
 } from 'react-native';
-// import ImagePicker from 'react-native-image-crop-picker';
+import { Picker, NimblePicker } from 'emoji-mart';
 // import RNFetchBlob from 'react-native-fetch-blob';
 import { Icon } from 'renative';
 // import EmojiSelector, { Categories } from 'react-native-emoji-selector';
@@ -319,19 +319,14 @@ export default class Chat extends Component {
                 iconFont="ionicons"
                 iconName="md-send"
                 iconColor={colors.activeColorPrimary}
-                // style={styles.icon}
                 style={{ width: 35, height: 35, alignSelf: 'center' }}
                 onPress={() => { this.handleButtonPress(); }}
               />
             </View>
             {emojiClicked ? (
-              <EmojiSelector
-                style={{ height: 300 }}
-                category={Categories.people}
-                theme={colors.activeBackgroundColor}
-                columns={8}
-                showSearchBar={false}
-                onEmojiSelected={emoji => this.setState({ msg: msg + emoji })}
+              <Picker
+                style={{ position: 'absolute', bottom: '20px', left: '0px' }}
+                onClick={emoji => this.setState({ msg: msg + emoji.native })}
               />
             ) : (
               null

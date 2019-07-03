@@ -3,7 +3,10 @@
     "title": "Chat",
     "version": "0.1.3",
     "dependencies": {
-        "emoji-picker-react": "^2.1.1",
+        "@react-navigation/core": "3.1.1",
+        "@react-navigation/native": "3.1.5",
+        "@react-navigation/web": "1.0.0-alpha.7",
+        "emoji-mart": "^2.11.1",
         "firebase": "^6.1.0",
         "react": "16.8.6",
         "react-art": "16.8.6",
@@ -11,6 +14,7 @@
         "react-native": "0.59.5",
         "react-native-emoji-input": "^1.1.9",
         "react-native-emoji-selector": "^0.1.7",
+        "react-native-fetch-blob": "0.10.8",
         "react-native-gesture-handler": "1.3.0",
         "react-native-image-crop-picker": "0.21.2",
         "react-native-image-picker": "0.27.1",
@@ -25,11 +29,7 @@
         "react-navigation-side-menu": "github:pavjacko/react-navigation-side-menu",
         "react-navigation-tabs": "2.0.0-alpha.0",
         "renative": "0.23.10",
-        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git",
-        "@react-navigation/core": "3.1.1",
-        "@react-navigation/native": "3.1.5",
-        "@react-navigation/web": "1.0.0-alpha.7",
-        "react-native-fetch-blob": "0.10.8"
+        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
     },
     "devDependencies": {
         "babel-eslint": "^10.0.2",

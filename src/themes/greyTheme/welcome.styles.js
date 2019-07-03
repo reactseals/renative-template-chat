@@ -3,8 +3,7 @@ import colors from './colors';
 
 export default StyleSheet.create({
   container: {
-    height: '100vh',
-    width: '100vw',
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.backgroundColor,
@@ -33,13 +32,5 @@ export default StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-    backgroundColor: 'transparent',
   },
 });
