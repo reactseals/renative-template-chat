@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View, Text, TouchableOpacity, StyleSheet,
 } from 'react-native';
-import { Api } from 'renative';
 
 const styles = StyleSheet.create({
   container: {

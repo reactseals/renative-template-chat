@@ -5,6 +5,7 @@ import {
 } from 'renative';
 
 import App from './src/navigation/webNav';
+
 import iconLoader from './src/iconLoader';
 
 iconLoader();

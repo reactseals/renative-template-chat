@@ -1,8 +1,8 @@
 {
   "id": "helloWorld",
   "common": {
-    "id": "com.mycompany.chat",
-    "title": "chat",
+    "id": "com.mycompany.chatnew",
+    "title": "Chat",
     "description": "Cross-platform application project based on ReNative",
     "author": {
       "name": "Pavel Jacko",
@@ -27,6 +27,7 @@
       "entryFile": "index.ios",
       "scheme": "RNVApp",
       "teamID": "",
+      "backgroundColor": "black",
       "permissions": [
         "*"
       ],
@@ -45,6 +46,10 @@
     },
     "android": {
       "entryFile": "index.android",
+      "universalApk": true,
+      "multipleAPKs": false,
+      "minSdkVersion": 21,
+      "backgroundColor": "black",
       "permissions": [
         "*"
       ],
@@ -56,6 +61,7 @@
         },
         "release": {
           "signingConfig": "Release",
+          "multipleAPKs": true,
           "bundleAssets": true,
           "bundleIsDev": true
         }
@@ -63,6 +69,7 @@
     },
     "macos": {
       "entryFile": "index.macos",
+      "backgroundColor": "black",
       "buildSchemes": {
         "debug": {
           "id": "renative.helloworld.debug",
@@ -76,14 +83,17 @@
     },
     "web": {
       "entryFile": "index.web",
+      "backgroundColor": "black",
       "buildSchemes": {
         "debug": {
           "id": "renative.helloworld.debug",
-          "bundleAssets": false
+          "bundleAssets": false,
+          "environment": "development"
         },
         "release": {
           "bundleAssets": true,
-          "bundleIsDev": false
+          "bundleIsDev": false,
+          "environment": "production"
         }
       }
     }

@@ -1,21 +1,21 @@
 {
-  "globalConfigFolder": "~/.rnv",
-  "appConfigsFolder": "./appConfigs",
-  "platformTemplatesFolder": "./platformTemplates",
-  "entryFolder": "./",
-  "platformAssetsFolder": "./platformAssets",
-  "platformBuildsFolder": "./platformBuilds",
-  "projectPlugins": "./projectConfig/plugins",
-  "projectConfigFolder": "./projectConfig",
-  "defaultPorts": {},
-  "defaultProjectConfigs": {
-    "supportedPlatforms": [
-      "ios",
-      "android",
-      "web",
-      "macos"
-    ],
-    "template": "renative-template-hello-world",
-    "defaultAppId": "com.mycompany.chat"
-  }
+    "globalConfigFolder": "~/.rnv",
+    "appConfigsFolder": "./appConfigs",
+    "platformTemplatesFolder": "RNV_HOME/platformTemplates",
+    "entryFolder": "./",
+    "platformAssetsFolder": "./platformAssets",
+    "platformBuildsFolder": "./platformBuilds",
+    "projectPlugins": "./projectConfig/plugins",
+    "projectConfigFolder": "./projectConfig",
+    "defaultPorts": {},
+    "defaultProjectConfigs": {
+        "supportedPlatforms": [
+            "ios",
+            "android",
+            "web",
+            "macos"
+        ],
+        "template": "renative-template-hello-world",
+        "defaultAppId": "com.mycompany.chatnew"
+    }
 }

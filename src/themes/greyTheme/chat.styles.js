@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
 import colors from './colors';
 
-
 let position;
 if (IS_WEB) {
   position = 'fixed';
 }
+
 export default StyleSheet.create({
   loginContainer: {
     flex: 1,
@@ -72,6 +72,22 @@ export default StyleSheet.create({
     alignItems: 'center',
     color: colors.textColor,
     textAlign: 'left',
+  },
+  messageContainerWithAvatar: {
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    margin: 10,
+  },
+  messageWithAvatar: {
+    backgroundColor: colors.messageBackground,
+    padding: 8,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    borderRadius: 20,
+    alignSelf: 'center',
+    maxWidth: '80%',
   },
   message: {
     backgroundColor: colors.messageBackground,

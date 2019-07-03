@@ -1,23 +1,17 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
-import { View, Image } from 'react-native';
 import HomeScreen from '../screenHome';
-import WelcomeGreyScreen from '../welcomeGrey';
-import ChatGreyScreen from '../chatGrey';
-import WelcomeLightBlueScreen from '../welcomeLightBlue';
-import ChatLightBlueScreen from '../chatLightBlue';
-import WelcomeLightGreenScreen from '../welcomeLightGreen';
-import ChatLightGreenScreen from '../chatLightGreen';
-import colors from '../themes/greyTheme/colors';
+import WelcomeGreyScreen from '../screens/welcomeGrey';
+import ChatGreyScreen from '../screens/chatGrey';
+import greyColors from '../themes/greyTheme/colors';
 
 const greyHeaderBackground = (
   <LinearGradient
-    colors={[colors.activeColorTertiary, colors.backgroundColor]}
+    colors={[greyColors.activeColorTertiary, greyColors.backgroundColor]}
     style={{ flex: 1 }}
   />
 );
-
 
 const AppNavigator = createStackNavigator(
   {
@@ -32,6 +26,7 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
+        headerTintColor: greyColors.textColor,
       },
     },
     ChatGrey: {
@@ -39,19 +34,8 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',
+        headerTintColor: greyColors.textColor,
       },
-    },
-    WelcomeLightBlue: {
-      screen: WelcomeLightBlueScreen,
-    },
-    ChatLightBlue: {
-      screen: ChatLightBlueScreen,
-    },
-    WelcomeLightGreen: {
-      screen: WelcomeLightGreenScreen,
-    },
-    ChatLightGreen: {
-      screen: ChatLightGreenScreen,
     },
   },
   {

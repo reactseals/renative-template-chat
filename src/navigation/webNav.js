@@ -3,13 +3,13 @@ import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screenHome';
-import WelcomeGreyScreen from '../welcomeGreyWeb';
-import ChatGreyScreen from '../chatGreyWeb';
-import colors from '../themes/greyTheme/colors';
+import WelcomeGreyScreen from '../screens/web/welcomeGrey';
+import ChatGreyScreen from '../screens/web/chatGrey';
+import greyColors from '../themes/greyTheme/colors';
 
 const greyHeaderBackground = (
   <LinearGradient
-    colors={[colors.activeColorTertiary, colors.backgroundColor]}
+    colors={[greyColors.activeColorTertiary, greyColors.backgroundColor]}
     style={{ flex: 1 }}
   />
 );
@@ -27,6 +27,7 @@ const AppNavigator = createSwitchNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
+        headerTintColor: greyColors.textColor,
       },
     },
     ChatGrey: {
@@ -34,6 +35,7 @@ const AppNavigator = createSwitchNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',
+        headerTintColor: greyColors.textColor,
       },
     },
   },
