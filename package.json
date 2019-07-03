@@ -1,5 +1,5 @@
 {
-  "name": "chat",
+  "name": "@reactseals/renative-template-chat",
   "title": "chat",
   "version": "0.1.0",
   "dependencies": {
