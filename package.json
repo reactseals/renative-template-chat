@@ -29,7 +29,8 @@
         "react-navigation-side-menu": "github:pavjacko/react-navigation-side-menu",
         "react-navigation-tabs": "2.0.0-alpha.0",
         "renative": "0.23.10",
-        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
+        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git",
+        "save": "^2.4.0"
     },
     "devDependencies": {
         "babel-eslint": "^10.0.2",

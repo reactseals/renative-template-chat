@@ -28,6 +28,10 @@ button:focus {
     outline: none;
 }
 
+.avatarImage {
+  border-radius: 50%;
+}
+
 .emoji-mart,
 .emoji-mart * {
   box-sizing: border-box;

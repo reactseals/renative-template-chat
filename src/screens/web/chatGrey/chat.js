@@ -2,23 +2,15 @@ import React, { Component } from 'react';
 import {
   View, Text, TextInput, ScrollView, Image, TouchableOpacity,
 } from 'react-native';
-import { Picker, NimblePicker } from 'emoji-mart';
-// import RNFetchBlob from 'react-native-fetch-blob';
+import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
-// import EmojiSelector, { Categories } from 'react-native-emoji-selector';
-import { IS_IOS } from 'rnv-platform-info';
+import PropTypes from 'prop-types';
 import styles from '../../../themes/greyTheme/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activity';
 import colors from '../../../themes/greyTheme/colors';
 
 console.disableYellowBox = true;
-
-// const { Blob } = RNFetchBlob.polyfill;
-// const { fs } = RNFetchBlob;
-
-// window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
-// window.Blob = Blob;
 
 export default class Chat extends Component {
   constructor() {
@@ -27,11 +19,13 @@ export default class Chat extends Component {
       isUserLaggedIn: null,
       nickname: '',
       email: '',
-      avatarUserLocal: null,
+      avatarUserLocal: '',
       avatarUrl: null,
       msg: '',
       messages: {},
       emojiClicked: null,
+      blob: null,
+      imgToUpload: null,
     };
 
     // Chat room ref
@@ -67,50 +61,54 @@ export default class Chat extends Component {
     this.setState({ msg: text });
   }
 
+  // Handle avatar selection
+  handleClick = () => {
+    const input = this.refs.input_reader;
+    input.click();
+  }
+
   // Add avatar to state
-  // setAvatar = () => {
-  //   ImagePicker.openPicker({
-  //     width: 100,
-  //     height: 100,
-  //     cropping: true,
-  //   }).then((image) => {
-  //     this.setState({ avatarUserLocal: image });
-  //   });
-  // }
+  inputFileChanged = (e) => {
+    if (window.FileReader) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      // const self = this;
+      reader.onload = (r) => {
+        this.setState({
+          avatarUserLocal: r.target,
+        });
+      };
+      reader.readAsDataURL(file);
+      this.setState({ imgToUpload: file });
+    } else {
+      alert('Sorry, your browser does\'nt support preview');
+    }
+  }
 
   // Login
-  handleLogin = (nickname, email, avatarUserLocal) => {
-    if (avatarUserLocal) {
-      this.uploadImage(nickname, avatarUserLocal.sourceURL)
-        .then((url) => { this.setState({ avatarUrl: url }); })
-        .catch(error => alert(error));
+  handleLogin = (nickname) => {
+    const { imgToUpload } = this.state;
+    if (imgToUpload) {
+      this.uploadImage(nickname);
     }
     this.setState({ isUserLaggedIn: true });
   };
 
-  // uploadImage = (username, uri, mime = 'application/octet-stream') => new Promise((resolve, reject) => {
-  //   const uploadUri = IS_IOS ? uri.replace('file://', '') : uri;
-  //   let uploadBlob = null;
+  // Upload avatar
+  uploadImage = (username) => {
+    const { imgToUpload } = this.state;
+    const imageRef = firebase.storage().ref('images').child(`${username}`);
+    imageRef.put(imgToUpload)
+      .then(() => {
+        this.handleUploadSuccess(imageRef);
+      });
+  };
 
-  //   const imageRef = firebase.storage().ref('images').child(`${username}`);
-
-  //   fs.readFile(uploadUri, 'base64')
-  //     .then(data => Blob.build(data, { type: `${mime};BASE64` }))
-  //     .then((blob) => {
-  //       uploadBlob = blob;
-  //       return imageRef.put(blob, { contentType: mime });
-  //     })
-  //     .then(() => {
-  //       uploadBlob.close();
-  //       return imageRef.getDownloadURL();
-  //     })
-  //     .then((url) => {
-  //       resolve(url);
-  //     })
-  //     .catch((error) => {
-  //       reject(error);
-  //     });
-  // })
+  // Set avatar download link
+  handleUploadSuccess = (imageRef) => {
+    imageRef.getDownloadURL()
+      .then(url => this.setState({ avatarUrl: url }));
+  }
 
   // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
@@ -181,25 +179,26 @@ export default class Chat extends Component {
   }
 
   render() {
+    const { accept, capture, multiple } = this.props;
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
         <View style={styles.loginContainer}>
-          {avatarUserLocal ? (
-            <TouchableOpacity
-              onPress={() => this.setAvatar()}
-            >
-              <Image style={{ width: 100, height: 100 }} borderRadius={50} source={{ uri: `${avatarUserLocal.path}` }} />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity
-              onPress={() => this.setAvatar()}
-            >
-              <Image style={{ width: 100, height: 100 }} source={require('../../../assets/img/avatarIconGrey.png')} />
-            </TouchableOpacity>
-          )}
+          <div>
+            {!avatarUserLocal ? (
+              <div>
+                <img src={require('../../../assets/img/avatarIconGrey.png')} height={100} width={100} onClick={this.handleClick} />
+                <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
+              </div>
+            ) : (
+              <div>
+                <img className="avatarImage" src={avatarUserLocal.result} height={100} width={100} onClick={this.handleClick} />
+                <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
+              </div>
+            )}
+          </div>
 
           <TextInput
             ref={component => this.nicknameInput = component}
@@ -230,11 +229,12 @@ export default class Chat extends Component {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={() => {
-              this.handleLogin(nickname, email, avatarUserLocal);
+              this.handleLogin(nickname);
             }}
           >
             <Text style={styles.userText}>Sign In</Text>
           </TouchableOpacity>
+
         </View>
       );
     }
@@ -261,7 +261,7 @@ export default class Chat extends Component {
                           <View style={styles.userMessageWithAvatar}>
                             <Text style={styles.userText}>{messages[message].msg}</Text>
                           </View>
-                          <Image style={{ width: 60, height: 60, borderRadius: 30 }} source={{ uri: `${avatarUserLocal.path}` }} />
+                          <Image style={{ width: 60, height: 60, borderRadius: 30 }} source={{ uri: `${avatarUserLocal.result}` }} />
                         </View>
                       ) : (
                         <View style={styles.userMessageNoAvatar}>
@@ -337,3 +337,17 @@ export default class Chat extends Component {
     );
   }
 }
+
+Chat.defaultProps = {
+  accept: 'image/*',
+  capture: true,
+  multiple: false,
+};
+Chat.propTypes = {
+  accept: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+  ]),
+  capture: PropTypes.bool,
+  multiple: PropTypes.bool,
+};
