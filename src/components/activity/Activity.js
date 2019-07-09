@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import styles from './Activity.styles';
-import colors from '../../themes/greyTheme/colors';
+import colors from '../../themes/darkGreyThemeMobile/colors';
 
 const Activity = () => (
   <View style={styles.activityindicator}>

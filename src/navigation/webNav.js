@@ -3,9 +3,9 @@ import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screenHome';
-import WelcomeGreyScreen from '../screens/web/welcomeGrey';
-import ChatGreyScreen from '../screens/web/chatGrey';
-import greyColors from '../themes/greyTheme/colors';
+import WelcomeDarkGreyScreen from '../screens/web/welcomeDarkGrey';
+import ChatDarkGreyScreen from '../screens/web/chatDarkGrey';
+import greyColors from '../themes/darkGreyThemeWeb/colors';
 
 const greyHeaderBackground = (
   <LinearGradient
@@ -22,16 +22,16 @@ const AppNavigator = createSwitchNavigator(
         headerTransparent: true,
       },
     },
-    WelcomeGrey: {
-      screen: WelcomeGreyScreen,
+    WelcomeDarkGrey: {
+      screen: WelcomeDarkGreyScreen,
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
         headerTintColor: greyColors.textColor,
       },
     },
-    ChatGrey: {
-      screen: ChatGreyScreen,
+    ChatDarkGrey: {
+      screen: ChatDarkGreyScreen,
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',

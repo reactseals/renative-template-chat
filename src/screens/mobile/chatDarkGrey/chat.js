@@ -7,10 +7,10 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import { Icon } from 'renative';
 import EmojiSelector, { Categories } from 'react-native-emoji-selector';
 import { IS_IOS } from 'rnv-platform-info';
-import styles from '../../../themes/greyTheme/chat.styles';
+import styles from '../../../themes/darkGreyThemeMobile/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activity';
-import colors from '../../../themes/greyTheme/colors';
+import colors from '../../../themes/darkGreyThemeMobile/colors';
 
 console.disableYellowBox = true;
 

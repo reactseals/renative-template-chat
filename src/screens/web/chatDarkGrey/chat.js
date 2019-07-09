@@ -5,10 +5,10 @@ import {
 import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
 import PropTypes from 'prop-types';
-import styles from '../../../themes/greyThemeWeb/chat.styles';
+import styles from '../../../themes/darkGreyThemeWeb/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activity';
-import colors from '../../../themes/greyTheme/colors';
+import colors from '../../../themes/darkGreyThemeWeb/colors';
 
 console.disableYellowBox = true;
 

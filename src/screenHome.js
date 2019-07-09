@@ -69,7 +69,7 @@ const Home = props => (
   <View style={styles.container}>
     <TouchableOpacity
       style={styles.buttonDarkGrey}
-      onPress={() => props.navigation.navigate('WelcomeGrey')}
+      onPress={() => props.navigation.navigate('WelcomeDarkGrey')}
     >
       <Text style={styles.buttonDarkGreyText}>Dark Grey</Text>
     </TouchableOpacity>

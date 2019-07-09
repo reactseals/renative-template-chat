@@ -2,9 +2,11 @@ import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screenHome';
-import WelcomeGreyScreen from '../screens/mobile/welcomeGrey';
-import ChatGreyScreen from '../screens/mobile/chatGrey';
-import greyColors from '../themes/greyTheme/colors';
+import WelcomeDarkGreyScreen from '../screens/mobile/welcomeDarkGrey';
+import ChatDarkGreyScreen from '../screens/mobile/chatDarkGrey';
+// import WelcomeLightBlueScreen from '../screens/mobile/welcomeLightBlue';
+// import ChatLightBlueScreen from '../screens/mobile/chatLightBlue';
+import greyColors from '../themes/darkGreyThemeMobile/colors';
 
 const greyHeaderBackground = (
   <LinearGradient
@@ -21,16 +23,16 @@ const AppNavigator = createStackNavigator(
         headerTransparent: true,
       },
     },
-    WelcomeGrey: {
-      screen: WelcomeGreyScreen,
+    WelcomeDarkGrey: {
+      screen: WelcomeDarkGreyScreen,
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
         headerTintColor: greyColors.textColor,
       },
     },
-    ChatGrey: {
-      screen: ChatGreyScreen,
+    ChatDarkGrey: {
+      screen: ChatDarkGreyScreen,
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',
