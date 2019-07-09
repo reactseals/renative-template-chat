@@ -217,7 +217,7 @@ export default class Chat extends Component {
   render() {
     const { accept, capture, multiple } = this.props;
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email, typingListener, userInfo,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email, typingListener, userInfo, avatarUrl,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
@@ -278,7 +278,7 @@ export default class Chat extends Component {
 
     return (
       <View style={styles.chatContainerWeb}>
-        {!messages ? (
+        {!avatarUrl ? (
           <Activity />
         ) : (
           <View style={styles.chatContainer}>

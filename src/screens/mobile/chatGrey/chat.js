@@ -215,9 +215,10 @@ export default class Chat extends Component {
     });
   }
 
+
   render() {
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo, avatarUrl,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
@@ -276,7 +277,7 @@ export default class Chat extends Component {
 
     return (
       <View style={styles.chatContainer}>
-        {!messages ? (
+        {!avatarUrl ? (
           <Activity />
         ) : (
           <View style={styles.chatContainer}>
