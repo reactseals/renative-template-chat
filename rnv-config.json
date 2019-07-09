@@ -20,6 +20,7 @@
     },
     "platformTemplatesFolders": {
         "web": "./platformTemplates",
-        "macos": "./platformTemplates"
+        "macos": "./platformTemplates",
+        "android": "./platformTemplates"
     }
 }

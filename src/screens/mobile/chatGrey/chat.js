@@ -20,51 +20,83 @@ const { fs } = RNFetchBlob;
 window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
 window.Blob = Blob;
 
+const chatRoom = firebase.database().ref().child('chatrooms').child('global');
+const typing = firebase.database().ref().child('chatrooms').child('typing');
+const users = firebase.database().ref().child('chatrooms').child('users');
+
 export default class Chat extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isUserLaggedIn: null,
-      nickname: '',
-      email: '',
-      avatarUserLocal: null,
-      avatarUrl: null,
-      msg: '',
-      messages: {},
-      emojiClicked: null,
-    };
-
-    // Chat room ref
-    this.chatRoom = firebase.database().ref().child('chatrooms').child('global');
-
-    // Handle new messages
-    this.handleNewMessages = (snap) => {
-      // Update state if not null
-      if (snap.val()) this.setState({ messages: snap.val() });
-    };
-  }
+  state = {
+    isUserLaggedIn: null,
+    nickname: '',
+    email: '',
+    avatarUserLocal: null,
+    avatarUrl: null,
+    msg: '',
+    messages: {},
+    emojiClicked: null,
+    typingListener: null,
+    userInfo: null,
+  };
 
   componentDidMount() {
-    this.chatRoom.on('value', this.handleNewMessages);
+    chatRoom.on('value', this.getNewMessages);
+    typing.on('value', this.getTypingListener);
+    users.on('value', this.getUserInfo);
   }
 
   componentWillUnmount() {
-    this.chatRoom.off('value', this.handleNewMessages);
+    chatRoom.off('value', this.getNewMessages);
+    typing.off('value', this.getTypingListener);
+    users.off('value', this.getUserInfo);
   }
 
-    // Add nickname to state
-    handleNickname = (text) => {
-      this.setState({ nickname: text });
-    }
+  // Get User Info
+  getUserInfo = (snap) => {
+    // Update state if not null
+    if (snap.val()) this.setState({ userInfo: snap.val() });
+  };
 
-    // Add email to state
-    handleEmail = (text) => {
-      this.setState({ email: text });
+  // Get new messages
+  getNewMessages = (snap) => {
+    // Update state if not null
+    if (snap.val()) this.setState({ messages: snap.val() });
+  };
+
+  // Get typing listener
+  getTypingListener = (snap) => {
+    // Update state if not null
+    if (snap.val().typingListener === true) {
+      this.setState({ typingListener: snap.val().typingListener });
+    } else {
+      this.setState({ typingListener: null });
     }
+  };
+
+  // Add nickname to state
+  handleNickname = (text) => {
+    this.setState({ nickname: text });
+  }
+
+  // Add email to state
+  handleEmail = (text) => {
+    this.setState({ email: text });
+  }
 
   // Add message to state
   handleMessage = (text) => {
+    const { nickname, email } = this.state;
     this.setState({ msg: text });
+    users.set({ nickname, email });
+    this.handleTyping(text);
+  }
+
+  // Set typing listener
+  handleTyping = (text) => {
+    if (text) {
+      typing.set({ typingListener: true });
+    } else {
+      typing.set({ typingListener: false });
+    }
   }
 
   // Add avatar to state
@@ -88,6 +120,7 @@ export default class Chat extends Component {
     this.setState({ isUserLaggedIn: true });
   };
 
+  // Upload avatar
   uploadImage = (username, uri, mime = 'application/octet-stream') => new Promise((resolve, reject) => {
     const uploadUri = IS_IOS ? uri.replace('file://', '') : uri;
     let uploadBlob = null;
@@ -119,7 +152,7 @@ export default class Chat extends Component {
     } = this.state;
     if (msg.trim() !== '' && e.key === 'Enter') {
       // Send the message from chat input field
-      this.chatRoom.push({
+      chatRoom.push({
         nickname,
         email,
         msg,
@@ -127,6 +160,7 @@ export default class Chat extends Component {
       });
       // Clear chat message input field
       this.setState({ msg: '' });
+      typing.set({ typingListener: false });
     }
   };
 
@@ -137,7 +171,7 @@ export default class Chat extends Component {
     } = this.state;
     if (msg.trim() !== '') {
     // Send the message from chat input field
-      this.chatRoom.push({
+      chatRoom.push({
         nickname,
         email,
         msg,
@@ -145,6 +179,7 @@ export default class Chat extends Component {
       });
       // Clear chat message input field
       this.setState({ msg: '' });
+      typing.set({ typingListener: false });
     }
   }
 
@@ -182,7 +217,7 @@ export default class Chat extends Component {
 
   render() {
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
@@ -230,7 +265,7 @@ export default class Chat extends Component {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={() => {
-              this.handleLogin(nickname, avatarUserLocal);
+              this.handleLogin(nickname, avatarUserLocal, email);
             }}
           >
             <Text style={styles.userText}>Sign In</Text>
@@ -238,7 +273,6 @@ export default class Chat extends Component {
         </View>
       );
     }
-
 
     return (
       <View style={styles.chatContainer}>
@@ -289,6 +323,11 @@ export default class Chat extends Component {
                   )}
                 </View>
               ))}
+              {typingListener && nickname !== userInfo.nickname ? (
+                <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../../../assets/img/typingAnimation.gif')} />
+              ) : (
+                null
+              )}
             </ScrollView>
 
             <View style={styles.inputContainer}>
@@ -319,7 +358,6 @@ export default class Chat extends Component {
                 iconFont="ionicons"
                 iconName="md-send"
                 iconColor={colors.activeColorPrimary}
-                // style={styles.icon}
                 style={{ width: 35, height: 35, alignSelf: 'center' }}
                 onPress={() => { this.handleButtonPress(); }}
               />
@@ -331,6 +369,7 @@ export default class Chat extends Component {
                 theme={colors.activeBackgroundColor}
                 columns={8}
                 showSearchBar={false}
+                showHistory={false}
                 onEmojiSelected={emoji => this.setState({ msg: msg + emoji })}
               />
             ) : (

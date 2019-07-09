@@ -77,6 +77,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-start',
     margin: 10,
+    marginLeft: 30,
   },
   messageWithAvatar: {
     backgroundColor: colors.messageBackground,
@@ -92,7 +93,7 @@ export default StyleSheet.create({
   message: {
     backgroundColor: colors.messageBackground,
     padding: 8,
-    marginLeft: 10,
+    marginLeft: 30,
     marginRight: 10,
     marginTop: 5,
     marginBottom: 5,
@@ -111,6 +112,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-end',
     margin: 10,
+    marginRight: 30,
   },
   userMessageWithAvatar: {
     backgroundColor: colors.userMessageBackground,
@@ -127,7 +129,7 @@ export default StyleSheet.create({
     backgroundColor: colors.userMessageBackground,
     padding: 8,
     marginLeft: 10,
-    marginRight: 10,
+    marginRight: 30,
     marginTop: 5,
     marginBottom: 5,
     borderRadius: 20,

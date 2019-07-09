@@ -5,12 +5,16 @@ import {
 import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
 import PropTypes from 'prop-types';
-import styles from '../../../themes/greyTheme/chat.styles';
+import styles from '../../../themes/greyThemeWeb/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activity';
 import colors from '../../../themes/greyTheme/colors';
 
 console.disableYellowBox = true;
+
+const chatRoom = firebase.database().ref().child('chatrooms').child('global');
+const typing = firebase.database().ref().child('chatrooms').child('typing');
+const users = firebase.database().ref().child('chatrooms').child('users');
 
 export default class Chat extends Component {
   constructor() {
@@ -24,41 +28,71 @@ export default class Chat extends Component {
       msg: '',
       messages: {},
       emojiClicked: null,
-      blob: null,
       imgToUpload: null,
-    };
-
-    // Chat room ref
-    this.chatRoom = firebase.database().ref().child('chatrooms').child('global');
-
-    // Handle new messages
-    this.handleNewMessages = (snap) => {
-      // Update state if not null
-      if (snap.val()) this.setState({ messages: snap.val() });
+      typingListener: null,
+      userInfo: null,
     };
   }
 
   componentDidMount() {
-    this.chatRoom.on('value', this.handleNewMessages);
+    chatRoom.on('value', this.getNewMessages);
+    typing.on('value', this.getTypingListener);
+    users.on('value', this.getUserInfo);
   }
 
   componentWillUnmount() {
-    this.chatRoom.off('value', this.handleNewMessages);
+    chatRoom.off('value', this.getNewMessages);
+    typing.off('value', this.getTypingListener);
+    users.off('value', this.getUserInfo);
   }
 
-    // Add nickname to state
-    handleNickname = (text) => {
-      this.setState({ nickname: text });
-    }
+  // Get user info
+  getUserInfo = (snap) => {
+    // Update state if not null
+    if (snap.val()) this.setState({ userInfo: snap.val() });
+  };
 
-    // Add email to state
-    handleEmail = (text) => {
-      this.setState({ email: text });
+  // Get new messages
+  getNewMessages = (snap) => {
+    // Update state if not null
+    if (snap.val()) this.setState({ messages: snap.val() });
+  };
+
+  // Get typing listener
+  getTypingListener = (snap) => {
+    // Update state if not null
+    if (snap.val().typingListener === true) {
+      this.setState({ typingListener: snap.val().typingListener });
+    } else {
+      this.setState({ typingListener: null });
     }
+  };
+
+  // Add nickname to state
+  handleNickname = (text) => {
+    this.setState({ nickname: text });
+  }
+
+  // Add email to state
+  handleEmail = (text) => {
+    this.setState({ email: text });
+  }
 
   // Add message to state
   handleMessage = (text) => {
+    const { nickname, email } = this.state;
     this.setState({ msg: text });
+    users.set({ nickname, email });
+    this.handleTyping(text);
+  }
+
+  // Set typing listener
+  handleTyping = (text) => {
+    if (text) {
+      typing.set({ typingListener: true });
+    } else {
+      typing.set({ typingListener: false });
+    }
   }
 
   // Handle avatar selection
@@ -86,7 +120,7 @@ export default class Chat extends Component {
   }
 
   // Login
-  handleLogin = (nickname) => {
+  handleLogin = (nickname, email) => {
     const { imgToUpload } = this.state;
     if (imgToUpload) {
       this.uploadImage(nickname);
@@ -117,7 +151,7 @@ export default class Chat extends Component {
     } = this.state;
     if (msg.trim() !== '' && e.key === 'Enter') {
       // Send the message from chat input field
-      this.chatRoom.push({
+      chatRoom.push({
         nickname,
         email,
         msg,
@@ -125,6 +159,7 @@ export default class Chat extends Component {
       });
       // Clear chat message input field
       this.setState({ msg: '' });
+      typing.set({ typingListener: false });
     }
   };
 
@@ -135,7 +170,7 @@ export default class Chat extends Component {
     } = this.state;
     if (msg.trim() !== '') {
     // Send the message from chat input field
-      this.chatRoom.push({
+      chatRoom.push({
         nickname,
         email,
         msg,
@@ -143,6 +178,7 @@ export default class Chat extends Component {
       });
       // Clear chat message input field
       this.setState({ msg: '' });
+      typing.set({ typingListener: false });
     }
   }
 
@@ -181,7 +217,7 @@ export default class Chat extends Component {
   render() {
     const { accept, capture, multiple } = this.props;
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email, typingListener, userInfo,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
@@ -229,7 +265,7 @@ export default class Chat extends Component {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={() => {
-              this.handleLogin(nickname);
+              this.handleLogin(nickname, email);
             }}
           >
             <Text style={styles.userText}>Sign In</Text>
@@ -289,6 +325,11 @@ export default class Chat extends Component {
                   )}
                 </View>
               ))}
+              {typingListener && nickname !== userInfo.nickname ? (
+                <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../../../assets/img/typingAnimation.gif')} />
+              ) : (
+                null
+              )}
             </ScrollView>
 
             <View style={styles.inputContainerWeb}>
@@ -325,7 +366,7 @@ export default class Chat extends Component {
             </View>
             {emojiClicked ? (
               <Picker
-                style={{ position: 'absolute', bottom: '20px', left: '0px' }}
+                style={{ position: 'absolute', bottom: '20px', left: '20px' }}
                 onClick={emoji => this.setState({ msg: msg + emoji.native })}
               />
             ) : (
