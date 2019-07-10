@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     color: '#edf2f4',
   },
   buttonLightBlue: {
-    backgroundColor: '#3cc1d7',
+    backgroundColor: '#5fbff9',
     height: 40,
     width: 100,
     justifyContent: 'center',

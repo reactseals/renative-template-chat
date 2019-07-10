@@ -9,7 +9,7 @@ console.disableYellowBox = true;
 const Home = props => (
   <View style={styles.container}>
     <Image
-      source={require('../../../assets/img/logoGreyColors.png')}
+      source={require('../../../assets/img/logoDarkGreyColors.png')}
       style={styles.img}
       resizeMode="contain"
     />

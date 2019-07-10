@@ -4,13 +4,21 @@ import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screenHome';
 import WelcomeDarkGreyScreen from '../screens/mobile/welcomeDarkGrey';
 import ChatDarkGreyScreen from '../screens/mobile/chatDarkGrey';
-// import WelcomeLightBlueScreen from '../screens/mobile/welcomeLightBlue';
-// import ChatLightBlueScreen from '../screens/mobile/chatLightBlue';
-import greyColors from '../themes/darkGreyThemeMobile/colors';
+import WelcomeLightBlueScreen from '../screens/mobile/welcomeLightBlue';
+import ChatLightBlueScreen from '../screens/mobile/chatLighBlue';
+import darkGreyColors from '../themes/darkGreyThemeMobile/colors';
+import lightBlueColors from '../themes/lightBlueThemeMobile/colors';
 
 const greyHeaderBackground = (
   <LinearGradient
-    colors={[greyColors.activeColorTertiary, greyColors.backgroundColor]}
+    colors={[darkGreyColors.activeColorTertiary, darkGreyColors.backgroundColor]}
+    style={{ flex: 1 }}
+  />
+);
+
+const blueHeaderBackground = (
+  <LinearGradient
+    colors={[lightBlueColors.activeColorSecondary, lightBlueColors.backgroundColor, lightBlueColors.backgroundColor]}
     style={{ flex: 1 }}
   />
 );
@@ -28,7 +36,7 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
-        headerTintColor: greyColors.textColor,
+        headerTintColor: darkGreyColors.textColor,
       },
     },
     ChatDarkGrey: {
@@ -36,7 +44,23 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',
-        headerTintColor: greyColors.textColor,
+        headerTintColor: darkGreyColors.textColor,
+      },
+    },
+    WelcomeLightBlue: {
+      screen: WelcomeLightBlueScreen,
+      navigationOptions: {
+        headerBackground: blueHeaderBackground,
+        title: 'Welcome',
+        headerTintColor: lightBlueColors.inputTextColor,
+      },
+    },
+    ChatLightBlue: {
+      screen: ChatLightBlueScreen,
+      navigationOptions: {
+        headerBackground: blueHeaderBackground,
+        title: 'Chat',
+        headerTintColor: lightBlueColors.inputTextColor,
       },
     },
   },

@@ -2,37 +2,41 @@ import React, { Component } from 'react';
 import {
   View, Text, TextInput, ScrollView, Image, TouchableOpacity,
 } from 'react-native';
-import { Picker } from 'emoji-mart';
+import ImagePicker from 'react-native-image-crop-picker';
+import RNFetchBlob from 'react-native-fetch-blob';
 import { Icon } from 'renative';
-import PropTypes from 'prop-types';
-import styles from '../../../themes/darkGreyThemeWeb/chat.styles';
+import EmojiSelector, { Categories } from 'react-native-emoji-selector';
+import { IS_IOS } from 'rnv-platform-info';
+import styles from '../../../themes/lightBlueThemeMobile/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activity';
-import colors from '../../../themes/darkGreyThemeWeb/colors';
+import colors from '../../../themes/lightBlueThemeMobile/colors';
 
 console.disableYellowBox = true;
+
+const { Blob } = RNFetchBlob.polyfill;
+const { fs } = RNFetchBlob;
+
+window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+window.Blob = Blob;
 
 const chatRoom = firebase.database().ref().child('chatrooms').child('global');
 const typing = firebase.database().ref().child('chatrooms').child('typing');
 const users = firebase.database().ref().child('chatrooms').child('users');
 
 export default class Chat extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isUserLaggedIn: null,
-      nickname: '',
-      email: '',
-      avatarUserLocal: '',
-      avatarUrl: null,
-      msg: '',
-      messages: {},
-      emojiClicked: null,
-      imgToUpload: null,
-      typingListener: null,
-      userInfo: null,
-    };
-  }
+  state = {
+    isUserLaggedIn: null,
+    nickname: '',
+    email: '',
+    avatarUserLocal: null,
+    avatarUrl: null,
+    msg: '',
+    messages: {},
+    emojiClicked: null,
+    typingListener: null,
+    userInfo: null,
+  };
 
   componentDidMount() {
     chatRoom.on('value', this.getNewMessages);
@@ -46,7 +50,7 @@ export default class Chat extends Component {
     users.off('value', this.getUserInfo);
   }
 
-  // Get user info
+  // Get User Info
   getUserInfo = (snap) => {
     // Update state if not null
     if (snap.val()) this.setState({ userInfo: snap.val() });
@@ -95,54 +99,51 @@ export default class Chat extends Component {
     }
   }
 
-  // Handle avatar selection
-  handleClick = () => {
-    const input = this.refs.input_reader;
-    input.click();
-  }
-
   // Add avatar to state
-  inputFileChanged = (e) => {
-    if (window.FileReader) {
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      // const self = this;
-      reader.onload = (r) => {
-        this.setState({
-          avatarUserLocal: r.target,
-        });
-      };
-      reader.readAsDataURL(file);
-      this.setState({ imgToUpload: file });
-    } else {
-      alert('Sorry, your browser does\'nt support preview');
-    }
+  setAvatar = () => {
+    ImagePicker.openPicker({
+      width: 100,
+      height: 100,
+      cropping: true,
+    }).then((image) => {
+      this.setState({ avatarUserLocal: image });
+    });
   }
 
   // Login
-  handleLogin = (nickname, email) => {
-    const { imgToUpload } = this.state;
-    if (imgToUpload) {
-      this.uploadImage(nickname);
+  handleLogin = (nickname, avatarUserLocal) => {
+    if (avatarUserLocal) {
+      this.uploadImage(nickname, avatarUserLocal.sourceURL)
+        .then((url) => { this.setState({ avatarUrl: url }); })
+        .catch(error => alert(error));
     }
     this.setState({ isUserLaggedIn: true });
   };
 
   // Upload avatar
-  uploadImage = (username) => {
-    const { imgToUpload } = this.state;
-    const imageRef = firebase.storage().ref('images').child(`${username}`);
-    imageRef.put(imgToUpload)
-      .then(() => {
-        this.handleUploadSuccess(imageRef);
-      });
-  };
+  uploadImage = (username, uri, mime = 'application/octet-stream') => new Promise((resolve, reject) => {
+    const uploadUri = IS_IOS ? uri.replace('file://', '') : uri;
+    let uploadBlob = null;
 
-  // Set avatar download link
-  handleUploadSuccess = (imageRef) => {
-    imageRef.getDownloadURL()
-      .then(url => this.setState({ avatarUrl: url }));
-  }
+    const imageRef = firebase.storage().ref('images').child(`${username}`);
+
+    fs.readFile(uploadUri, 'base64')
+      .then(data => Blob.build(data, { type: `${mime};BASE64` }))
+      .then((blob) => {
+        uploadBlob = blob;
+        return imageRef.put(blob, { contentType: mime });
+      })
+      .then(() => {
+        uploadBlob.close();
+        return imageRef.getDownloadURL();
+      })
+      .then((url) => {
+        resolve(url);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  })
 
   // Push messsage on 'Enter' press
   handleKeyPress = (e) => {
@@ -214,27 +215,27 @@ export default class Chat extends Component {
     });
   }
 
+
   render() {
-    const { accept, capture, multiple } = this.props;
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email, typingListener, userInfo, avatarUrl,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo, avatarUrl,
     } = this.state;
     if (!isUserLaggedIn) {
       return (
         <View style={styles.loginContainer}>
-          <div>
-            {!avatarUserLocal ? (
-              <div>
-                <img src={require('../../../assets/img/avatarIconGrey.png')} height={100} width={100} onClick={this.handleClick} />
-                <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
-              </div>
-            ) : (
-              <div>
-                <img className="avatarImage" src={avatarUserLocal.result} height={100} width={100} onClick={this.handleClick} />
-                <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
-              </div>
-            )}
-          </div>
+          {avatarUserLocal ? (
+            <TouchableOpacity
+              onPress={() => this.setAvatar()}
+            >
+              <Image style={{ width: 100, height: 100 }} borderRadius={50} source={{ uri: `${avatarUserLocal.path}` }} />
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={() => this.setAvatar()}
+            >
+              <Image style={{ width: 100, height: 100 }} source={require('../../../assets/img/avatarIconBlue.png')} />
+            </TouchableOpacity>
+          )}
 
           <TextInput
             ref={component => this.nicknameInput = component}
@@ -243,7 +244,7 @@ export default class Chat extends Component {
             style={styles.loginInput}
             underlineColorAndroid="transparent"
             placeholder="Nickname"
-            placeholderTextColor={colors.activeColorPrimary}
+            placeholderTextColor={colors.activeColorTertiary}
             selectionColor={colors.activeColorPrimary}
             autoCapitalize="none"
             onChangeText={this.handleNickname}
@@ -256,7 +257,7 @@ export default class Chat extends Component {
             style={styles.loginInput}
             underlineColorAndroid="transparent"
             placeholder="Email"
-            placeholderTextColor={colors.activeColorPrimary}
+            placeholderTextColor={colors.activeColorTertiary}
             selectionColor={colors.activeColorPrimary}
             autoCapitalize="none"
             onChangeText={this.handleEmail}
@@ -265,20 +266,18 @@ export default class Chat extends Component {
           <TouchableOpacity
             style={styles.loginButton}
             onPress={() => {
-              this.handleLogin(nickname, email);
+              this.handleLogin(nickname, avatarUserLocal, email);
             }}
           >
-            <Text style={styles.userText}>Sign In</Text>
+            <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>
-
         </View>
       );
     }
 
-
     return (
-      <View style={styles.chatContainerWeb}>
-        {!avatarUrl ? (
+      <View style={styles.chatContainer}>
+        {!userInfo ? (
           <Activity />
         ) : (
           <View style={styles.chatContainer}>
@@ -297,7 +296,7 @@ export default class Chat extends Component {
                           <View style={styles.userMessageWithAvatar}>
                             <Text style={styles.userText}>{messages[message].msg}</Text>
                           </View>
-                          <Image style={{ width: 60, height: 60, borderRadius: 30 }} source={{ uri: `${avatarUserLocal.result}` }} />
+                          <Image style={{ width: 60, height: 60, borderRadius: 30 }} source={{ uri: `${avatarUserLocal.path}` }} />
                         </View>
                       ) : (
                         <View style={styles.userMessageNoAvatar}>
@@ -310,7 +309,7 @@ export default class Chat extends Component {
                     <View>
                       {messages[message].avatarUrl ? (
                         <View style={styles.messageContainerWithAvatar}>
-                          <Image style={{ width: 60, height: 60, borderRadius: 30 }} source={{ uri: `${messages[message].avatarUrl}` }} />
+                          <Image style={{ width: 60, height: 60 }} borderRadius={30} source={{ uri: `${messages[message].avatarUrl}` }} />
                           <View style={styles.messageWithAvatar}>
                             <Text style={styles.text}>{messages[message].msg}</Text>
                           </View>
@@ -332,7 +331,7 @@ export default class Chat extends Component {
               )}
             </ScrollView>
 
-            <View style={styles.inputContainerWeb}>
+            <View style={styles.inputContainer}>
               <Icon
                 iconFont="fontAwesome"
                 iconName="smile-o"
@@ -350,7 +349,7 @@ export default class Chat extends Component {
                 style={styles.chatInput}
                 selectionColor={colors.activeColorPrimary}
                 placeholder="Type a message ..."
-                placeholderTextColor={colors.activeColorPrimary}
+                placeholderTextColor={colors.activeColorTertiary}
                 outline="none"
                 onChangeText={this.handleMessage}
                 onKeyPress={this.handleKeyPress}
@@ -365,9 +364,14 @@ export default class Chat extends Component {
               />
             </View>
             {emojiClicked ? (
-              <Picker
-                style={{ position: 'absolute', bottom: '20px', left: '20px' }}
-                onClick={emoji => this.setState({ msg: msg + emoji.native })}
+              <EmojiSelector
+                style={{ height: 300 }}
+                category={Categories.people}
+                theme={colors.activeBackgroundColor}
+                columns={8}
+                showSearchBar={false}
+                showHistory={false}
+                onEmojiSelected={emoji => this.setState({ msg: msg + emoji })}
               />
             ) : (
               null
@@ -378,17 +382,3 @@ export default class Chat extends Component {
     );
   }
 }
-
-Chat.defaultProps = {
-  accept: 'image/*',
-  capture: true,
-  multiple: false,
-};
-Chat.propTypes = {
-  accept: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-  ]),
-  capture: PropTypes.bool,
-  multiple: PropTypes.bool,
-};

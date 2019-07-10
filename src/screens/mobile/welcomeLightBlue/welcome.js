@@ -2,23 +2,23 @@ import React from 'react';
 import {
   View, Text, TouchableOpacity, Image,
 } from 'react-native';
-import styles from '../../../themes/darkGreyThemeWeb/welcome.styles';
+import styles from '../../../themes/lightBlueThemeMobile/welcome.styles';
 
 console.disableYellowBox = true;
 
 const Home = props => (
   <View style={styles.container}>
     <Image
-      source={require('../../../assets/img/logoDarkGreyColors.png')}
+      source={require('../../../assets/img/logoLightBlueColors.png')}
       style={styles.img}
       resizeMode="contain"
     />
 
     <TouchableOpacity
       style={styles.button}
-      onPress={() => props.navigation.navigate('ChatDarkGrey')}
+      onPress={() => props.navigation.navigate('ChatLightBlue')}
     >
-      <Text style={styles.text}>Let's Chat</Text>
+      <Text style={styles.buutonText}>Let's Chat</Text>
     </TouchableOpacity>
   </View>
 );

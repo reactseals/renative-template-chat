@@ -277,7 +277,7 @@ export default class Chat extends Component {
 
     return (
       <View style={styles.chatContainer}>
-        {!avatarUrl ? (
+        {!messages ? (
           <Activity />
         ) : (
           <View style={styles.chatContainer}>
@@ -325,7 +325,7 @@ export default class Chat extends Component {
                 </View>
               ))}
               {typingListener && nickname !== userInfo.nickname ? (
-                <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../../../assets/img/typingAnimation.gif')} />
+                <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../../../assets/img/typingAnimationDarkGrey.gif')} />
               ) : (
                 null
               )}
