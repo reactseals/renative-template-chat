@@ -50,6 +50,14 @@ export default StyleSheet.create({
     shadowRadius: 1,
     elevation: 3,
   },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    margin: 10,
+    color: colors.buttonTextColor,
+    backgroundColor: 'transparent',
+  },
   chatContainer: {
     flex: 1,
     backgroundColor: colors.backgroundColor,

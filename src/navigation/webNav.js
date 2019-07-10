@@ -5,11 +5,21 @@ import LinearGradient from 'react-native-linear-gradient';
 import HomeScreen from '../screenHome';
 import WelcomeDarkGreyScreen from '../screens/web/welcomeDarkGrey';
 import ChatDarkGreyScreen from '../screens/web/chatDarkGrey';
-import greyColors from '../themes/darkGreyThemeWeb/colors';
+import WelcomeLightBlueScreen from '../screens/web/welcomeLightBlue';
+import ChatLightBlueScreen from '../screens/web/chatLightBlue';
+import darkGreyColors from '../themes/darkGreyThemeWeb/colors';
+import lightBlueColors from '../themes/lightBlueThemeMobile/colors';
 
 const greyHeaderBackground = (
   <LinearGradient
-    colors={[greyColors.activeColorTertiary, greyColors.backgroundColor]}
+    colors={[darkGreyColors.activeColorTertiary, darkGreyColors.backgroundColor]}
+    style={{ flex: 1 }}
+  />
+);
+
+const blueHeaderBackground = (
+  <LinearGradient
+    colors={[lightBlueColors.activeColorSecondary, lightBlueColors.backgroundColor, lightBlueColors.backgroundColor]}
     style={{ flex: 1 }}
   />
 );
@@ -27,7 +37,7 @@ const AppNavigator = createSwitchNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
-        headerTintColor: greyColors.textColor,
+        headerTintColor: darkGreyColors.textColor,
       },
     },
     ChatDarkGrey: {
@@ -35,7 +45,23 @@ const AppNavigator = createSwitchNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',
-        headerTintColor: greyColors.textColor,
+        headerTintColor: darkGreyColors.textColor,
+      },
+    },
+    WelcomeLightBlue: {
+      screen: WelcomeLightBlueScreen,
+      navigationOptions: {
+        headerBackground: blueHeaderBackground,
+        title: 'Welcome',
+        headerTintColor: lightBlueColors.inputTextColor,
+      },
+    },
+    ChatLightBlue: {
+      screen: ChatLightBlueScreen,
+      navigationOptions: {
+        headerBackground: blueHeaderBackground,
+        title: 'Chat',
+        headerTintColor: lightBlueColors.inputTextColor,
       },
     },
   },

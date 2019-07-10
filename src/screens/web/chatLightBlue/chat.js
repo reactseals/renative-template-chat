@@ -5,10 +5,10 @@ import {
 import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
 import PropTypes from 'prop-types';
-import styles from '../../../themes/darkGreyThemeWeb/chat.styles';
+import styles from '../../../themes/lightBlueThemeWeb/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activity';
-import colors from '../../../themes/darkGreyThemeWeb/colors';
+import colors from '../../../themes/lightBlueThemeWeb/colors';
 
 console.disableYellowBox = true;
 
@@ -196,10 +196,6 @@ export default class Chat extends Component {
     element.setNativeProps({
       style: {
         backgroundColor: colors.activeColorSecondary,
-        shadowColor: 'rgba(0,0,0, .4)',
-        shadowOffset: { height: 1, width: 1 },
-        shadowOpacity: 1,
-        shadowRadius: 1,
       },
     });
   }
@@ -209,7 +205,6 @@ export default class Chat extends Component {
     element.setNativeProps({
       style: {
         backgroundColor: colors.backgroundColor,
-        shadowOpacity: 0,
       },
     });
   }
@@ -225,7 +220,7 @@ export default class Chat extends Component {
           <View>
             {!avatarUserLocal ? (
               <TouchableOpacity>
-                <img src={require('../../../assets/img/avatarIconGrey.png')} height={100} width={100} onClick={this.handleClick} />
+                <img src={require('../../../assets/img/avatarIconBlue.png')} height={100} width={100} onClick={this.handleClick} />
                 <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
               </TouchableOpacity>
             ) : (
@@ -243,7 +238,7 @@ export default class Chat extends Component {
             style={styles.loginInput}
             underlineColorAndroid="transparent"
             placeholder="Nickname"
-            placeholderTextColor={colors.activeColorPrimary}
+            placeholderTextColor={colors.activeColorTertiary}
             selectionColor={colors.activeColorPrimary}
             autoCapitalize="none"
             onChangeText={this.handleNickname}
@@ -256,7 +251,7 @@ export default class Chat extends Component {
             style={styles.loginInput}
             underlineColorAndroid="transparent"
             placeholder="Email"
-            placeholderTextColor={colors.activeColorPrimary}
+            placeholderTextColor={colors.activeColorTertiary}
             selectionColor={colors.activeColorPrimary}
             autoCapitalize="none"
             onChangeText={this.handleEmail}
@@ -268,7 +263,7 @@ export default class Chat extends Component {
               this.handleLogin(nickname, email);
             }}
           >
-            <Text style={styles.userText}>Sign In</Text>
+            <Text style={styles.buttonText}>Sign In</Text>
           </TouchableOpacity>
 
         </View>
@@ -350,7 +345,7 @@ export default class Chat extends Component {
                 style={styles.chatInput}
                 selectionColor={colors.activeColorPrimary}
                 placeholder="Type a message ..."
-                placeholderTextColor={colors.activeColorPrimary}
+                placeholderTextColor={colors.activeColorTertiary}
                 outline="none"
                 onChangeText={this.handleMessage}
                 onKeyPress={this.handleKeyPress}
