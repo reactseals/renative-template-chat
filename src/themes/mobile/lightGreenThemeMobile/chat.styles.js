@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
-import colors from './colors';
+import colors from '../../colors/lightGreenColors';
+import fonts from '../../fonts';
 
 let position;
 if (IS_WEB) {
@@ -53,6 +54,8 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: colors.buttonTextColor,
+    fontSize: 18,
+    fontFamily: fonts.Optima,
   },
   chatContainer: {
     flex: 1,

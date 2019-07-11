@@ -6,8 +6,11 @@ import WelcomeDarkGreyScreen from '../screens/mobile/welcomeDarkGrey';
 import ChatDarkGreyScreen from '../screens/mobile/chatDarkGrey';
 import WelcomeLightBlueScreen from '../screens/mobile/welcomeLightBlue';
 import ChatLightBlueScreen from '../screens/mobile/chatLighBlue';
-import darkGreyColors from '../themes/darkGreyThemeMobile/colors';
-import lightBlueColors from '../themes/lightBlueThemeMobile/colors';
+import WelcomeLightGreenScreen from '../screens/mobile/welcomeLightGreen';
+import ChatLightGreenScreen from '../screens/mobile/chatLighGreen';
+import darkGreyColors from '../themes/colors/darkGreyColors';
+import lightBlueColors from '../themes/colors/lightBlueColors';
+import lightGreenColors from '../themes/colors/lightGreenColors';
 
 const greyHeaderBackground = (
   <LinearGradient
@@ -19,6 +22,13 @@ const greyHeaderBackground = (
 const blueHeaderBackground = (
   <LinearGradient
     colors={[lightBlueColors.activeColorSecondary, lightBlueColors.backgroundColor, lightBlueColors.backgroundColor]}
+    style={{ flex: 1 }}
+  />
+);
+
+const greenHeaderBackground = (
+  <LinearGradient
+    colors={[lightGreenColors.activeColorSecondary, lightGreenColors.backgroundColor, lightGreenColors.backgroundColor]}
     style={{ flex: 1 }}
   />
 );
@@ -52,7 +62,7 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: blueHeaderBackground,
         title: 'Welcome',
-        headerTintColor: lightBlueColors.inputTextColor,
+        headerTintColor: lightBlueColors.activeColorPrimary,
       },
     },
     ChatLightBlue: {
@@ -60,14 +70,29 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: blueHeaderBackground,
         title: 'Chat',
-        headerTintColor: lightBlueColors.inputTextColor,
+        headerTintColor: lightBlueColors.activeColorPrimary,
+      },
+    },
+    WelcomeLightGreen: {
+      screen: WelcomeLightGreenScreen,
+      navigationOptions: {
+        headerBackground: greenHeaderBackground,
+        title: 'Welcome',
+        headerTintColor: lightGreenColors.activeColorPrimary,
+      },
+    },
+    ChatLightGreen: {
+      screen: ChatLightGreenScreen,
+      navigationOptions: {
+        headerBackground: greenHeaderBackground,
+        title: 'Chat',
+        headerTintColor: lightGreenColors.activeColorPrimary,
       },
     },
   },
   {
     initialRouteName: 'Home',
     defaultNavigationOptions: {
-      headerTintColor: '#EDF2F4',
       headerBackTitle: null,
 
     },

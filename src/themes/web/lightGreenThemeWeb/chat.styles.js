@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
-import colors from './colors';
+import colors from '../../colors/lightGreenColors';
+import fonts from '../../fonts';
+
 
 let position;
 if (IS_WEB) {
@@ -52,11 +54,8 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
+    fontFamily: fonts.GillSans,
     color: colors.buttonTextColor,
-    backgroundColor: 'transparent',
   },
   chatContainer: {
     flex: 1,

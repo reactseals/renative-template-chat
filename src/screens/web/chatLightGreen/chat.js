@@ -5,10 +5,10 @@ import {
 import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
 import PropTypes from 'prop-types';
-import styles from '../../../themes/web/lightBlueThemeWeb/chat.styles';
+import styles from '../../../themes/web/lightGreenThemeWeb/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
-import Activity from '../../../components/activityBlue';
-import colors from '../../../themes/colors/lightBlueColors';
+import Activity from '../../../components/activityGreen';
+import colors from '../../../themes/colors/lightGreenColors';
 
 console.disableYellowBox = true;
 
@@ -220,7 +220,7 @@ export default class Chat extends Component {
           <View>
             {!avatarUserLocal ? (
               <TouchableOpacity>
-                <img src={require('../../../assets/img/avatarIconBlue.png')} height={100} width={100} onClick={this.handleClick} />
+                <img src={require('../../../assets/img/avatarIconGreen.png')} height={100} width={100} onClick={this.handleClick} />
                 <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
               </TouchableOpacity>
             ) : (

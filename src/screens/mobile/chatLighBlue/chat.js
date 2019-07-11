@@ -7,10 +7,10 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import { Icon } from 'renative';
 import EmojiSelector, { Categories } from 'react-native-emoji-selector';
 import { IS_IOS } from 'rnv-platform-info';
-import styles from '../../../themes/lightBlueThemeMobile/chat.styles';
+import styles from '../../../themes/mobile/lightBlueThemeMobile/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
-import Activity from '../../../components/activity';
-import colors from '../../../themes/lightBlueThemeMobile/colors';
+import Activity from '../../../components/activityBlue';
+import colors from '../../../themes/colors/lightBlueColors';
 
 console.disableYellowBox = true;
 
@@ -325,7 +325,7 @@ export default class Chat extends Component {
                 </View>
               ))}
               {typingListener && nickname !== userInfo.nickname ? (
-                <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../../../assets/img/typingAnimationDarkGrey.gif')} />
+                <Image style={{ width: 40, height: 40, marginLeft: 10 }} source={require('../../../assets/img/typingAnimationLightBlue.gif')} />
               ) : (
                 null
               )}

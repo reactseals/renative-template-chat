@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
-import colors from './colors';
+import colors from '../../colors/lightBlueColors';
+import fonts from '../../fonts';
 
 let position;
 if (IS_WEB) {
@@ -32,7 +33,7 @@ export default StyleSheet.create({
     borderColor: colors.activeColorSecondary,
     borderWidth: 1,
     alignItems: 'center',
-    color: colors.textColor,
+    color: colors.inputTextColor,
     textAlign: 'center',
     borderRadius: 10,
   },
@@ -50,6 +51,11 @@ export default StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 3,
+  },
+  buttonText: {
+    color: colors.buttonTextColor,
+    fontSize: 18,
+    fontFamily: fonts.GillSans,
   },
   chatContainer: {
     flex: 1,

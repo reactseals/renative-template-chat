@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from './colors';
+import colors from '../../colors/darkGreyColors';
 
 export default StyleSheet.create({
   container: {
@@ -32,13 +32,5 @@ export default StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontFamily: 'Gill Sans',
-    textAlign: 'center',
-    margin: 10,
-    color: colors.buttonTextColor,
-    backgroundColor: 'transparent',
   },
 });
