@@ -1,8 +1,9 @@
 # ReNative Chat Template
 
 <p align='center'>
-  <img src="https://live.staticflickr.com/65535/48060712588_fc802ab218_o.png" width="250">
-  <img src="https://live.staticflickr.com/65535/48060667311_7e37269807_o.png" width="250">
+  <img src="https://live.staticflickr.com/65535/48060667311_7e37269807_o.png" width="200">
+  <img src="https://live.staticflickr.com/65535/48255395781_38ce801a92_o.png" width="200">
+  <img src="https://live.staticflickr.com/65535/48060712588_fc802ab218_o.png" width="200">
   <p align='center'>build universal cross-platform apps with <a href="https://facebook.github.io/react-native/">react native</a></p>
   <p align='center'>
     <img src="https://img.shields.io/badge/Platforms_Supported-14-blue.svg" />
@@ -24,6 +25,15 @@
         </a>
     <a href="https://twitter.com/renative"><img src="https://img.shields.io/twitter/follow/renative.svg?style=social" /></a>
 </p>
+
+<table align='center'>
+  <tr>
+    <th>Web</th>
+  </tr>
+  <tr>
+    <td><img src="https://live.staticflickr.com/65535/48263260547_23ff96a7da_o.gif" width="200"></td>
+  </tr>
+</table>
 
 <img src="https://github.com/pavjacko/renative/blob/master/docs/ic_configuration.png?raw=true" width=50 height=50 />
 

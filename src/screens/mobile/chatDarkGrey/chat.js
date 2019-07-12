@@ -6,7 +6,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import RNFetchBlob from 'react-native-fetch-blob';
 import { Icon } from 'renative';
 import EmojiSelector, { Categories } from 'react-native-emoji-selector';
-import { IS_IOS } from 'rnv-platform-info';
+import { IS_IOS, IS_ANDROID } from 'rnv-platform-info';
 import styles from '../../../themes/mobile/darkGreyThemeMobile/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activityGrey';
@@ -65,7 +65,7 @@ export default class Chat extends Component {
   // Get typing listener
   getTypingListener = (snap) => {
     // Update state if not null
-    if (snap.val().typingListener === true) {
+    if (snap.val() && snap.val().typingListener === true) {
       this.setState({ typingListener: snap.val().typingListener });
     } else {
       this.setState({ typingListener: null });
@@ -115,7 +115,7 @@ export default class Chat extends Component {
     if (avatarUserLocal) {
       this.uploadImage(nickname, avatarUserLocal.sourceURL)
         .then((url) => { this.setState({ avatarUrl: url }); })
-        .catch(error => alert(error));
+        .catch(error => console.log(error));
     }
     this.setState({ isUserLaggedIn: true });
   };

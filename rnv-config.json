@@ -21,6 +21,7 @@
     "platformTemplatesFolders": {
         "web": "./platformTemplates",
         "macos": "./platformTemplates",
-        "android": "./platformTemplates"
+        "android": "./platformTemplates",
+        "ios": "./platformTemplates"
     }
 }

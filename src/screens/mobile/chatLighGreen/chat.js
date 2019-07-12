@@ -115,7 +115,7 @@ export default class Chat extends Component {
     if (avatarUserLocal) {
       this.uploadImage(nickname, avatarUserLocal.sourceURL)
         .then((url) => { this.setState({ avatarUrl: url }); })
-        .catch(error => alert(error));
+        .catch(error => console.log(error));
     }
     this.setState({ isUserLaggedIn: true });
   };
