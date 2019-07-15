@@ -26,14 +26,48 @@
     <a href="https://twitter.com/renative"><img src="https://img.shields.io/twitter/follow/renative.svg?style=social" /></a>
 </p>
 
-<table align='center'>
+<table>
   <tr>
+    <th></th>
     <th>Web</th>
+    <th></th>
   </tr>
   <tr>
-    <td><img src="https://live.staticflickr.com/65535/48263260547_23ff96a7da_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48287865066_23bbae9497_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288558522_d5ed8ea766_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288969756_07d6f795ae_o.gif" width="200"></td>
+  </tr>
+
+  <tr>
+    <th></th>
+    <th>macOS</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="https://live.staticflickr.com/65535/48288729341_c25b654eb3_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288960297_8d7008b54b_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288929521_833cdc0cef_o.gif" width="200"></td>
   </tr>
 </table>
+
+---
+<img src="https://github.com/pavjacko/renative/blob/master/docs/ic_features.png?raw=true" width=50 height=50 />
+
+## Features:
+
+#### Development platforms
+
+![](https://img.shields.io/badge/Mac-yes-brightgreen.svg)
+![](https://img.shields.io/badge/Windows-POC-orange.svg)
+![](https://img.shields.io/badge/Ubuntu-untested-lightgrey.svg)
+
+#### Requirements
+
+-   [Node](https://nodejs.org) `10.13.0` or newer
+-   [NPM](https://npmjs.com/) `6.4.1` or newer
+-   [Android Studio](https://developer.android.com/studio) (if you want to develop for Android)
+-   [Xcode](https://developer.apple.com/xcode/) (if you want to develop for iOS/tvOS)
+---
 
 <img src="https://github.com/pavjacko/renative/blob/master/docs/ic_configuration.png?raw=true" width=50 height=50 />
 
@@ -59,4 +93,5 @@ const config = {
   messagingSenderId: '<your-sender-id>',
   appId: '<your-app-id>',
 };
+```
 

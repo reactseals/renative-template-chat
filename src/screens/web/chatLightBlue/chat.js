@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
-import PropTypes from 'prop-types';
 import styles from '../../../themes/web/lightBlueThemeWeb/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
 import Activity from '../../../components/activityBlue';
@@ -160,6 +159,7 @@ export default class Chat extends Component {
       // Clear chat message input field
       this.setState({ msg: '' });
       typing.set({ typingListener: false });
+      this.setState({ emojiClicked: null });
     }
   };
 
@@ -179,6 +179,7 @@ export default class Chat extends Component {
       // Clear chat message input field
       this.setState({ msg: '' });
       typing.set({ typingListener: false });
+      this.setState({ emojiClicked: null });
     }
   }
 
@@ -210,7 +211,6 @@ export default class Chat extends Component {
   }
 
   render() {
-    const { accept, capture, multiple } = this.props;
     const {
       msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, email, typingListener, userInfo, avatarUrl,
     } = this.state;
@@ -221,12 +221,12 @@ export default class Chat extends Component {
             {!avatarUserLocal ? (
               <TouchableOpacity>
                 <img src={require('../../../assets/img/avatarIconBlue.png')} height={100} width={100} onClick={this.handleClick} />
-                <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
+                <input type="file" ref="input_reader" style={{ display: 'none' }} onChange={this.inputFileChanged} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity>
                 <img className="avatarImage" src={avatarUserLocal.result} height={100} width={100} onClick={this.handleClick} />
-                <input type="file" ref="input_reader" accept={Array.isArray(accept) ? accept.join(',') : accept} multiple={multiple} capture={capture} style={{ display: 'none' }} onChange={this.inputFileChanged} />
+                <input type="file" ref="input_reader" style={{ display: 'none' }} onChange={this.inputFileChanged} />
               </TouchableOpacity>
             )}
           </View>
@@ -373,17 +373,3 @@ export default class Chat extends Component {
     );
   }
 }
-
-Chat.defaultProps = {
-  accept: 'image/*',
-  capture: true,
-  multiple: false,
-};
-Chat.propTypes = {
-  accept: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.array,
-  ]),
-  capture: PropTypes.bool,
-  multiple: PropTypes.bool,
-};

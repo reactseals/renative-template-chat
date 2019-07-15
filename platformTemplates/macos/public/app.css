@@ -7,6 +7,7 @@
 }
 
 input:focus,
+div:focus,
 select:focus,
 textarea:focus,
 button:focus {
