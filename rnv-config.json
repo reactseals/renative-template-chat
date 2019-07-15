@@ -19,9 +19,9 @@
         "defaultAppId": "com.mycompany.chatnew"
     },
     "platformTemplatesFolders": {
-        "web": "./platformTemplates",
-        "macos": "./platformTemplates",
-        "android": "./platformTemplates",
-        "ios": "./platformTemplates"
+        "web": "RNV_HOME/platformTemplates",
+        "macos": "RNV_HOME/platformTemplates",
+        "android": "RNV_HOME/platformTemplates",
+        "ios": "RNV_HOME/platformTemplates"
     }
 }
