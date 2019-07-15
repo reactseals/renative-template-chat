@@ -45,7 +45,7 @@
   </tr>
   <tr>
     <td><img src="https://live.staticflickr.com/65535/48288729341_c25b654eb3_o.gif" width="300"></td>
-    <td><img src="https://live.staticflickr.com/65535/48288960297_8d7008b54b_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48289171076_0d8cf7b7cb_o.gif" width="300"></td>
     <td><img src="https://live.staticflickr.com/65535/48288929521_833cdc0cef_o.gif" width="300"></td>
   </tr>
 </table>
