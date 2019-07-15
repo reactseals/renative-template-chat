@@ -33,9 +33,9 @@
     <th></th>
   </tr>
   <tr>
-    <td><img src="https://live.staticflickr.com/65535/48287865066_23bbae9497_o.gif" width="200"></td>
-    <td><img src="https://live.staticflickr.com/65535/48288558522_d5ed8ea766_o.gif" width="200"></td>
-    <td><img src="https://live.staticflickr.com/65535/48288969756_07d6f795ae_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48287865066_23bbae9497_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288558522_d5ed8ea766_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288969756_07d6f795ae_o.gif" width="300"></td>
   </tr>
 
   <tr>
@@ -44,9 +44,9 @@
     <th></th>
   </tr>
   <tr>
-    <td><img src="https://live.staticflickr.com/65535/48288729341_c25b654eb3_o.gif" width="200"></td>
-    <td><img src="https://live.staticflickr.com/65535/48288960297_8d7008b54b_o.gif" width="200"></td>
-    <td><img src="https://live.staticflickr.com/65535/48288929521_833cdc0cef_o.gif" width="200"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288729341_c25b654eb3_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288960297_8d7008b54b_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48288929521_833cdc0cef_o.gif" width="300"></td>
   </tr>
 </table>
 
