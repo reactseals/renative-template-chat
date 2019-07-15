@@ -218,7 +218,7 @@ export default class Chat extends Component {
 
   render() {
     const {
-      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo, avatarUrl,
+      msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo,
     } = this.state;
     if (!isUserLaggedIn) {
       return (

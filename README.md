@@ -28,20 +28,23 @@
 
 <table>
   <tr>
-    <th></th>
-    <th>Web</th>
-    <th></th>
+    <th colspan="3">Web</th>
   </tr>
   <tr>
     <td><img src="https://live.staticflickr.com/65535/48287865066_23bbae9497_o.gif" width="300"></td>
     <td><img src="https://live.staticflickr.com/65535/48288558522_d5ed8ea766_o.gif" width="300"></td>
     <td><img src="https://live.staticflickr.com/65535/48288969756_07d6f795ae_o.gif" width="300"></td>
   </tr>
-
+    <tr>
+    <th colspan="3">Android</th>
+  </tr>
   <tr>
-    <th></th>
-    <th>macOS</th>
-    <th></th>
+    <td><img src="https://live.staticflickr.com/65535/48289408076_9f610fd070_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48289513762_dd865b2e87_o.gif" width="300"></td>
+    <td><img src="https://live.staticflickr.com/65535/48289513557_10995d1a26_o.gif" width="300"></td>
+  </tr>
+  <tr>
+    <th colspan="3">macOS</th>
   </tr>
   <tr>
     <td><img src="https://live.staticflickr.com/65535/48288729341_c25b654eb3_o.gif" width="300"></td>
