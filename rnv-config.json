@@ -16,12 +16,6 @@
             "macos"
         ],
         "template": "renative-template-hello-world",
-        "defaultAppId": "com.mycompany.chatnew"
-    },
-    "platformTemplatesFolders": {
-        "web": "RNV_HOME/platformTemplates",
-        "macos": "RNV_HOME/platformTemplates",
-        "android": "RNV_HOME/platformTemplates",
-        "ios": "RNV_HOME/platformTemplates"
+        "defaultAppId": "com.mycompany.chat"
     }
 }

@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Api, WEB, FORM_FACTOR_DESKTOP, registerServiceWorker,
-} from 'renative';
-
 import App from './src/navigation/webNav';
+import { Api } from 'renative';
+import { WEB, FORM_FACTOR_DESKTOP, registerServiceWorker } from 'renative';
 
 import iconLoader from './src/iconLoader';
 

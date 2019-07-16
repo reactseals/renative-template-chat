@@ -1,7 +1,7 @@
 import { AppRegistry, Platform } from 'react-native';
-import { Api, IOS, FORM_FACTOR_MOBILE } from 'renative';
-
 import App from './src/navigation/mobileNav';
+import { Api } from 'renative';
+import { IOS, FORM_FACTOR_MOBILE } from 'renative';
 
 Api.platform = IOS;
 Api.formFactor = FORM_FACTOR_MOBILE;

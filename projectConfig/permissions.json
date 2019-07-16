@@ -1,6 +1,15 @@
 {
     "permissions": {
-        "ios": {},
+        "ios": {
+            "NSPhotoLibraryAddUsageDescription": {
+                "key": "NSPhotoLibraryAddUsageDescription",
+                "desc": "Need library to save images"
+            },
+            "NSPhotoLibraryUsageDescription": {
+                "key": "NSPhotoLibraryUsageDescription",
+                "desc": "Allows to upload images from photo library"
+            }
+        },
         "android": {
             "INTERNET": {
                 "key": "android.permission.INTERNET",

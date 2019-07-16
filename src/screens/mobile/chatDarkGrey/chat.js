@@ -3,7 +3,7 @@ import {
   View, Text, TextInput, ScrollView, Image, TouchableOpacity,
 } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
-import RNFetchBlob from 'react-native-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 import { Icon } from 'renative';
 import EmojiSelector, { Categories } from 'react-native-emoji-selector';
 import { IS_IOS, IS_ANDROID } from 'rnv-platform-info';
