@@ -1,63 +1,26 @@
 import React from 'react';
 import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
-import LinearGradient from 'react-native-linear-gradient';
-import HomeScreen from '../screenHome';
-import WelcomeDarkGreyScreen from '../screens/web/welcomeDarkGrey';
-import ChatDarkGreyScreen from '../screens/web/chatDarkGrey';
-import WelcomeLightBlueScreen from '../screens/web/welcomeLightBlue';
-import ChatLightBlueScreen from '../screens/web/chatLightBlue';
-import WelcomeLightGreenScreen from '../screens/web/welcomeLightGreen';
-import ChatLightGreenScreen from '../screens/web/chatLightGreen';
+import WelcomeScreen from '../screens/web/welcome';
+import ChatScreen from '../screens/web/chat';
 
 const AppNavigator = createSwitchNavigator(
   {
-    Home: {
-      screen: HomeScreen,
-      navigationOptions: {
-        title: 'Home',
-        headerTransparent: true,
-      },
-    },
-    WelcomeDarkGrey: {
-      screen: WelcomeDarkGreyScreen,
+    Welcome: {
+      screen: WelcomeScreen,
       navigationOptions: {
         title: 'Welcome',
       },
     },
-    ChatDarkGrey: {
-      screen: ChatDarkGreyScreen,
-      navigationOptions: {
-        title: 'Chat',
-      },
-    },
-    WelcomeLightBlue: {
-      screen: WelcomeLightBlueScreen,
-      navigationOptions: {
-        title: 'Welcome',
-      },
-    },
-    ChatLightBlue: {
-      screen: ChatLightBlueScreen,
-      navigationOptions: {
-        title: 'Chat',
-      },
-    },
-    WelcomeLightGreen: {
-      screen: WelcomeLightGreenScreen,
-      navigationOptions: {
-        title: 'Welcome',
-      },
-    },
-    ChatLightGreen: {
-      screen: ChatLightGreenScreen,
+    Chat: {
+      screen: ChatScreen,
       navigationOptions: {
         title: 'Chat',
       },
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Welcome',
     defaultNavigationOptions: {
       headerBackTitle: null,
     },
