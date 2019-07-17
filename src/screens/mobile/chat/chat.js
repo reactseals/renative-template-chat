@@ -6,11 +6,11 @@ import ImagePicker from 'react-native-image-crop-picker';
 import RNFetchBlob from 'rn-fetch-blob';
 import { Icon } from 'renative';
 import EmojiSelector, { Categories } from 'react-native-emoji-selector';
-import { IS_IOS, IS_ANDROID } from 'rnv-platform-info';
-import styles from '../../../themes/mobile/darkGreyThemeMobile/chat.styles';
+import { IS_IOS } from 'rnv-platform-info';
+import styles from '../../../../platformAssets/runtime/mobile/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
-import Activity from '../../../components/activityGrey';
-import colors from '../../../themes/colors/darkGreyColors';
+import Activity from '../../../components/activityIndicator';
+import colors from '../../../../platformAssets/runtime/colors';
 
 console.disableYellowBox = true;
 

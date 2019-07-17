@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
-import colors from '../../colors/lightGreenColors';
-import fonts from '../../fonts';
-
+import colors from '../colors';
+import fonts from '../chatFonts';
 
 let position;
 if (IS_WEB) {
@@ -34,7 +33,7 @@ export default StyleSheet.create({
     borderColor: colors.activeColorSecondary,
     borderWidth: 1,
     alignItems: 'center',
-    color: colors.textColor,
+    color: colors.inputTextColor,
     textAlign: 'center',
     borderRadius: 10,
   },
@@ -46,6 +45,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     margin: 5,
     borderRadius: 10,
+    color: colors.textColor,
     shadowColor: 'rgba(0,0,0, .4)',
     shadowOffset: { height: 1, width: 1 },
     shadowOpacity: 1,
@@ -53,9 +53,9 @@ export default StyleSheet.create({
     elevation: 3,
   },
   buttonText: {
+    color: colors.buttonTextColor,
     fontSize: 18,
     fontFamily: fonts.GillSans,
-    color: colors.buttonTextColor,
   },
   chatContainer: {
     flex: 1,
@@ -83,7 +83,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-start',
     margin: 10,
-    marginLeft: 30,
   },
   messageWithAvatar: {
     backgroundColor: colors.messageBackground,
@@ -99,7 +98,7 @@ export default StyleSheet.create({
   message: {
     backgroundColor: colors.messageBackground,
     padding: 8,
-    marginLeft: 30,
+    marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
     marginBottom: 5,
@@ -118,7 +117,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-end',
     margin: 10,
-    marginRight: 30,
   },
   userMessageWithAvatar: {
     backgroundColor: colors.userMessageBackground,
@@ -135,7 +133,7 @@ export default StyleSheet.create({
     backgroundColor: colors.userMessageBackground,
     padding: 8,
     marginLeft: 10,
-    marginRight: 30,
+    marginRight: 10,
     marginTop: 5,
     marginBottom: 5,
     borderRadius: 20,
@@ -148,10 +146,5 @@ export default StyleSheet.create({
   },
   userText: {
     color: colors.textColor,
-  },
-  icon: {
-    height: 40,
-    width: 40,
-    alignSelf: 'center',
   },
 });

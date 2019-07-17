@@ -3,12 +3,12 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import WelcomeScreen from '../screens/mobile/welcome';
 import ChatScreen from '../screens/mobile/chat';
-import darkGreyColors from '../themes/colors/darkGreyColors';
+import colors from '../../platformAssets/runtime/colors';
 
 
 const greyHeaderBackground = (
   <LinearGradient
-    colors={[darkGreyColors.activeColorTertiary, darkGreyColors.backgroundColor]}
+    colors={[colors.activeColorSecondary, colors.backgroundColor]}
     style={{ flex: 1 }}
   />
 );
@@ -20,7 +20,7 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Welcome',
-        headerTintColor: darkGreyColors.textColor,
+        headerTintColor: colors.textColor,
       },
     },
     Chat: {
@@ -28,7 +28,7 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerBackground: greyHeaderBackground,
         title: 'Chat',
-        headerTintColor: darkGreyColors.textColor,
+        headerTintColor: colors.textColor,
       },
     },
   },

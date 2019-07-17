@@ -4,11 +4,10 @@ import {
 } from 'react-native';
 import { Picker } from 'emoji-mart';
 import { Icon } from 'renative';
-import styles from '../../../themes/web/darkGreyThemeWeb/chat.styles';
+import styles from '../../../../platformAssets/runtime/web/chat.styles';
 import firebase from '../../../../projectConfig/firebase';
-import Activity from '../../../components/activityGrey';
-import colors from '../../../themes/colors/darkGreyColors';
-
+import Activity from '../../../components/activityIndicator';
+import colors from '../../../../platformAssets/runtime/colors';
 console.disableYellowBox = true;
 
 const chatRoom = firebase.database().ref().child('chatrooms').child('global');

@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../colors/lightGreenColors';
-import fonts from '../../fonts';
+import colors from '../colors';
 
 export default StyleSheet.create({
   container: {
@@ -33,10 +32,5 @@ export default StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontFamily: fonts.GillSans,
-    color: colors.buttonTextColor,
   },
 });

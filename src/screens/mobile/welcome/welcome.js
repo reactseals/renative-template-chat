@@ -2,7 +2,7 @@ import React from 'react';
 import {
   View, Text, TouchableOpacity, Image,
 } from 'react-native';
-import styles from '../../../themes/mobile/darkGreyThemeMobile/welcome.styles';
+import styles from '../../../../platformAssets/runtime/mobile/welcome.styles';
 
 console.disableYellowBox = true;
 
