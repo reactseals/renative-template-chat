@@ -15,22 +15,19 @@ const typing = firebase.database().ref().child('chatrooms').child('typing');
 const users = firebase.database().ref().child('chatrooms').child('users');
 
 export default class Chat extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isUserLaggedIn: null,
-      nickname: '',
-      email: '',
-      avatarUserLocal: '',
-      avatarUrl: null,
-      msg: '',
-      messages: {},
-      emojiClicked: null,
-      imgToUpload: null,
-      typingListener: null,
-      userInfo: null,
-    };
-  }
+  state = {
+    isUserLaggedIn: null,
+    nickname: '',
+    email: '',
+    avatarUserLocal: '',
+    avatarUrl: null,
+    msg: '',
+    messages: {},
+    emojiClicked: null,
+    imgToUpload: null,
+    typingListener: null,
+    userInfo: null,
+  };
 
   componentDidMount() {
     chatRoom.on('value', this.getNewMessages);
