@@ -223,14 +223,14 @@ export default class Chat extends Component {
       return (
         <View style={styles.loginContainer}>
           <View>
-            {!avatarUserLocal ? (
+            {avatarUserLocal ? (
               <TouchableOpacity>
-                <img src={require('../../../../platformAssets/runtime/avatarIcon.png')} height={100} width={100} onClick={this.handleClick} />
+                <Image style={{ width: 100, height: 100, borderRadius: 50 }} source={{ uri: `${avatarUserLocal.result}` }} onClick={this.handleClick} />
                 <input type="file" ref="input_reader" style={{ display: 'none' }} onChange={this.inputFileChanged} />
               </TouchableOpacity>
             ) : (
               <TouchableOpacity>
-                <img className="avatarImage" src={avatarUserLocal.result} height={100} width={100} onClick={this.handleClick} />
+                <Image style={{ width: 100, height: 100 }} source={require('../../../../platformAssets/runtime/avatarIcon.png')} onClick={this.handleClick} />
                 <input type="file" ref="input_reader" style={{ display: 'none' }} onChange={this.inputFileChanged} />
               </TouchableOpacity>
             )}
