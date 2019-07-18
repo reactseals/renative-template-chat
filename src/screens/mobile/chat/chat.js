@@ -220,6 +220,7 @@ export default class Chat extends Component {
     const {
       msg, messages, emojiClicked, isUserLaggedIn, avatarUserLocal, nickname, typingListener, email, userInfo,
     } = this.state;
+    console.log(avatarUserLocal);
     if (!isUserLaggedIn) {
       return (
         <View style={styles.loginContainer}>

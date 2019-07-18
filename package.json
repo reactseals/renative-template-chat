@@ -23,7 +23,7 @@
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
         "react-navigation-tabs": "2.0.0-alpha.0",
-        "renative": "0.23.36-alpha4",
+        "renative": "0.23.36-alpha9",
         "rn-fetch-blob": "0.10.13",
         "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
     },
@@ -31,6 +31,6 @@
         "eslint": "^6.0.1",
         "eslint-plugin-react": "^7.14.2",
         "renative-template-hello-world": "latest",
-        "rnv": "0.23.36-alpha4"
+        "rnv": "0.23.36-alpha9"
     }
 }
