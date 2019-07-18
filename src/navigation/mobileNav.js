@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
-import WelcomeScreen from '../screens/mobile/welcome';
-import ChatScreen from '../screens/mobile/chat';
+import WelcomeScreen from '../screens/welcome';
+import ChatScreen from '../screens/chat';
 import colors from '../../platformAssets/runtime/colors';
 
 

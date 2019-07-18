@@ -17,8 +17,6 @@
     "react-navigation-tabs": "source:rnv",
     "react-native-reanimated": "source:rnv",
     "react-native-vector-icons": "source:rnv",
-    "react-native-linear-gradient": "source:rnv",
-    "react-native-image-crop-picker": "source:rnv",
-    "rn-fetch-blob": "source:rnv"
+    "react-native-linear-gradient": "source:rnv"
   }
 }

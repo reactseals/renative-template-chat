@@ -1,10 +1,15 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
-import colors from '../colors';
+import colors from '../../platformAssets/runtime/colors';
 
 let position;
+let marginBottom;
+let height;
+
 if (IS_WEB) {
   position = 'fixed';
+  marginBottom = 30;
+  height = 100;
 }
 
 export default StyleSheet.create({
@@ -17,6 +22,9 @@ export default StyleSheet.create({
   inputContainer: {
     width: '100%',
     flexDirection: 'row',
+    position,
+    bottom: 0,
+    backgroundColor: colors.backgroundColor,
   },
   inputContainerWeb: {
     width: '100%',
@@ -44,7 +52,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     margin: 5,
     borderRadius: 10,
-    color: colors.textColor,
     shadowColor: 'rgba(0,0,0, .4)',
     shadowOffset: { height: 1, width: 1 },
     shadowOpacity: 1,
@@ -54,6 +61,8 @@ export default StyleSheet.create({
   chatContainer: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
+    marginBottom,
+    height,
   },
   chatContainerWeb: {
     flex: 1,
