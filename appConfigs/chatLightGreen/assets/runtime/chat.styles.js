@@ -54,7 +54,7 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: colors.buttonTextColor,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: fonts.Optima,
   },
   chatContainer: {

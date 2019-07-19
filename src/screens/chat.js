@@ -90,8 +90,8 @@ export default class Chat extends Component {
     }
   }
 
-  // Set active style
-  activeStyle = (element) => {
+  // Set text input active style
+  textInputActiveStyle = (element) => {
     element.setNativeProps({
       style: {
         backgroundColor: colors.activeColorSecondary,
@@ -99,20 +99,40 @@ export default class Chat extends Component {
         shadowOffset: { height: 1, width: 1 },
         shadowOpacity: 1,
         shadowRadius: 1,
+        outline: 'none',
       },
     });
   }
 
-  // Set inactive style
-  inactiveStyle = (element) => {
+  // Set text input inactive style
+  textInputInactiveStyle = (element) => {
+    const shadowOpacity = IS_WEB ? 'none' : 0;
     element.setNativeProps({
       style: {
         backgroundColor: colors.backgroundColor,
-        shadowOpacity: 0,
+        shadowOpacity,
       },
     });
   }
 
+  // Set button active style
+  buttonActiveStyle = (element) => {
+    element.setNativeProps({
+      style: {
+        backgroundColor: colors.activeColorTertiary,
+        outline: 'none',
+      },
+    });
+  }
+
+  // Set button inactive style
+  buttonInactiveStyle = (element) => {
+    element.setNativeProps({
+      style: {
+        backgroundColor: colors.activeBackgroundColor,
+      },
+    });
+  }
 
   render() {
     const {
@@ -123,8 +143,8 @@ export default class Chat extends Component {
         <View style={styles.loginContainer}>
           <TextInput
             ref={component => this.nicknameInput = component}
-            onFocus={() => this.activeStyle(this.nicknameInput)}
-            onBlur={() => this.inactiveStyle(this.nicknameInput)}
+            onFocus={() => this.textInputActiveStyle(this.nicknameInput)}
+            onBlur={() => this.textInputInactiveStyle(this.nicknameInput)}
             style={styles.loginInput}
             underlineColorAndroid="transparent"
             placeholder="Nickname"
@@ -136,8 +156,8 @@ export default class Chat extends Component {
 
           <TextInput
             ref={component => this.emailInput = component}
-            onFocus={() => this.activeStyle(this.emailInput)}
-            onBlur={() => this.inactiveStyle(this.emailInput)}
+            onFocus={() => this.textInputActiveStyle(this.emailInput)}
+            onBlur={() => this.textInputInactiveStyle(this.emailInput)}
             style={styles.loginInput}
             underlineColorAndroid="transparent"
             placeholder="Email"
@@ -148,6 +168,9 @@ export default class Chat extends Component {
           />
 
           <TouchableOpacity
+            ref={component => this.button = component}
+            onFocus={() => this.buttonActiveStyle(this.button)}
+            onBlur={() => this.buttonInactiveStyle(this.button)}
             style={styles.loginButton}
             onPress={() => {
               this.handleLogin();
@@ -205,8 +228,8 @@ Sign In
             <View style={styles.inputContainer}>
               <TextInput
                 ref={component => this.messageInput = component}
-                onFocus={() => this.activeStyle(this.messageInput)}
-                onBlur={() => this.inactiveStyle(this.messageInput)}
+                onFocus={() => this.textInputActiveStyle(this.messageInput)}
+                onBlur={() => this.textInputInactiveStyle(this.messageInput)}
                 value={msg}
                 style={styles.chatInput}
                 selectionColor={colors.activeColorPrimary}
@@ -215,7 +238,6 @@ Sign In
                 outline="none"
                 onChangeText={this.handleMessage}
                 onKeyPress={this.handleKeyPress}
-                autoFocus
               />
               <Icon
                 iconFont="ionicons"

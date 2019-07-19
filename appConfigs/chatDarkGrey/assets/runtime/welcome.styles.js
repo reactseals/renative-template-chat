@@ -7,9 +7,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.backgroundColor,
+    width: '100%',
+    height: '100%',
+    margin: 0,
+    padding: 0,
   },
   img: {
-    height: 200,
+    height: 250,
+    width: 250,
   },
   button: {
     backgroundColor: colors.activeBackgroundColor,

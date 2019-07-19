@@ -10,7 +10,8 @@ export default StyleSheet.create({
     backgroundColor: colors.backgroundColor,
   },
   img: {
-    height: 200,
+    height: 250,
+    width: 250,
   },
   button: {
     backgroundColor: colors.activeBackgroundColor,
@@ -28,7 +29,7 @@ export default StyleSheet.create({
   },
   buttonText: {
     color: colors.buttonTextColor,
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: fonts.Optima,
   },
   linearGradient: {
