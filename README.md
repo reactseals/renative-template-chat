@@ -42,7 +42,7 @@ rnv new
 
 `rnv` will create Firebase config file at this location: `<your-project>/projectConfig/firebase.js`
 
-Open the file and edit Firebase configuration with:
+### Open the file and edit Firebase configuration with:
 
 ```
 const config = {
