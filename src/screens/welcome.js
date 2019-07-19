@@ -18,7 +18,7 @@ const Home = props => (
       style={styles.button}
       onPress={() => props.navigation.navigate('Chat')}
     >
-      <Text style={styles.text}>
+      <Text style={styles.buttonText}>
 Let's Chat
       </Text>
     </TouchableOpacity>

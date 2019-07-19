@@ -153,7 +153,7 @@ export default class Chat extends Component {
               this.handleLogin();
             }}
           >
-            <Text style={styles.userText}>
+            <Text style={styles.buttonText}>
 Sign In
             </Text>
           </TouchableOpacity>
@@ -177,7 +177,7 @@ Sign In
                 <View key={message}>
                   {nickname === messages[message].nickname ? (
                     <View>
-                      <View style={styles.userMessageNoAvatar}>
+                      <View style={styles.userMessage}>
                         <Text style={styles.userNicknameText}>
                           {messages[message].nickname}
                         </Text>

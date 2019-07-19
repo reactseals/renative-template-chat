@@ -25,8 +25,8 @@ export default StyleSheet.create({
     shadowRadius: 1,
     elevation: 3,
   },
-  text: {
-    color: colors.textColor,
+  buttonText: {
+    color: colors.buttonTextColor,
   },
   linearGradient: {
     paddingLeft: 15,
