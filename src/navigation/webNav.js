@@ -7,12 +7,14 @@ const AppNavigator = createSwitchNavigator(
   {
     Welcome: {
       screen: WelcomeScreen,
+      path: '',
       navigationOptions: {
         title: 'Welcome',
       },
     },
     Chat: {
       screen: ChatScreen,
+      path: 'chat',
       navigationOptions: {
         title: 'Chat',
       },
