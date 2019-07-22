@@ -1,19 +1,20 @@
-import React from 'react';
 import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
-import WelcomeScreen from '../screens/web/welcome';
-import ChatScreen from '../screens/web/chat';
+import WelcomeScreen from '../screens/welcome';
+import ChatScreen from '../screens/chat';
 
 const AppNavigator = createSwitchNavigator(
   {
     Welcome: {
       screen: WelcomeScreen,
+      path: '',
       navigationOptions: {
         title: 'Welcome',
       },
     },
     Chat: {
       screen: ChatScreen,
+      path: 'chat',
       navigationOptions: {
         title: 'Chat',
       },

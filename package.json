@@ -1,36 +1,37 @@
 {
-    "name": "chat",
-    "title": "chat",
-    "version": "0.1.0",
+    "name": "@reactseals/renative-template-chat",
+    "title": "@reactseals/renative-template-chat",
+    "version": "0.1.8",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/reactseals/renative-template-chat"
+    },
     "dependencies": {
         "@react-navigation/core": "3.4.2",
         "@react-navigation/native": "3.5.0",
         "@react-navigation/web": "1.0.0-alpha.9",
-        "emoji-mart": "^2.11.1",
         "firebase": "^6.1.0",
         "react": "16.8.6",
         "react-art": "16.8.6",
         "react-dom": "16.8.6",
         "react-native": "0.59.5",
-        "react-native-emoji-selector": "^0.1.7",
         "react-native-gesture-handler": "1.3.0",
-        "react-native-image-crop-picker": "0.21.2",
         "react-native-linear-gradient": "2.4.0",
         "react-native-reanimated": "1.0.0-alpha.12",
-        "react-native-vector-icons": "6.4.2",
         "react-native-web": "0.11.4",
         "react-native-web-image-loader": "0.0.5",
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
         "react-navigation-tabs": "2.0.0-alpha.0",
-        "renative": "0.23.36-alpha9",
-        "rn-fetch-blob": "0.10.13",
-        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
+        "renative": "0.23.42-alpha5",
+        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git",
+        "react-native-vector-icons": "6.4.2"
     },
     "devDependencies": {
         "eslint": "^6.0.1",
+        "eslint-plugin-jest": "21.18.0",
         "eslint-plugin-react": "^7.14.2",
         "renative-template-hello-world": "latest",
-        "rnv": "0.23.36-alpha9"
+        "rnv": "0.23.37"
     }
 }

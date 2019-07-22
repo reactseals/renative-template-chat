@@ -10,4 +10,5 @@ export default {
   nicknameColor: '#105a67',
   messageBackground: '#b4b4b4',
   chatTextColor: '#222222',
+  buttonTextColor: '#edf2f4',
 };

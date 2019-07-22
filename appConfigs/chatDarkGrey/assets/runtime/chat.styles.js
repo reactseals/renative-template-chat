@@ -1,12 +1,15 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
-import colors from '../colors';
-import fonts from '../chatFonts';
-
+import colors from './colors';
 
 let position;
+let marginBottom;
+let height;
+
 if (IS_WEB) {
   position = 'fixed';
+  marginBottom = 30;
+  height = 100;
 }
 
 export default StyleSheet.create({
@@ -17,10 +20,6 @@ export default StyleSheet.create({
     backgroundColor: colors.backgroundColor,
   },
   inputContainer: {
-    width: '100%',
-    flexDirection: 'row',
-  },
-  inputContainerWeb: {
     width: '100%',
     flexDirection: 'row',
     position,
@@ -53,19 +52,13 @@ export default StyleSheet.create({
     elevation: 3,
   },
   buttonText: {
-    fontSize: 18,
-    fontFamily: fonts.GillSans,
     color: colors.buttonTextColor,
   },
   chatContainer: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
-  },
-  chatContainerWeb: {
-    flex: 1,
-    backgroundColor: colors.backgroundColor,
-    paddingBottom: 60,
-    height: 500,
+    marginBottom,
+    height,
   },
   chatInput: {
     flex: 1,
@@ -79,27 +72,10 @@ export default StyleSheet.create({
     color: colors.textColor,
     textAlign: 'left',
   },
-  messageContainerWithAvatar: {
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
-    margin: 10,
-    marginLeft: 30,
-  },
-  messageWithAvatar: {
-    backgroundColor: colors.messageBackground,
-    padding: 8,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
-    borderRadius: 20,
-    alignSelf: 'center',
-    maxWidth: '80%',
-  },
   message: {
     backgroundColor: colors.messageBackground,
     padding: 8,
-    marginLeft: 30,
+    marginLeft: 10,
     marginRight: 10,
     marginTop: 5,
     marginBottom: 5,
@@ -114,28 +90,11 @@ export default StyleSheet.create({
   text: {
     color: colors.chatTextColor,
   },
-  userMessageContainerWithAvatar: {
-    flexDirection: 'row',
-    alignSelf: 'flex-end',
-    margin: 10,
-    marginRight: 30,
-  },
-  userMessageWithAvatar: {
+  userMessage: {
     backgroundColor: colors.userMessageBackground,
     padding: 8,
     marginLeft: 10,
     marginRight: 10,
-    marginTop: 5,
-    marginBottom: 5,
-    borderRadius: 20,
-    alignSelf: 'center',
-    maxWidth: '80%',
-  },
-  userMessageNoAvatar: {
-    backgroundColor: colors.userMessageBackground,
-    padding: 8,
-    marginLeft: 10,
-    marginRight: 30,
     marginTop: 5,
     marginBottom: 5,
     borderRadius: 20,
@@ -145,13 +104,9 @@ export default StyleSheet.create({
     color: colors.userNicknameColor,
     fontWeight: 'bold',
     marginBottom: 3,
+    textAlign: 'right',
   },
   userText: {
     color: colors.textColor,
-  },
-  icon: {
-    height: 40,
-    width: 40,
-    alignSelf: 'center',
   },
 });

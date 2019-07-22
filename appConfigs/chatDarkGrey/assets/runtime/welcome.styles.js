@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-import colors from '../colors';
-import fonts from '../chatFonts';
+import colors from './colors';
 
 export default StyleSheet.create({
   container: {
@@ -8,9 +7,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.backgroundColor,
+    width: '100%',
+    height: '100%',
+    margin: 0,
+    padding: 0,
   },
   img: {
-    height: 200,
+    height: 250,
+    width: 250,
   },
   button: {
     backgroundColor: colors.activeBackgroundColor,
@@ -26,17 +30,12 @@ export default StyleSheet.create({
     shadowRadius: 1,
     elevation: 3,
   },
-  text: {
-    color: colors.textColor,
+  buttonText: {
+    color: colors.buttonTextColor,
   },
   linearGradient: {
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 5,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontFamily: fonts.GillSans,
-    color: colors.buttonTextColor,
   },
 });
