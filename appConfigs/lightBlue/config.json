@@ -1,13 +1,13 @@
 {
-  "id": "chatLightGreen",
+  "id": "lightBlue",
   "common": {
-    "id": "com.mycompany.chat",
+    "id": "reactseals.template.chat",
     "title": "chat",
     "description": "Cross-platform application project based on ReNative",
     "author": {
-      "name": "Pavel Jacko",
-      "email": "Pavel Jacko <i@pavjacko.com>",
-      "url": "https://github.com/pavjacko"
+      "name": "ReactSeals",
+      "email": "ReactSeals <info@reactseals.com>",
+      "url": "https://github.com/reactseals"
     },
     "license": "MIT",
     "includedPlugins": [
@@ -62,7 +62,7 @@
       ],
       "buildSchemes": {
         "debug": {
-          "id": "renative.helloworld.debug",
+          "id": "reactseals.template.chat.debug",
           "runScheme": "Debug",
           "bundleAssets": false
         },
@@ -84,7 +84,7 @@
       ],
       "buildSchemes": {
         "debug": {
-          "id": "renative.helloworld.debug",
+          "id": "reactseals.template.chat.debug",
           "signingConfig": "Debug",
           "bundleAssets": false
         },
@@ -101,7 +101,7 @@
       "backgroundColor": "black",
       "buildSchemes": {
         "debug": {
-          "id": "renative.helloworld.debug",
+          "id": "reactseals.template.chat.debug",
           "bundleAssets": false
         },
         "release": {
@@ -115,7 +115,7 @@
       "backgroundColor": "black",
       "buildSchemes": {
         "debug": {
-          "id": "renative.helloworld.debug",
+          "id": "reactseals.template.chat.debug",
           "bundleAssets": false,
           "environment": "development"
         },

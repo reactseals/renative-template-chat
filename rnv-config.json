@@ -16,6 +16,6 @@
             "macos"
         ],
         "template": "renative-template-hello-world",
-        "defaultAppId": "com.mycompany.chat"
+        "defaultAppId": "reactseals.template.chat"
     }
 }

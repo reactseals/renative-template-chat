@@ -62,3 +62,5 @@ rnv-config.local.json
 
 #now
 now.json
+
+package-lock.json
