@@ -1,4 +1,5 @@
-import firebase from '@firebase/app';
+// import firebase from '@firebase/app'; //UN-COMMENT THIS ONCE CONFIGURED
+import firebase from './firebaseFake' //REMOVE THIS ONCE CONFIGURED
 import 'firebase/database';
 import 'firebase/storage';
 
@@ -13,5 +14,6 @@ const config = {
 };
 
 firebase.initializeApp(config);
+
 
 export default firebase;
