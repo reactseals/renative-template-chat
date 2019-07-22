@@ -26,7 +26,7 @@ rnv new
  
 ...
  
-? What template to use? => 'renative-template-chat'
+? What template to use? => '@reactseals/renative-template-chat'
  
 ```
 ---
