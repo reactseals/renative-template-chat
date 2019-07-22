@@ -1,10 +1,10 @@
 {
     "name": "@reactseals/renative-template-chat",
     "title": "@reactseals/renative-template-chat",
-    "version": "0.1.5",
+    "version": "0.1.8",
     "repository": {
         "type": "git",
-        "url": "https://www.npmjs.com/package/@reactseals/renative-template-chat"
+        "url": "https://github.com/reactseals/renative-template-chat"
     },
     "dependencies": {
         "@react-navigation/core": "3.4.2",
