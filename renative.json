@@ -1,0 +1,75 @@
+{
+    "projectName": "@reactseals/renative-template-chat",
+    "defaults": {
+        "supportedPlatforms": [
+            "ios",
+            "android",
+            "web",
+            "macos"
+        ],
+        "defaultAppId": "reactseals.template.chat",
+        "ports": {}
+    },
+    "currentTemplate": "renative-template-hello-world",
+    "templates": {
+        "renative-template-hello-world": {
+            "version": "0.26.0-rc5"
+        }
+    },
+    "paths": {
+        "globalConfigDir": "~/.rnv",
+        "appConfigsDir": "./appConfigs",
+        "platformTemplatesDir": "RNV_HOME/platformTemplates",
+        "entryDir": "./",
+        "platformAssetsDir": "./platformAssets",
+        "platformBuildsDir": "./platformBuilds",
+        "projectConfigDir": "./projectConfig",
+        "appConfigDirs": [
+            null
+        ]
+    },
+    "platforms": {
+        "android": {
+            "gradle.properties": {
+                "android.useDeprecatedNdk": true
+            }
+        }
+    },
+    "plugins": {
+        "renative": "source:rnv",
+        "react": "source:rnv",
+        "react-art": "source:rnv",
+        "react-dom": "source:rnv",
+        "react-native": "source:rnv",
+        "react-native-web": "source:rnv",
+        "react-native-web-image-loader": "source:rnv",
+        "react-native-gesture-handler": "source:rnv",
+        "react-navigation": "source:rnv",
+        "react-navigation-tabs": "source:rnv",
+        "react-native-reanimated": "source:rnv",
+        "react-native-vector-icons": "source:rnv",
+        "react-native-linear-gradient": "source:rnv"
+    },
+    "permissions": {
+        "ios": {
+            "NSPhotoLibraryAddUsageDescription": {
+                "key": "NSPhotoLibraryAddUsageDescription",
+                "desc": "Need library to save images"
+            },
+            "NSPhotoLibraryUsageDescription": {
+                "key": "NSPhotoLibraryUsageDescription",
+                "desc": "Allows to upload images from photo library"
+            }
+        },
+        "android": {
+            "INTERNET": {
+                "key": "android.permission.INTERNET",
+                "security": "normal"
+            },
+            "SYSTEM_ALERT_WINDOW": {
+                "key": "android.permission.SYSTEM_ALERT_WINDOW",
+                "security": "signature"
+            }
+        }
+    }
+}
