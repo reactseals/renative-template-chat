@@ -54,7 +54,7 @@
 </table>
 
 ---
-<img src="https://github.com/pavjacko/renative/blob/develop/docs/images/ic_features.png?raw=true" width=50 height=50 />
+<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_features.png?raw=true" width=50 height=50 />
 
 ## Features:
 
@@ -72,7 +72,7 @@
 -   [Xcode](https://developer.apple.com/xcode/) (if you want to develop for iOS/tvOS)
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/develop/docs/images/ic_configuration.png?raw=true" width=50 height=50 />
+<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_configuration.png?raw=true" width=50 height=50 />
 
 ## Firebase Setup
 
@@ -100,7 +100,7 @@ const config = {
 
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/develop/docs/images/ic_web.png?raw=true" width=200 height=50 />
+<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_web.png?raw=true" width=200 height=50 />
 
 ## Web
 
@@ -178,7 +178,7 @@ rnv run -p web --port 9999
 
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/develop/docs/images/ic_android.png?raw=true" width=50 height=50 />
+<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_android.png?raw=true" width=50 height=50 />
 
 ## Android
 
@@ -222,7 +222,7 @@ You can create variety of emulators via Android Studio IDE
 <table>
   <tr>
     <th>
-    <img src="https://github.com/pavjacko/renative/raw/develop/docs/images/android1.png?raw=true" />
+    <img src="https://renative.org/img/android1.png" />
     </th>
   </tr>
 </table>
@@ -305,7 +305,7 @@ rnv log -p android -f com.myapp
 
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/develop/docs/images/ic_macos.png?raw=true" width=50 height=50 />
+<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_macos.png?raw=true" width=50 height=50 />
 
 ## macOS
 
