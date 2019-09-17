@@ -13,7 +13,7 @@
     "currentTemplate": "renative-template-hello-world",
     "templates": {
         "renative-template-hello-world": {
-            "version": "0.26.9"
+            "version": "0.27.0"
         }
     },
     "paths": {
