@@ -1,19 +1,14 @@
 {
     "projectName": "@reactseals/renative-template-chat",
     "defaults": {
-        "supportedPlatforms": [
-            "ios",
-            "android",
-            "web",
-            "macos"
-        ],
+        "supportedPlatforms": ["ios", "android", "web", "macos"],
         "defaultAppId": "reactseals.template.chat",
         "ports": {}
     },
     "currentTemplate": "renative-template-hello-world",
     "templates": {
         "renative-template-hello-world": {
-            "version": "0.27.0"
+            "version": "0.27.2-alpha.2"
         }
     },
     "paths": {
@@ -24,9 +19,7 @@
         "platformAssetsDir": "./platformAssets",
         "platformBuildsDir": "./platformBuilds",
         "projectConfigDir": "./projectConfig",
-        "appConfigDirs": [
-            null
-        ]
+        "appConfigDirs": [null]
     },
     "platforms": {
         "android": {
