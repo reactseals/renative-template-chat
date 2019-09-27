@@ -1,7 +1,7 @@
 {
     "id": "darkGrey",
     "common": {
-        "id": "reactseals.template.chat",
+        "id": "com.reactseals.template.chat",
         "title": "chat",
         "description": "Cross-platform application project based on ReNative",
         "author": {
@@ -22,7 +22,7 @@
         "ios": {
             "entryFile": "index.ios",
             "scheme": "RNVApp",
-            "teamID": "",
+            "teamID": "PRNK99PXGZ",
             "provisioningStyle": "Automatic",
             "backgroundColor": "black",
             "systemCapabilities": {
@@ -56,7 +56,7 @@
             "permissions": ["*"],
             "buildSchemes": {
                 "debug": {
-                    "id": "reactseals.template.chat.debug",
+                    "id": "com.reactseals.template.chat.debug",
                     "runScheme": "Debug",
                     "bundleAssets": false
                 },
@@ -65,6 +65,14 @@
                     "bundleAssets": true,
                     "bundleIsDev": false
                 }
+            },
+            "exportOptions": {
+                "method": "app-store",
+                "uploadBitcode": true,
+                "compileBitcode": false,
+                "uploadSymbols": true,
+                "signingStyle": "automatic",
+                "signingCertificate": "iPhone Distribution"
             }
         },
         "android": {
@@ -76,7 +84,7 @@
             "permissions": ["*"],
             "buildSchemes": {
                 "debug": {
-                    "id": "reactseals.template.chat.debug",
+                    "id": "com.reactseals.template.chat.debug",
                     "signingConfig": "Debug",
                     "bundleAssets": false
                 },
@@ -93,7 +101,7 @@
             "backgroundColor": "black",
             "buildSchemes": {
                 "debug": {
-                    "id": "reactseals.template.chat.debug",
+                    "id": "com.reactseals.template.chat.debug",
                     "bundleAssets": false
                 },
                 "release": {
@@ -107,7 +115,7 @@
             "backgroundColor": "black",
             "buildSchemes": {
                 "debug": {
-                    "id": "reactseals.template.chat.debug",
+                    "id": "com.reactseals.template.chat.debug",
                     "bundleAssets": false,
                     "environment": "development"
                 },

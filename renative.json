@@ -2,7 +2,7 @@
     "projectName": "@reactseals/renative-template-chat",
     "defaults": {
         "supportedPlatforms": ["ios", "android", "web", "macos"],
-        "defaultAppId": "reactseals.template.chat",
+        "defaultAppId": "com.reactseals.template.chat",
         "ports": {}
     },
     "currentTemplate": "renative-template-hello-world",

@@ -1,7 +1,7 @@
 {
     "id": "lightBlue",
     "common": {
-        "id": "reactseals.template.chat",
+        "id": "com.reactseals.template.chat",
         "title": "chat",
         "description": "Cross-platform application project based on ReNative",
         "author": {
