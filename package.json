@@ -47,7 +47,7 @@
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
         "react-navigation-tabs": "2.0.0-alpha.0",
-        "renative": "0.27.2-alpha.3",
+        "renative": "0.27.2-alpha.7",
         "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git",
         "react-native-vector-icons": "6.4.2"
     },
@@ -55,7 +55,7 @@
         "eslint": "^6.0.1",
         "eslint-plugin-jest": "21.18.0",
         "eslint-plugin-react": "^7.14.2",
-        "renative-template-hello-world": "0.27.2-alpha.3",
-        "rnv": "0.27.2-alpha.3"
+        "renative-template-hello-world": "0.27.2-alpha.7",
+        "rnv": "0.27.2-alpha.7"
     }
 }
