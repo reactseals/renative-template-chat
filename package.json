@@ -1,7 +1,7 @@
 {
     "name": "@reactseals/renative-template-chat",
     "title": "@reactseals/renative-template-chat",
-    "version": "0.2.9",
+    "version": "0.3.0",
     "description": "ReNative Template for Basic cross-platform chat application. iOS, Android, Web, MacOS Desktop",
     "keywords": [
         "android",
@@ -34,28 +34,30 @@
         "@react-navigation/core": "3.4.2",
         "@react-navigation/native": "3.5.0",
         "@react-navigation/web": "1.0.0-alpha.9",
+        "electron": "^5.0.2",
+        "electron-builder": "^21.1.1",
         "firebase": "^6.1.0",
         "react": "16.9.0",
         "react-art": "16.9.0",
         "react-dom": "16.9.0",
-        "react-native": "0.61.1",
+        "react-native": "0.61.2",
         "react-native-gesture-handler": "1.4.1",
         "react-native-linear-gradient": "2.4.0",
         "react-native-reanimated": "1.0.0-alpha.12",
+        "react-native-vector-icons": "6.4.2",
         "react-native-web": "0.11.4",
         "react-native-web-image-loader": "0.0.5",
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
         "react-navigation-tabs": "2.0.0-alpha.0",
-        "renative": "0.28.0-alpha.1",
-        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git",
-        "react-native-vector-icons": "6.4.2"
+        "renative": "0.28.0-alpha.7",
+        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
     },
     "devDependencies": {
         "eslint": "^6.0.1",
         "eslint-plugin-jest": "21.18.0",
         "eslint-plugin-react": "^7.14.2",
-        "renative-template-hello-world": "0.28.0-alpha.1",
-        "rnv": "0.28.0-alpha.1"
+        "renative-template-hello-world": "0.28.0-alpha.7",
+        "rnv": "0.28.0-alpha.7"
     }
 }
