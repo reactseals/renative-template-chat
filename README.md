@@ -54,7 +54,9 @@
 </table>
 
 ---
-<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_features.png?raw=true" width=50 height=50 />
+<br />
+
+<img src="https://live.staticflickr.com/65535/48908987017_48ea265752_o.png" width=50 height=50 />
 
 ## Features:
 
@@ -66,13 +68,15 @@
 
 #### Requirements
 
+-   [ReNative](https://renative.org/) `0.28.0` or newer
 -   [Node](https://nodejs.org) `10.13.0` or newer
 -   [NPM](https://npmjs.com/) `6.4.1` or newer
 -   [Android Studio](https://developer.android.com/studio) (if you want to develop for Android)
 -   [Xcode](https://developer.apple.com/xcode/) (if you want to develop for iOS/tvOS)
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_configuration.png?raw=true" width=50 height=50 />
+<br />
+<img src="https://live.staticflickr.com/65535/48908250188_71dd2da4e8_o.png" width=50 height=50 />
 
 ## Firebase Setup
 
@@ -100,7 +104,9 @@ const config = {
 
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_web.png?raw=true" width=200 height=50 />
+<br />
+
+<img src="https://live.staticflickr.com/65535/48908986972_4ea6998508_o.png" width=200 height=50 />
 
 ## Web
 
@@ -178,7 +184,9 @@ rnv run -p web --port 9999
 
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_android.png?raw=true" width=50 height=50 />
+<br />
+
+<img src="https://live.staticflickr.com/65535/48908780846_276d49ed96_o.png" width=50 height=50 />
 
 ## Android
 
@@ -305,7 +313,9 @@ rnv log -p android -f com.myapp
 
 ---
 
-<img src="https://github.com/pavjacko/renative/blob/master/docs/images/ic_macos.png?raw=true" width=50 height=50 />
+<br />
+
+<img src="https://live.staticflickr.com/65535/48908780996_453eee48c5_o.png" width=50 height=50 />
 
 ## macOS
 
