@@ -60,6 +60,8 @@
         "renative-template-hello-world": "0.28.0-alpha.11",
         "rnv": "0.28.0-alpha.11",
         "xcode": "2.0.0",
-        "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master"
+        "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master",
+        "electron": "5.0.2",
+        "electron-builder": "21.1.1"
     }
 }
