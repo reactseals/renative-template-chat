@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TextInput, ScrollView, TouchableOpacity,
+    View, Text, TextInput, ScrollView, TouchableOpacity, KeyboardAvoidingView, Dimensions
 } from 'react-native';
 import { Icon } from 'renative';
-import { IS_WEB } from 'rnv-platform-info';
+import { IS_WEB, IS_IOS } from 'rnv-platform-info';
 import styles from '../platformAssets/runtime/chat.styles';
 import firebase from '../projectConfig/firebase';
 import Activity from './ActivityIndicator';
 import colors from '../platformAssets/runtime/colors';
 
 console.disableYellowBox = true;
+
+const { height } = Dimensions.get('window');
 
 const chatRoom = firebase.database().ref().child('chatrooms').child('global');
 
@@ -140,7 +142,7 @@ export default class Chat extends Component {
       } = this.state;
       if (!isUserLaggedIn) {
           return (
-              <View style={styles.loginContainer}>
+              <KeyboardAvoidingView behavior={IS_IOS ? 'padding' : null} style={styles.loginContainer}>
                   <TextInput
                       ref={component => this.nicknameInput = component}
                       onFocus={() => this.textInputActiveStyle(this.nicknameInput)}
@@ -180,7 +182,7 @@ export default class Chat extends Component {
 Sign In
                       </Text>
                   </TouchableOpacity>
-              </View>
+              </KeyboardAvoidingView>
           );
       }
 
@@ -189,65 +191,73 @@ Sign In
               {!messages ? (
                   <Activity />
               ) : (
-                  <View style={styles.chatContainer}>
-                      <ScrollView
-                          ref={(view) => { this.scrollView = view; }}
-                          onContentSizeChange={() => {
-                              this.scrollView.scrollToEnd({ animated: true });
-                          }}
-                      >
-                          {Object.keys(messages).map(message => (
-                              <View key={message}>
-                                  {nickname === messages[message].nickname ? (
-                                      <View>
-                                          <View style={styles.userMessage}>
-                                              <Text style={styles.userNicknameText}>
-                                                  {messages[message].nickname}
-                                              </Text>
-                                              <Text style={styles.userText}>
-                                                  {messages[message].msg}
-                                              </Text>
+                  <KeyboardAvoidingView
+                      style={{ flex: 1 }}
+                      keyboardVerticalOffset={height / 10}
+                      behavior={IS_IOS ? 'padding' : null}
+                  >
+                      <View style={styles.chatContainer}>
+                          <ScrollView
+                              ref={(view) => { this.scrollView = view; }}
+                              onContentSizeChange={() => {
+                                  this.scrollView.scrollToEnd({ animated: true });
+                              }}
+                          >
+                              {Object.keys(messages).map(message => (
+                                  <View key={message}>
+                                      {nickname === messages[message].nickname ? (
+                                          <View>
+                                              <View style={styles.userMessage}>
+                                                  <Text style={styles.userNicknameText}>
+                                                      {messages[message].nickname}
+                                                  </Text>
+                                                  <Text style={styles.userText}>
+                                                      {messages[message].msg}
+                                                  </Text>
+                                              </View>
                                           </View>
-                                      </View>
-                                  ) : (
-                                      <View>
-                                          <View style={styles.message}>
-                                              <Text style={styles.nicknameText}>
-                                                  {messages[message].nickname}
-                                              </Text>
-                                              <Text style={styles.text}>
-                                                  {messages[message].msg}
-                                              </Text>
+                                      ) : (
+                                          <View>
+                                              <View style={styles.message}>
+                                                  <Text style={styles.nicknameText}>
+                                                      {messages[message].nickname}
+                                                  </Text>
+                                                  <Text style={styles.text}>
+                                                      {messages[message].msg}
+                                                  </Text>
+                                              </View>
                                           </View>
-                                      </View>
-                                  )}
-                              </View>
-                          ))}
-                      </ScrollView>
+                                      )}
+                                  </View>
+                              ))}
+                          </ScrollView>
 
-                      <View style={styles.inputContainer}>
-                          <TextInput
-                              ref={component => this.messageInput = component}
-                              onFocus={() => this.textInputActiveStyle(this.messageInput)}
-                              onBlur={() => this.textInputInactiveStyle(this.messageInput)}
-                              value={msg}
-                              style={styles.chatInput}
-                              selectionColor={colors.activeColorPrimary}
-                              placeholder="Type a message ..."
-                              placeholderTextColor={colors.activeColorPrimary}
-                              outline="none"
-                              onChangeText={this.handleMessage}
-                              onKeyPress={this.handleKeyPress}
-                          />
-                          <Icon
-                              iconFont="ionicons"
-                              iconName="md-send"
-                              iconColor={colors.activeColorPrimary}
-                              style={{ width: 35, height: 35, alignSelf: 'center' }}
-                              onPress={() => { this.handleButtonPress(); }}
-                          />
+
+                          <View style={styles.inputContainer}>
+                              <TextInput
+                                  ref={component => this.messageInput = component}
+                                  onFocus={() => this.textInputActiveStyle(this.messageInput)}
+                                  onBlur={() => this.textInputInactiveStyle(this.messageInput)}
+                                  value={msg}
+                                  style={styles.chatInput}
+                                  selectionColor={colors.activeColorPrimary}
+                                  placeholder="Type a message ..."
+                                  placeholderTextColor={colors.activeColorPrimary}
+                                  outline="none"
+                                  onChangeText={this.handleMessage}
+                                  onKeyPress={this.handleKeyPress}
+                              />
+                              <Icon
+                                  iconFont="ionicons"
+                                  iconName="md-send"
+                                  iconColor={colors.activeColorPrimary}
+                                  style={{ width: 35, height: 35, alignSelf: 'center' }}
+                                  onPress={() => { this.handleButtonPress(); }}
+                              />
+                          </View>
                       </View>
-                  </View>
+                  </KeyboardAvoidingView>
+
               )}
           </View>
       );
