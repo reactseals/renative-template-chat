@@ -1,7 +1,7 @@
 {
     "name": "@reactseals/renative-template-chat",
     "title": "@reactseals/renative-template-chat",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "ReNative Template for Basic cross-platform chat application. iOS, Android, Web, MacOS Desktop",
     "keywords": [
         "android",

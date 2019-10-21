@@ -45,7 +45,7 @@ export default class Home extends Component {
                     onPress={() => navigation.navigate('Chat')}
                 >
                     <Text style={styles.buttonText}>
-                        Let&apos;s Chat
+                        Let's Chat
                     </Text>
                 </TouchableOpacity>
             </View>
