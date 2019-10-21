@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TouchableOpacity, Image,
+    SafeAreaView, Text, TouchableOpacity, Image,
 } from 'react-native';
 import styles from '../platformAssets/runtime/welcome.styles';
 import colors from '../platformAssets/runtime/colors';
@@ -30,7 +30,7 @@ export default class Home extends Component {
     render() {
         const { navigation } = this.props;
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <Image
                     source={require('../platformAssets/runtime/logoChat.png')}
                     style={styles.img}
@@ -48,7 +48,7 @@ export default class Home extends Component {
                         Let's Chat
                     </Text>
                 </TouchableOpacity>
-            </View>
+            </SafeAreaView>
         );
     }
 }

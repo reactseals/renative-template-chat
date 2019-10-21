@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import {
-    View, Text, TextInput, ScrollView, TouchableOpacity, KeyboardAvoidingView, Dimensions, Keyboard
+    View,
+    Text,
+    TextInput,
+    ScrollView,
+    TouchableOpacity,
+    KeyboardAvoidingView,
+    Dimensions,
+    Keyboard,
+    SafeAreaView
 } from 'react-native';
 import { Icon } from 'renative';
 import { IS_WEB, IS_IOS } from 'rnv-platform-info';
@@ -203,7 +211,7 @@ export default class Chat extends Component {
         }
 
         return (
-            <View style={styles.chatContainer}>
+            <SafeAreaView style={styles.chatContainer}>
                 {!messages ? (
                     <Activity />
                 ) : (
@@ -275,7 +283,7 @@ export default class Chat extends Component {
                     </KeyboardAvoidingView>
 
                 )}
-            </View>
+            </SafeAreaView>
         );
     }
 }
