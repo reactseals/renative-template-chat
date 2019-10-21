@@ -32,6 +32,10 @@ export default class Chat extends Component {
         chatRoom.on('value', this.getNewMessages);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.isUserLaggedIn) { this.messageInput.focus(); }
+    }
+
     componentWillUnmount() {
         this.keyboardDidShowListener.remove();
         chatRoom.off('value', this.getNewMessages);
