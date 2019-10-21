@@ -33,7 +33,8 @@ export default class Chat extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.isUserLaggedIn) { this.messageInput.focus(); }
+        const { isUserLaggedIn } = this.state;
+        if (isUserLaggedIn && IS_WEB) { this.messageInput.focus(); }
     }
 
     componentWillUnmount() {
