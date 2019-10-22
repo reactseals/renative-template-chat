@@ -1,7 +1,7 @@
 {
     "name": "@reactseals/renative-template-chat",
     "title": "@reactseals/renative-template-chat",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "description": "ReNative Template for Basic cross-platform chat application. iOS, Android, Web, MacOS Desktop",
     "keywords": [
         "android",
@@ -44,24 +44,27 @@
         "react-native-gesture-handler": "1.4.1",
         "react-native-linear-gradient": "2.4.0",
         "react-native-reanimated": "1.0.0-alpha.12",
-        "react-native-vector-icons": "6.4.2",
+        "react-native-vector-icons": "6.6.0",
         "react-native-web": "0.11.4",
         "react-native-web-image-loader": "0.0.5",
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
         "react-navigation-tabs": "2.0.0-alpha.0",
-        "renative": "0.28.0-alpha.12",
+        "renative": "0.28.0-alpha.18",
         "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
     },
     "devDependencies": {
         "eslint": "^6.0.1",
         "eslint-plugin-jest": "21.18.0",
         "eslint-plugin-react": "^7.14.2",
-        "renative-template-hello-world": "0.28.0-alpha.12",
-        "rnv": "0.28.0-alpha.12",
+        "renative-template-hello-world": "0.28.0-alpha.18",
+        "rnv": "0.28.0-alpha.18",
         "xcode": "2.0.0",
         "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master",
         "electron": "5.0.2",
         "electron-builder": "21.1.1"
+    },
+    "optionalDependencies": {
+        "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master"
     }
 }

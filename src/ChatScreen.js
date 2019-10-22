@@ -8,7 +8,7 @@ import {
     KeyboardAvoidingView,
     Dimensions,
     Keyboard,
-    SafeAreaView
+    SafeAreaView,
 } from 'react-native';
 import { Icon } from 'renative';
 import { IS_WEB, IS_IOS } from 'rnv-platform-info';
@@ -73,7 +73,8 @@ export default class Chat extends Component {
 
     // Login
     handleLogin = () => {
-        this.setState({ isUserLaggedIn: true });
+        const { nickname, email } = this.state;
+        if (nickname && email) this.setState({ isUserLaggedIn: true });
     };
 
     // Push messsage on 'Enter' press
