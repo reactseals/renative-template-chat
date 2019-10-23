@@ -1,1 +1,1 @@
-module.exports = ['web.js']
+module.exports = ['mobile.js', 'tsx', 'ts', 'js']

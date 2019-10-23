@@ -50,15 +50,15 @@
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
         "react-navigation-tabs": "2.0.0-alpha.0",
-        "renative": "0.28.0-alpha.18",
+        "renative": "0.28.0-alpha.22",
         "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
     },
     "devDependencies": {
         "eslint": "^6.0.1",
         "eslint-plugin-jest": "21.18.0",
         "eslint-plugin-react": "^7.14.2",
-        "renative-template-hello-world": "0.28.0-alpha.18",
-        "rnv": "0.28.0-alpha.18",
+        "renative-template-hello-world": "0.28.0-alpha.22",
+        "rnv": "0.28.0-alpha.22",
         "xcode": "2.0.0",
         "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master",
         "electron": "5.0.2",
