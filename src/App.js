@@ -22,6 +22,11 @@ const AppNavigator = createStackNavigator(
                 headerBackground: greyHeaderBackground,
                 title: 'Welcome',
                 headerTintColor: colors.textColor,
+                headerTitleStyle: {
+                    textAlign: 'center',
+                    width: '100%',
+                    marginHorizontal: 0
+                },
             },
         },
         Chat: {
@@ -30,6 +35,11 @@ const AppNavigator = createStackNavigator(
                 headerBackground: greyHeaderBackground,
                 title: 'Chat',
                 headerTintColor: colors.textColor,
+                headerTitleStyle: {
+                    textAlign: 'center',
+                    width: '100%',
+                    marginHorizontal: 0
+                },
             },
         },
     },
