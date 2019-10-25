@@ -21,14 +21,9 @@ const AppNavigator = createStackNavigator(
                 headerBackground: greyHeaderBackground,
                 title: 'Welcome',
                 headerTintColor: colors.textColor,
-                headerTitleContainerStyle: {
-                    left: 0,
-                },
                 headerTitleStyle: {
                     textAlign: 'center',
-                    alignSelf: 'center',
-                    width: '100%',
-                    marginHorizontal: 0
+                    flexGrow: 1,
                 },
             },
         },
@@ -40,12 +35,11 @@ const AppNavigator = createStackNavigator(
                 headerTintColor: colors.textColor,
                 headerTitleContainerStyle: {
                     left: 0,
+                    right: 0
                 },
                 headerTitleStyle: {
                     textAlign: 'center',
-                    alignSelf: 'center',
-                    width: '100%',
-                    marginHorizontal: 0,
+                    flexGrow: 1,
                 },
             },
         },
