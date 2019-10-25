@@ -1,1 +1,1 @@
-module.exports = ['mobile.js', 'native', 'ios.js', 'native.js', 'js', 'ios.json', 'native.json', 'json', 'ios.ts', 'native.ts', 'ts', 'ios.tsx', 'native.tsx', 'tsx']
+module.exports = ['desktop.js','macos.js','web.js', 'native', 'ios.js', 'native.js', 'js', 'ios.json', 'native.json', 'json', 'ios.ts', 'native.ts', 'ts', 'ios.tsx', 'native.tsx', 'tsx']

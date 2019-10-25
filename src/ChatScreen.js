@@ -231,26 +231,22 @@ export default class Chat extends Component {
                                 {Object.keys(messages).map(message => (
                                     <View key={message}>
                                         {nickname === messages[message].nickname ? (
-                                            <View>
-                                                <View style={styles.userMessage}>
-                                                    <Text style={styles.userNicknameText}>
-                                                        {messages[message].nickname}
-                                                    </Text>
-                                                    <Text style={styles.userText}>
-                                                        {messages[message].msg}
-                                                    </Text>
-                                                </View>
+                                            <View style={styles.userMessage}>
+                                                <Text style={styles.userNicknameText}>
+                                                    {messages[message].nickname}
+                                                </Text>
+                                                <Text style={styles.userText}>
+                                                    {messages[message].msg}
+                                                </Text>
                                             </View>
                                         ) : (
-                                            <View>
-                                                <View style={styles.message}>
-                                                    <Text style={styles.nicknameText}>
-                                                        {messages[message].nickname}
-                                                    </Text>
-                                                    <Text style={styles.text}>
-                                                        {messages[message].msg}
-                                                    </Text>
-                                                </View>
+                                            <View style={styles.message}>
+                                                <Text style={styles.nicknameText}>
+                                                    {messages[message].nickname}
+                                                </Text>
+                                                <Text style={styles.text}>
+                                                    {messages[message].msg}
+                                                </Text>
                                             </View>
                                         )}
                                     </View>

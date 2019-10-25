@@ -81,6 +81,7 @@ export default StyleSheet.create({
         marginBottom: 5,
         borderRadius: 20,
         alignSelf: 'flex-start',
+        maxWidth: '98.5%'
     },
     nicknameText: {
         color: colors.nicknameColor,
@@ -99,6 +100,7 @@ export default StyleSheet.create({
         marginBottom: 5,
         borderRadius: 20,
         alignSelf: 'flex-end',
+        maxWidth: '98.5%'
     },
     userNicknameText: {
         color: colors.userNicknameColor,
@@ -108,5 +110,6 @@ export default StyleSheet.create({
     },
     userText: {
         color: colors.textColor,
+        textAlign: 'right'
     },
 });
