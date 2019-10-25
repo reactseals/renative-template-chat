@@ -1,16 +1,21 @@
 import { StyleSheet } from 'react-native';
-import { IS_WEB } from 'rnv-platform-info';
+import { IS_WEB, IS_ANDROID } from 'rnv-platform-info';
 import colors from './colors';
 import fonts from './chatFonts';
 
 let position;
 let marginBottom;
 let height;
+let fontFamily;
 
 if (IS_WEB) {
     position = 'fixed';
     marginBottom = 30;
     height = 100;
+}
+
+if (IS_ANDROID) {
+    fontFamily = fonts.Roboto;
 }
 
 export default StyleSheet.create({
@@ -90,7 +95,7 @@ export default StyleSheet.create({
         color: colors.nicknameColor,
         fontWeight: 'bold',
         marginBottom: 3,
-        fontFamily: fonts.Roboto
+        fontFamily
     },
     text: {
         color: colors.chatTextColor,
@@ -111,7 +116,7 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 3,
         textAlign: 'right',
-        fontFamily: fonts.Roboto
+        fontFamily
     },
     userText: {
         color: colors.textColor,

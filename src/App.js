@@ -26,6 +26,7 @@ const AppNavigator = createStackNavigator(
                 },
                 headerTitleStyle: {
                     textAlign: 'center',
+                    alignSelf: 'center',
                     width: '100%',
                     marginHorizontal: 0
                 },
@@ -42,6 +43,7 @@ const AppNavigator = createStackNavigator(
                 },
                 headerTitleStyle: {
                     textAlign: 'center',
+                    alignSelf: 'center',
                     width: '100%',
                     marginHorizontal: 0,
                 },
