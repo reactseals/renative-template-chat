@@ -6,7 +6,6 @@ import ChatScreen from './ChatScreen';
 import colors from '../platformAssets/runtime/colors';
 import '../platformAssets/runtime/fontManager';
 
-
 const greyHeaderBackground = (
     <LinearGradient
         colors={[colors.activeColorSecondary, colors.backgroundColor]}
@@ -22,6 +21,9 @@ const AppNavigator = createStackNavigator(
                 headerBackground: greyHeaderBackground,
                 title: 'Welcome',
                 headerTintColor: colors.textColor,
+                headerTitleContainerStyle: {
+                    left: 0,
+                },
                 headerTitleStyle: {
                     textAlign: 'center',
                     width: '100%',
@@ -35,10 +37,13 @@ const AppNavigator = createStackNavigator(
                 headerBackground: greyHeaderBackground,
                 title: 'Chat',
                 headerTintColor: colors.textColor,
+                headerTitleContainerStyle: {
+                    left: 0,
+                },
                 headerTitleStyle: {
                     textAlign: 'center',
                     width: '100%',
-                    marginHorizontal: 0
+                    marginHorizontal: 0,
                 },
             },
         },

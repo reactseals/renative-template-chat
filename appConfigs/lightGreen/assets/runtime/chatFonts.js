@@ -1,4 +1,5 @@
 export default {
-  GillSans: 'Gill Sans',
-  Optima: 'Optima',
+    GillSans: 'Gill Sans',
+    Optima: 'Optima',
+    Roboto: 'Roboto'
 };

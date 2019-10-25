@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { IS_WEB } from 'rnv-platform-info';
 import colors from './colors';
+import fonts from './chatFonts';
 
 let position;
 let marginBottom;
@@ -87,6 +88,7 @@ export default StyleSheet.create({
         color: colors.nicknameColor,
         fontWeight: 'bold',
         marginBottom: 3,
+        fontFamily: fonts.Roboto
     },
     text: {
         color: colors.chatTextColor,
@@ -107,6 +109,7 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 3,
         textAlign: 'right',
+        fontFamily: fonts.Roboto
     },
     userText: {
         color: colors.textColor,

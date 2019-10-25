@@ -90,6 +90,7 @@ export default StyleSheet.create({
         color: colors.nicknameColor,
         fontWeight: 'bold',
         marginBottom: 3,
+        fontFamily: fonts.Roboto
     },
     text: {
         color: colors.chatTextColor,
@@ -110,6 +111,7 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 3,
         textAlign: 'right',
+        fontFamily: fonts.Roboto
     },
     userText: {
         color: colors.textColor,
