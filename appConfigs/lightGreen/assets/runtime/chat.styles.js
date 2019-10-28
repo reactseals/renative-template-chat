@@ -80,43 +80,51 @@ export default StyleSheet.create({
         color: colors.textColor,
         textAlign: 'left',
     },
-    message: {
-        backgroundColor: colors.messageBackground,
-        padding: 8,
+    messageContainer: {
         marginLeft: 10,
         marginRight: 10,
         marginTop: 5,
         marginBottom: 5,
-        borderRadius: 20,
         alignSelf: 'flex-start',
         maxWidth: '98.5%'
+    },
+    message: {
+        backgroundColor: colors.messageBackground,
+        borderRadius: 20,
+        padding: 8,
+        alignSelf: 'flex-start',
     },
     nicknameText: {
         color: colors.nicknameColor,
         fontWeight: 'bold',
         marginBottom: 3,
-        fontFamily
+        fontFamily,
+        marginLeft: 8
     },
     text: {
         color: colors.chatTextColor,
     },
-    userMessage: {
-        backgroundColor: colors.userMessageBackground,
-        padding: 8,
+    userMessageContainer: {
         marginLeft: 10,
         marginRight: 10,
         marginTop: 5,
         marginBottom: 5,
-        borderRadius: 20,
         alignSelf: 'flex-end',
         maxWidth: '98.5%'
+    },
+    userMessage: {
+        backgroundColor: colors.userMessageBackground,
+        borderRadius: 20,
+        padding: 8,
+        alignSelf: 'flex-end',
     },
     userNicknameText: {
         color: colors.userNicknameColor,
         fontWeight: 'bold',
         marginBottom: 3,
         textAlign: 'right',
-        fontFamily
+        fontFamily,
+        marginRight: 8
     },
     userText: {
         color: colors.textColor,
