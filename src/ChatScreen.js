@@ -25,7 +25,7 @@ const chatRoom = firebase.database().ref().child('chatrooms').child('global');
 
 export default class Chat extends Component {
     state = {
-        isUserLaggedIn: null,
+        isUserLaggedIn: false,
         nickname: '',
         email: '',
         msg: '',
@@ -41,8 +41,12 @@ export default class Chat extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { isUserLaggedIn } = this.state;
+        const { isUserLaggedIn, messages } = this.state;
         if (isUserLaggedIn && IS_WEB) { this.messageInput.focus(); }
+
+        if (messages !== prevState.messages && isUserLaggedIn) {
+            this.scrollView.scrollToEnd({ animated: true });
+        }
     }
 
     componentWillUnmount() {
@@ -53,7 +57,9 @@ export default class Chat extends Component {
     // Get new messages
     getNewMessages = (snap) => {
         // Update state if not null
-        if (snap.val()) this.setState({ messages: snap.val() });
+        if (snap.val()) {
+            this.setState({ messages: snap.val() });
+        }
     };
 
     // Add nickname to state
@@ -74,7 +80,9 @@ export default class Chat extends Component {
     // Login
     handleLogin = () => {
         const { nickname, email } = this.state;
-        if (nickname && email) this.setState({ isUserLaggedIn: true });
+        if (nickname && email) {
+            this.setState({ isUserLaggedIn: true });
+        }
     };
 
     // Push messsage on 'Enter' press
@@ -224,9 +232,6 @@ export default class Chat extends Component {
                         <View style={styles.chatContainer}>
                             <ScrollView
                                 ref={(view) => { this.scrollView = view; }}
-                                onContentSizeChange={() => {
-                                    this.scrollView.scrollToEnd({ animated: true });
-                                }}
                             >
                                 {Object.keys(messages).map(message => (
                                     <View key={message}>
