@@ -6,9 +6,9 @@ export default {
     activeColorTertiary: '#016FB9',
     textColor: '#171D1C',
     buttonTextColor: '#F1FFFA',
-    userNicknameColor: '#153d36',
+    userNicknameColor: '#17632e',
     userMessageBackground: '#c3e6fc',
-    nicknameColor: '#105a67',
+    nicknameColor: '#611eac',
     messageBackground: '#ecf8ec',
     chatTextColor: '#171D1C',
 };
