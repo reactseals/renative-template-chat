@@ -25,7 +25,7 @@ const chatRoom = firebase.database().ref().child('chatrooms').child('global');
 
 export default class Chat extends Component {
     state = {
-        isUserLaggedIn: false,
+        isUserLaggedIn: null,
         nickname: '',
         email: '',
         msg: '',
@@ -44,7 +44,7 @@ export default class Chat extends Component {
         const { isUserLaggedIn, messages } = this.state;
         if (isUserLaggedIn && IS_WEB) { this.messageInput.focus(); }
 
-        if (messages !== prevState.messages && isUserLaggedIn) {
+        if (IS_WEB && messages !== prevState.messages && isUserLaggedIn) {
             this.scrollView.scrollToEnd({ animated: true });
         }
     }
@@ -169,6 +169,11 @@ export default class Chat extends Component {
         if (isUserLaggedIn) { this.scrollView.scrollToEnd({ animated: true }); }
     }
 
+    // Scroll to end handle
+    handleScrollToEnd = () => {
+        if (!IS_WEB) { this.scrollView.scrollToEnd({ animated: true }); }
+    }
+
     render() {
         const {
             msg, messages, isUserLaggedIn, nickname,
@@ -232,6 +237,9 @@ export default class Chat extends Component {
                         <View style={styles.chatContainer}>
                             <ScrollView
                                 ref={(view) => { this.scrollView = view; }}
+                                onContentSizeChange={() => {
+                                    this.handleScrollToEnd();
+                                }}
                             >
                                 {Object.keys(messages).map(message => (
                                     <View key={message}>
