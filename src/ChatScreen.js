@@ -25,27 +25,31 @@ const chatRoom = firebase.database().ref().child('chatrooms').child('global');
 
 export default class Chat extends Component {
     state = {
-        isUserLaggedIn: null,
+        isUserLaggedIn: false,
         nickname: '',
         email: '',
         msg: '',
         messages: {},
+        initialUserLogin: false
     };
-
-    componentWillMount() {
-        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyBoardListener);
-    }
 
     componentDidMount() {
         chatRoom.on('value', this.getNewMessages);
+        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyBoardListener);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        const { isUserLaggedIn, messages } = this.state;
+        const { isUserLaggedIn, messages, initialUserLogin } = this.state;
         if (isUserLaggedIn && IS_WEB) { this.messageInput.focus(); }
 
+        // Scroll handle on new message arrival for Web
         if (IS_WEB && messages !== prevState.messages && isUserLaggedIn) {
             this.scrollView.scrollToEnd({ animated: true });
+        }
+
+        // Scroll handle on log in for Web
+        if (IS_WEB && initialUserLogin) {
+            this.scrollView.scrollToEnd({ animated: false });
         }
     }
 
@@ -81,8 +85,12 @@ export default class Chat extends Component {
     handleLogin = () => {
         const { nickname, email } = this.state;
         if (nickname && email) {
-            this.setState({ isUserLaggedIn: true });
+            this.setState({
+                isUserLaggedIn: true,
+                initialUserLogin: true
+            });
         }
+        setTimeout(() => { this.setState({ initialUserLogin: false }); }, 1000);
     };
 
     // Push messsage on 'Enter' press
@@ -166,18 +174,25 @@ export default class Chat extends Component {
     // Keyboard listener
     keyBoardListener = () => {
         const { isUserLaggedIn } = this.state;
-        if (isUserLaggedIn) { this.scrollView.scrollToEnd({ animated: true }); }
+        if (isUserLaggedIn) { this.scrollView.scrollToEnd({ animated: false }); }
     }
 
-    // Scroll to end handle
-    handleScrollToEnd = () => {
-        if (!IS_WEB) { this.scrollView.scrollToEnd({ animated: true }); }
+    // Scroll handle for mobile
+    handleMobileScroll = () => {
+        const { initialUserLogin } = this.state;
+        if (!IS_WEB && initialUserLogin) {
+            this.scrollView.scrollToEnd({ animated: false });
+        } else if (!IS_WEB) {
+            this.scrollView.scrollToEnd({ animated: true });
+        }
     }
+
 
     render() {
         const {
-            msg, messages, isUserLaggedIn, nickname,
+            msg, messages, isUserLaggedIn, nickname, initialUserLogin
         } = this.state;
+
         if (!isUserLaggedIn) {
             return (
                 <KeyboardAvoidingView behavior={IS_IOS ? 'padding' : null} style={styles.loginContainer}>
@@ -237,9 +252,9 @@ export default class Chat extends Component {
                         <View style={styles.chatContainer}>
                             <ScrollView
                                 ref={(view) => { this.scrollView = view; }}
-                                onContentSizeChange={() => {
-                                    this.handleScrollToEnd();
-                                }}
+                                onContentSizeChange={() => (
+                                    this.handleMobileScroll()
+                                )}
                             >
                                 {Object.keys(messages).map(message => (
                                     <View key={message}>
