@@ -190,9 +190,8 @@ export default class Chat extends Component {
 
     render() {
         const {
-            msg, messages, isUserLaggedIn, nickname, initialUserLogin
+            msg, messages, isUserLaggedIn, nickname
         } = this.state;
-
         if (!isUserLaggedIn) {
             return (
                 <KeyboardAvoidingView behavior={IS_IOS ? 'padding' : null} style={styles.loginContainer}>
@@ -299,6 +298,7 @@ export default class Chat extends Component {
                                     outline="none"
                                     onChangeText={this.handleMessage}
                                     onKeyPress={this.handleKeyPress}
+                                    maxLength={6018}
                                 />
                                 <Icon
                                     iconFont="ionicons"
