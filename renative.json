@@ -37,7 +37,9 @@
                             {
                                 "tag": "activity",
                                 "android:name": ".MainActivity",
-                                "android:screenOrientation": "portrait"
+                                "android:screenOrientation": "portrait",
+                                "android:noHistory": "false",
+                                "android:launchMode": "singleTask"
                             }
                         ]
                     }
