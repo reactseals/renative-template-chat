@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import WelcomeScreen from './WelcomeScreen';
