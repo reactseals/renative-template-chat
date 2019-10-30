@@ -8,7 +8,7 @@
     "currentTemplate": "renative-template-hello-world",
     "templates": {
         "renative-template-hello-world": {
-            "version": "0.28.0-alpha.30"
+            "version": "0.28.0-alpha.32"
         }
     },
     "paths": {
