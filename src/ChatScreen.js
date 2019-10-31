@@ -11,10 +11,11 @@ import {
     SafeAreaView,
 } from 'react-native';
 import { Icon } from 'renative';
-import { IS_WEB, IS_IOS } from 'rnv-platform-info';
+import { IS_WEB, IS_IOS, IS_MACOS } from 'rnv-platform-info';
 import styles from '../platformAssets/runtime/chat.styles';
 import firebase from '../projectConfig/firebase';
 import Activity from './ActivityIndicator';
+import BackButtonMac from './BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
 
 console.disableYellowBox = true;
@@ -192,9 +193,22 @@ export default class Chat extends Component {
         const {
             msg, messages, isUserLaggedIn, nickname
         } = this.state;
+        const { navigation } = this.props;
         if (!isUserLaggedIn) {
             return (
                 <KeyboardAvoidingView behavior={IS_IOS ? 'padding' : null} style={styles.loginContainer}>
+                    {/* {IS_MACOS ? (
+                        <TouchableOpacity
+                            style={{ position: 'absolute', top: 15, left: 25 }}
+                            onPress={() => this.props.navigation.navigate('Welcome')}
+                        >
+                            <Text style={{ color: colors.textColor, fontSize: 26 }}>
+                                {'<'}
+                            </Text>
+                        </TouchableOpacity>
+                    ) : (null) } */}
+
+                    <BackButtonMac navigation={navigation} />
                     <TextInput
                         ref={component => this.nicknameInput = component}
                         onFocus={() => this.textInputActiveStyle(this.nicknameInput)}
@@ -248,9 +262,11 @@ export default class Chat extends Component {
                         keyboardVerticalOffset={height / 10}
                         behavior={IS_IOS ? 'padding' : null}
                     >
+                        <BackButtonMac navigation={navigation} />
                         <View style={styles.chatContainer}>
                             <ScrollView
                                 ref={(view) => { this.scrollView = view; }}
+                                style={styles.chatMessagesContainer}
                                 onContentSizeChange={() => (
                                     this.handleMobileScroll()
                                 )}
@@ -283,7 +299,6 @@ export default class Chat extends Component {
                                     </View>
                                 ))}
                             </ScrollView>
-
 
                             <View style={styles.inputContainer}>
                                 <TextInput

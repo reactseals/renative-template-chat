@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { IS_WEB, IS_ANDROID } from 'rnv-platform-info';
+import { IS_WEB, IS_ANDROID, IS_MACOS } from 'rnv-platform-info';
 import colors from './colors';
 import fonts from './chatFonts';
 
@@ -7,6 +7,7 @@ let position;
 let marginBottom;
 let height;
 let fontFamily;
+let marginTop;
 
 if (IS_WEB) {
     position = 'fixed';
@@ -16,6 +17,10 @@ if (IS_WEB) {
 
 if (IS_ANDROID) {
     fontFamily = fonts.Roboto;
+}
+
+if (IS_MACOS) {
+    marginTop = 40;
 }
 
 export default StyleSheet.create({
@@ -65,6 +70,9 @@ export default StyleSheet.create({
         backgroundColor: colors.backgroundColor,
         marginBottom,
         height,
+    },
+    chatMessagesContainer: {
+        marginTop
     },
     chatInput: {
         flex: 1,
