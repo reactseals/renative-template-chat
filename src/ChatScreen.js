@@ -197,17 +197,6 @@ export default class Chat extends Component {
         if (!isUserLaggedIn) {
             return (
                 <KeyboardAvoidingView behavior={IS_IOS ? 'padding' : null} style={styles.loginContainer}>
-                    {/* {IS_MACOS ? (
-                        <TouchableOpacity
-                            style={{ position: 'absolute', top: 15, left: 25 }}
-                            onPress={() => this.props.navigation.navigate('Welcome')}
-                        >
-                            <Text style={{ color: colors.textColor, fontSize: 26 }}>
-                                {'<'}
-                            </Text>
-                        </TouchableOpacity>
-                    ) : (null) } */}
-
                     <BackButtonMac navigation={navigation} />
                     <TextInput
                         ref={component => this.nicknameInput = component}
@@ -240,9 +229,7 @@ export default class Chat extends Component {
                         onFocus={() => this.buttonActiveStyle(this.button)}
                         onBlur={() => this.buttonInactiveStyle(this.button)}
                         style={styles.loginButton}
-                        onPress={() => {
-                            this.handleLogin();
-                        }}
+                        onPress={() => this.handleLogin()}
                     >
                         <Text style={styles.buttonText}>
                             Sign In
@@ -320,7 +307,7 @@ export default class Chat extends Component {
                                     iconName="md-send"
                                     iconColor={colors.activeColorPrimary}
                                     style={{ width: 35, height: 35, alignSelf: 'center' }}
-                                    onPress={() => { this.handleButtonPress(); }}
+                                    onPress={() => this.handleButtonPress()}
                                 />
                             </View>
                         </View>
