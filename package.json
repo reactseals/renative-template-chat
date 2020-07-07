@@ -34,7 +34,7 @@
         "@react-navigation/core": "3.4.2",
         "@react-navigation/native": "3.5.0",
         "@react-navigation/web": "1.0.0-alpha.9",
-        "electron": "^5.0.2",
+        "electron": "^9.1.0",
         "electron-builder": "^21.1.1",
         "firebase": "^6.1.0",
         "react": "16.9.0",
@@ -61,7 +61,7 @@
         "rnv": "0.28.0-alpha.35",
         "xcode": "2.0.0",
         "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master",
-        "electron": "5.0.2",
+        "electron": "9.1.0",
         "electron-builder": "21.1.1"
     },
     "optionalDependencies": {
