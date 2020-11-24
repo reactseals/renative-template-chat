@@ -31,12 +31,13 @@
         "url": "https://github.com/reactseals/renative-template-chat/issues"
     },
     "dependencies": {
+        "@react-native-community/masked-view": "^0.1.10",
         "@react-navigation/core": "3.4.2",
         "@react-navigation/native": "3.5.0",
         "@react-navigation/web": "1.0.0-alpha.9",
         "electron": "^5.0.2",
         "electron-builder": "^21.1.1",
-        "firebase": "^6.1.0",
+        "firebase": "^8.1.1",
         "react": "16.13.1",
         "react-art": "16.13.1",
         "react-dom": "16.13.1",
@@ -44,28 +45,30 @@
         "react-native-gesture-handler": "1.4.1",
         "react-native-linear-gradient": "2.4.0",
         "react-native-reanimated": "1.0.0-alpha.12",
+        "react-native-safe-area-context": "^3.1.9",
+        "react-native-screens": "^2.15.0",
         "react-native-vector-icons": "6.6.0",
         "react-native-web": "0.13.12",
         "react-native-web-image-loader": "0.0.5",
         "react-native-web-linear-gradient": "1.0.5",
         "react-navigation": "3.9.2",
+        "react-navigation-stack": "1.4.0",
         "react-navigation-tabs": "2.0.0-alpha.0",
         "renative": "0.31.3",
-        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git",
-        "react-navigation-stack": "1.4.0"
+        "rnv-platform-info": "git+https://github.com/reactseals/rnv-platform-info.git"
     },
     "devDependencies": {
+        "@rnv/engine-rn": "0.31.3",
+        "@rnv/engine-rn-web": "0.31.3",
+        "electron": "5.0.2",
+        "electron-builder": "21.1.1",
         "eslint": "^6.0.1",
         "eslint-plugin-jest": "21.18.0",
         "eslint-plugin-react": "^7.14.2",
+        "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master",
         "renative-template-hello-world": "0.31.3",
         "rnv": "0.31.3",
-        "xcode": "2.0.0",
-        "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master",
-        "electron": "5.0.2",
-        "electron-builder": "21.1.1",
-        "@rnv/engine-rn-web": "0.31.3",
-        "@rnv/engine-rn": "0.31.3"
+        "xcode": "2.0.0"
     },
     "optionalDependencies": {
         "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master"
