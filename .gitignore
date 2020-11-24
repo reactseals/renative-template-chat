@@ -64,3 +64,5 @@ rnv-config.local.json
 now.json
 
 package-lock.json
+
+.expo/
