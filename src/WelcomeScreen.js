@@ -42,7 +42,7 @@ export default class Home extends Component {
                     onFocus={() => this.buttonActiveStyle(this.button)}
                     onBlur={() => this.buttonInactiveStyle(this.button)}
                     style={styles.button}
-                    onPress={() => navigation.navigate('Chat')}
+                    onPress={() => navigation.navigate('ChatScreen')}
                 >
                     <Text style={styles.buttonText}>
                         Let's Chat

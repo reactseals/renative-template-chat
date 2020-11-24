@@ -1,4 +1,4 @@
-import { createSwitchNavigator } from '@react-navigation/core';
+/* import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
 import WelcomeScreen from './WelcomeScreen';
 import ChatScreen from './ChatScreen';
@@ -30,3 +30,14 @@ const AppNavigator = createSwitchNavigator(
 );
 
 export default createBrowserApp(AppNavigator);
+ */
+import React from 'react';
+import { useRouter } from 'next/router';
+//import ScreenHome from '../components/screenHome';
+import { View, Text} from 'react-native';
+
+const App = () => (
+    
+    <View><Text>works app.web{/* <ScreenHome router={useRouter()} /> */}</Text></View>
+);
+export default App;

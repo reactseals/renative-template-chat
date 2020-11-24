@@ -1,20 +1,21 @@
-import React from 'react';
 import 'react-native-gesture-handler';
+import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 import WelcomeScreen from './WelcomeScreen';
 import ChatScreen from './ChatScreen';
 import colors from '../platformAssets/runtime/colors';
 import '../platformAssets/runtime/fontManager';
+import { NavigationContainer } from '@react-navigation/native';
+import MainNavigator from './MainNavigator';
 
-const greyHeaderBackground = (
-    <LinearGradient
-        colors={[colors.activeColorSecondary, colors.backgroundColor]}
-        style={{ flex: 1 }}
-    />
-);
 
-const AppNavigator = createStackNavigator(
+export default function App() {
+    return (
+      <NavigationContainer><MainNavigator/></NavigationContainer>
+    );
+  }
+/* const AppNavigator = createStackNavigator(
     {
         Welcome: {
             screen: WelcomeScreen,
@@ -53,4 +54,4 @@ const AppNavigator = createStackNavigator(
     },
 );
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(AppNavigator); */

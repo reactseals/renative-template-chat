@@ -52,6 +52,9 @@
                     }
                 ]
             }
+        },
+        "web": {
+            "engine": "engine-rn-next"
         }
     },
     "plugins": {
@@ -63,12 +66,15 @@
         "react-native-web": "source:rnv",
         "react-native-web-image-loader": "source:rnv",
         "react-native-gesture-handler": "source:rnv",
-        "react-navigation": "source:rnv",
-        "react-navigation-tabs": "source:rnv",
         "react-native-reanimated": "source:rnv",
         "react-native-vector-icons": "source:rnv",
         "react-native-linear-gradient": "source:rnv",
-        "react-navigation-stack": "source:rnv"
+        "@react-navigation": "source:rnv",
+        "react-native-screens": "source:rnv",
+        "react-native-safe-area-context": "source:rnv",
+        "react-native-safe-area-view": "source:rnv",
+        "@react-native-community/masked-view": "source:rnv",
+        "next": "source:rnv"
     },
     "permissions": {
         "ios": {

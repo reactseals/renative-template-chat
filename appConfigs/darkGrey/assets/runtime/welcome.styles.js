@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native';
 import colors from './colors';
+import {isWeb} from 'renative';
+
+let containerHeight = '100%';
+
+if(isWeb){containerHeight = '100vh'}
 
 export default StyleSheet.create({
     container: {
@@ -8,7 +13,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         backgroundColor: colors.backgroundColor,
         width: '100%',
-        height: '100%',
+        height: containerHeight,
         margin: 0,
         padding: 0,
     },

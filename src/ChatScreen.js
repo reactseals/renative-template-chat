@@ -11,12 +11,12 @@ import {
     SafeAreaView,
 } from 'react-native';
 import { Icon } from 'renative';
-import { IS_WEB, IS_IOS, IS_MACOS } from 'rnv-platform-info';
 import styles from '../platformAssets/runtime/chat.styles';
 import firebase from '../projectConfig/firebase';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
+import {isWeb, isAndroid} from 'renative';
 
 console.disableYellowBox = true;
 
@@ -41,15 +41,15 @@ export default class Chat extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const { isUserLaggedIn, messages, initialUserLogin } = this.state;
-        if (isUserLaggedIn && IS_WEB) { this.messageInput.focus(); }
+        if (isUserLaggedIn && isWeb) { this.messageInput.focus(); }
 
         // Scroll handle on new message arrival for Web
-        if (IS_WEB && messages !== prevState.messages && isUserLaggedIn) {
+        if (isWeb && messages !== prevState.messages && isUserLaggedIn) {
             this.scrollView.scrollToEnd({ animated: true });
         }
 
         // Scroll handle on log in for Web
-        if (IS_WEB && initialUserLogin) {
+        if (isWeb && initialUserLogin) {
             this.scrollView.scrollToEnd({ animated: false });
         }
     }
@@ -144,7 +144,7 @@ export default class Chat extends Component {
 
     // Set text input inactive style
     textInputInactiveStyle = (element) => {
-        const shadowOpacity = IS_WEB ? 'none' : 0;
+        const shadowOpacity = isWeb ? 'none' : 0;
         element.setNativeProps({
             style: {
                 backgroundColor: colors.backgroundColor,
@@ -181,9 +181,9 @@ export default class Chat extends Component {
     // Scroll handle for mobile
     handleMobileScroll = () => {
         const { initialUserLogin } = this.state;
-        if (!IS_WEB && initialUserLogin) {
+        if (!isWeb && initialUserLogin) {
             this.scrollView.scrollToEnd({ animated: false });
-        } else if (!IS_WEB) {
+        } else if (!isWeb) {
             this.scrollView.scrollToEnd({ animated: true });
         }
     }
@@ -196,7 +196,7 @@ export default class Chat extends Component {
         const { navigation } = this.props;
         if (!isUserLaggedIn) {
             return (
-                <KeyboardAvoidingView behavior={IS_IOS ? 'padding' : null} style={styles.loginContainer}>
+                <KeyboardAvoidingView behavior={isAndroid ? 'padding' : null} style={styles.loginContainer}>
                     <BackButtonMac navigation={navigation} />
                     <TextInput
                         ref={component => this.nicknameInput = component}
@@ -247,7 +247,7 @@ export default class Chat extends Component {
                     <KeyboardAvoidingView
                         style={{ flex: 1 }}
                         keyboardVerticalOffset={height / 10}
-                        behavior={IS_IOS ? 'padding' : null}
+                        behavior={isAndroid ? 'padding' : null}
                     >
                         <BackButtonMac navigation={navigation} />
                         <View style={styles.chatContainer}>
