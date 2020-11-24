@@ -1,5 +1,6 @@
 {
     "_meta": {
-        "currentAppConfigId": "darkGrey"
+        "currentAppConfigId": "darkGrey",
+        "requiresJetify": true
     }
 }
