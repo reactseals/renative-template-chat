@@ -13,6 +13,7 @@ import 'firebase/storage';
     appId: '<your-app-id>',
 };
  */
+// on push to main/master personal credentials should be removed, here only for testing purposes
 const config = {
     apiKey: "AIzaSyBe_QxdEBWOr7dJ-xLZuK1ceZCUULKNu0Q",
     authDomain: "rnv-template-chat.firebaseapp.com",

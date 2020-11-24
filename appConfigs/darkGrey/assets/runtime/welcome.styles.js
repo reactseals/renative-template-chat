@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
 import colors from './colors';
-import {isWeb} from 'renative';
+import {isPlatformWeb} from 'renative';
 
 let containerHeight = '100%';
 
-if(isWeb){containerHeight = '100vh'}
+if(isPlatformWeb){containerHeight = '100vh'}
 
 export default StyleSheet.create({
     container: {

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { IS_WEB, IS_ANDROID, IS_MACOS } from 'rnv-platform-info';
+import {isPlatformWeb, isPlatformAndroid, isPlatformMacos} from 'renative';
 import colors from './colors';
 import fonts from './chatFonts';
 
@@ -9,17 +9,17 @@ let height;
 let fontFamily;
 let marginTop;
 
-if (IS_WEB) {
+if (isPlatformWeb) {
     position = 'fixed';
     marginBottom = 30;
     height = 100;
 }
 
-if (IS_ANDROID) {
+if (isPlatformAndroid) {
     fontFamily = fonts.Roboto;
 }
 
-if (IS_MACOS) {
+if (isPlatformMacos) {
     marginTop = 40;
 }
 

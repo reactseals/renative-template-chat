@@ -82,7 +82,9 @@
 
 1. Create Firebase project: https://firebase.google.com/docs/storage/web/start
 
-2. Get your Firebase config file or object: https://support.google.com/firebase/answer/7015592
+2. Get your Firebase config file or object: https://support.google.com/firebase/answer/7015592 and edit firebase.js with it
+
+3. Create a RealTime Database on your firebase console (IMPORTANT)
 
 ## Configuration
 
