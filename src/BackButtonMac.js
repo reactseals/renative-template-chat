@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import {isMacos} from 'renative';
+import {isPlatformMacos} from 'renative';
 import colors from '../platformAssets/runtime/colors';
 
 const styles = StyleSheet.create({
@@ -22,10 +22,10 @@ const styles = StyleSheet.create({
 });
 
 const BackButtonMac = props => (
-    (isMacos ? (
+    (isPlatformMacos ? (
         <View style={styles.backArrowContainer}>
             <TouchableOpacity
-                onPress={() => props.navigation.navigate('Welcome')}
+                onPress={() => props.navigate('Welcome')}
             >
                 <Text style={styles.backArrow}>
                     {'<'}

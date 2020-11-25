@@ -5,8 +5,9 @@ import { View, Text} from 'react-native';
 import WelcomeScreen from '../WelcomeScreen';
 import ChatScreen from '../ChatScreen';
 
+//Entry for next engine based web
 const App = () => (
     
-    <View><Text><WelcomeScreen/>{/* <ScreenHome router={useRouter()} /> */}</Text></View>
+    <WelcomeScreen router={useRouter()}/>
 );
 export default App;

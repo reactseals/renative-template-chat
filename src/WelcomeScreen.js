@@ -4,6 +4,8 @@ import {
 } from 'react-native';
 import styles from '../platformAssets/runtime/welcome.styles';
 import colors from '../platformAssets/runtime/colors';
+import { useNavigate } from 'renative'
+
 
 console.disableYellowBox = true;
 
@@ -28,7 +30,8 @@ export default class Home extends Component {
     };
 
     render() {
-        const { navigation } = this.props;
+        const navigate = useNavigate(this.props);
+
         return (
             <SafeAreaView style={styles.container}>
                 <Image
@@ -42,7 +45,7 @@ export default class Home extends Component {
                     onFocus={() => this.buttonActiveStyle(this.button)}
                     onBlur={() => this.buttonInactiveStyle(this.button)}
                     style={styles.button}
-                    onPress={() => navigation.navigate('ChatScreen')}
+                    onPress={() => navigate('chat', '/chat')}
                 >
                     <Text style={styles.buttonText}>
                         Let's Chat

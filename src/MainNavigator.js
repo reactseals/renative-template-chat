@@ -16,7 +16,7 @@ const greyHeaderBackground = () =>
 const MainNavigator = () => {
     return (
     <Stack.Navigator>
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{
+        <Stack.Screen name="welcome" component={WelcomeScreen} options={{
                 headerBackground: greyHeaderBackground,
                 title: 'Welcome',
                 headerTintColor: colors.textColor,
@@ -25,18 +25,15 @@ const MainNavigator = () => {
                     flexGrow: 1,
                 },
             }} />
-        <Stack.Screen name="ChatScreen" component={ChatScreen} options={{
+        <Stack.Screen name="chat" component={ChatScreen} options={{
                 headerBackground: greyHeaderBackground,
                 title: 'Chat',
                 headerTintColor: colors.textColor,
-                headerTitleContainerStyle: {
-                    left: 0,
-                    right: 0
-                },
                 headerTitleStyle: {
                     textAlign: 'center',
                     flexGrow: 1,
                 },
+                
             }} />
       </Stack.Navigator>
     )

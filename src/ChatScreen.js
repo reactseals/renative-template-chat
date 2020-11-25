@@ -10,19 +10,25 @@ import {
     Keyboard,
     SafeAreaView,
 } from 'react-native';
-import { Icon } from 'renative';
+import { Icon, isPlatformIos, isPlatformWeb, isPlatformAndroid } from 'renative';
 import styles from '../platformAssets/runtime/chat.styles';
 import firebase from '../projectConfig/firebase';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
-import {isWeb, isAndroid} from 'renative';
+import { useNavigate } from 'renative'
+import { useHeaderHeight } from '@react-navigation/stack';
 
 console.disableYellowBox = true;
 
 const { height } = Dimensions.get('window');
 
 const chatRoom = firebase.database().ref().child('chatrooms').child('global');
+
+let tempHeaderHeight = () =>{
+    const headerHeight = useHeaderHeight();
+    return headerHeight;
+}
 
 export default class Chat extends Component {
     state = {
@@ -41,15 +47,15 @@ export default class Chat extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         const { isUserLaggedIn, messages, initialUserLogin } = this.state;
-        if (isUserLaggedIn && isWeb) { this.messageInput.focus(); }
+        if (isUserLaggedIn && isPlatformWeb) { this.messageInput.focus(); }
 
         // Scroll handle on new message arrival for Web
-        if (isWeb && messages !== prevState.messages && isUserLaggedIn) {
+        if (isPlatformWeb && messages !== prevState.messages && isUserLaggedIn) {
             this.scrollView.scrollToEnd({ animated: true });
         }
 
         // Scroll handle on log in for Web
-        if (isWeb && initialUserLogin) {
+        if (isPlatformWeb && initialUserLogin) {
             this.scrollView.scrollToEnd({ animated: false });
         }
     }
@@ -144,7 +150,7 @@ export default class Chat extends Component {
 
     // Set text input inactive style
     textInputInactiveStyle = (element) => {
-        const shadowOpacity = isWeb ? 'none' : 0;
+        const shadowOpacity = isPlatformWeb ? 'none' : 0;
         element.setNativeProps({
             style: {
                 backgroundColor: colors.backgroundColor,
@@ -181,9 +187,9 @@ export default class Chat extends Component {
     // Scroll handle for mobile
     handleMobileScroll = () => {
         const { initialUserLogin } = this.state;
-        if (!isWeb && initialUserLogin) {
+        if (!isPlatformWeb && initialUserLogin) {
             this.scrollView.scrollToEnd({ animated: false });
-        } else if (!isWeb) {
+        } else if (!isPlatformWeb) {
             this.scrollView.scrollToEnd({ animated: true });
         }
     }
@@ -193,11 +199,11 @@ export default class Chat extends Component {
         const {
             msg, messages, isUserLaggedIn, nickname
         } = this.state;
-        const { navigation } = this.props;
+        const navigate = useNavigate(this.props);
         if (!isUserLaggedIn) {
             return (
-                <KeyboardAvoidingView behavior={isAndroid ? 'padding' : null} style={styles.loginContainer}>
-                    <BackButtonMac navigation={navigation} />
+                <KeyboardAvoidingView behavior={isPlatformAndroid ? null : "padding"} style={styles.loginContainer} keyboardVerticalOffset={this.props.headerHeight}>
+                    <BackButtonMac navigation={navigate} />
                     <TextInput
                         ref={component => this.nicknameInput = component}
                         onFocus={() => this.textInputActiveStyle(this.nicknameInput)}
@@ -247,9 +253,9 @@ export default class Chat extends Component {
                     <KeyboardAvoidingView
                         style={{ flex: 1 }}
                         keyboardVerticalOffset={height / 10}
-                        behavior={isAndroid ? 'padding' : null}
+                        behavior={isPlatformAndroid ? null : "padding"}
                     >
-                        <BackButtonMac navigation={navigation} />
+                        <BackButtonMac navigation={navigate} />
                         <View style={styles.chatContainer}>
                             <ScrollView
                                 ref={(view) => { this.scrollView = view; }}

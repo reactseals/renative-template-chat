@@ -38,6 +38,6 @@ import { View, Text} from 'react-native';
 
 const App = () => (
     
-    <View><Text>works app.web{/* <ScreenHome router={useRouter()} /> */}</Text></View>
+    <View><Text>MACOS RUNS HERE{/* <ScreenHome router={useRouter()} /> */}</Text></View>
 );
 export default App;

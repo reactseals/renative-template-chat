@@ -43,7 +43,7 @@
         "react-art": "16.13.1",
         "react-dom": "16.13.1",
         "react-native": "0.61.2",
-        "react-native-gesture-handler": "1.4.1",
+        "react-native-gesture-handler": "1.6.0",
         "react-native-linear-gradient": "2.4.0",
         "react-native-reanimated": "1.0.0-alpha.12",
         "react-native-safe-area-context": "0.7.2",
@@ -78,7 +78,8 @@
         "renative-template-hello-world": "0.31.3",
         "rnv": "0.31.3",
         "xcode": "2.0.0",
-        "@rnv/engine-rn-next": "0.31.3"
+        "@rnv/engine-rn-next": "0.31.3",
+        "@rnv/engine-rn-electron": "0.31.3"
     },
     "optionalDependencies": {
         "ios-deploy": "https://github.com/mihaiblaga89/ios-deploy/tarball/my_master"

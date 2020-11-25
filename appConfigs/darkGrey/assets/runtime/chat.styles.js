@@ -8,11 +8,13 @@ let marginBottom;
 let height;
 let fontFamily;
 let marginTop;
+let loginContainerHeight;
 
 if (isPlatformWeb) {
     position = 'fixed';
     marginBottom = 30;
-    height = 100;
+    height = "100vh";
+    loginContainerHeight = "100vh";
 }
 
 if (isPlatformAndroid) {
@@ -29,6 +31,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colors.backgroundColor,
+        minHeight:loginContainerHeight,
     },
     inputContainer: {
         width: '100%',
