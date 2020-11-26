@@ -16,8 +16,7 @@ import firebase from '../projectConfig/firebase';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
-import { useNavigate } from 'renative'
-import { useHeaderHeight } from '@react-navigation/stack';
+import { useNavigate } from 'renative';
 
 console.disableYellowBox = true;
 
@@ -25,11 +24,8 @@ const { height } = Dimensions.get('window');
 
 const chatRoom = firebase.database().ref().child('chatrooms').child('global');
 
-let tempHeaderHeight = () =>{
-    const headerHeight = useHeaderHeight();
-    return headerHeight;
-}
-
+// Rewrite from scratch
+// Separate Firebase, input and chat messages logic
 export default class Chat extends Component {
     state = {
         isUserLaggedIn: false,
@@ -37,17 +33,22 @@ export default class Chat extends Component {
         email: '',
         msg: '',
         messages: {},
-        initialUserLogin: false
+        initialUserLogin: false,
     };
 
     componentDidMount() {
         chatRoom.on('value', this.getNewMessages);
-        this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this.keyBoardListener);
+        this.keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            this.keyBoardListener
+        );
     }
 
     componentDidUpdate(prevProps, prevState) {
         const { isUserLaggedIn, messages, initialUserLogin } = this.state;
-        if (isUserLaggedIn && isPlatformWeb) { this.messageInput.focus(); }
+        if (isUserLaggedIn && isPlatformWeb) {
+            this.messageInput.focus();
+        }
 
         // Scroll handle on new message arrival for Web
         if (isPlatformWeb && messages !== prevState.messages && isUserLaggedIn) {
@@ -76,17 +77,17 @@ export default class Chat extends Component {
     // Add nickname to state
     handleNickname = (text) => {
         this.setState({ nickname: text });
-    }
+    };
 
     // Add email to state
     handleEmail = (text) => {
         this.setState({ email: text });
-    }
+    };
 
     // Add message to state
     handleMessage = (text) => {
         this.setState({ msg: text });
-    }
+    };
 
     // Login
     handleLogin = () => {
@@ -94,17 +95,17 @@ export default class Chat extends Component {
         if (nickname && email) {
             this.setState({
                 isUserLaggedIn: true,
-                initialUserLogin: true
+                initialUserLogin: true,
             });
         }
-        setTimeout(() => { this.setState({ initialUserLogin: false }); }, 1000);
+        setTimeout(() => {
+            this.setState({ initialUserLogin: false });
+        }, 1000);
     };
 
     // Push messsage on 'Enter' press
     handleKeyPress = (e) => {
-        const {
-            msg, nickname, email,
-        } = this.state;
+        const { msg, nickname, email } = this.state;
         if (msg.trim() !== '' && e.key === 'Enter') {
             // Send the message from chat input field
             chatRoom.push({
@@ -119,9 +120,7 @@ export default class Chat extends Component {
 
     // Push messsage on press
     handleButtonPress = () => {
-        const {
-            msg, nickname, email,
-        } = this.state;
+        const { msg, nickname, email } = this.state;
         if (msg.trim() !== '') {
             // Send the message from chat input field
             chatRoom.push({
@@ -132,7 +131,7 @@ export default class Chat extends Component {
             // Clear chat message input field
             this.setState({ msg: '' });
         }
-    }
+    };
 
     // Set text input active style
     textInputActiveStyle = (element) => {
@@ -146,7 +145,7 @@ export default class Chat extends Component {
                 outline: 'none',
             },
         });
-    }
+    };
 
     // Set text input inactive style
     textInputInactiveStyle = (element) => {
@@ -157,7 +156,7 @@ export default class Chat extends Component {
                 shadowOpacity,
             },
         });
-    }
+    };
 
     // Set button active style
     buttonActiveStyle = (element) => {
@@ -167,7 +166,7 @@ export default class Chat extends Component {
                 outline: 'none',
             },
         });
-    }
+    };
 
     // Set button inactive style
     buttonInactiveStyle = (element) => {
@@ -176,13 +175,15 @@ export default class Chat extends Component {
                 backgroundColor: colors.activeBackgroundColor,
             },
         });
-    }
+    };
 
     // Keyboard listener
     keyBoardListener = () => {
         const { isUserLaggedIn } = this.state;
-        if (isUserLaggedIn) { this.scrollView.scrollToEnd({ animated: false }); }
-    }
+        if (isUserLaggedIn) {
+            this.scrollView.scrollToEnd({ animated: false });
+        }
+    };
 
     // Scroll handle for mobile
     handleMobileScroll = () => {
@@ -192,20 +193,21 @@ export default class Chat extends Component {
         } else if (!isPlatformWeb) {
             this.scrollView.scrollToEnd({ animated: true });
         }
-    }
-
+    };
 
     render() {
-        const {
-            msg, messages, isUserLaggedIn, nickname
-        } = this.state;
+        const { msg, messages, isUserLaggedIn, nickname } = this.state;
         const navigate = useNavigate(this.props);
         if (!isUserLaggedIn) {
             return (
-                <KeyboardAvoidingView behavior={isPlatformAndroid ? null : "padding"} style={styles.loginContainer} keyboardVerticalOffset={this.props.headerHeight}>
+                <KeyboardAvoidingView
+                    behavior={isPlatformAndroid ? null : 'padding'}
+                    style={styles.loginContainer}
+                    keyboardVerticalOffset={this.props.headerHeight}
+                >
                     <BackButtonMac navigation={navigate} />
                     <TextInput
-                        ref={component => this.nicknameInput = component}
+                        ref={(component) => (this.nicknameInput = component)}
                         onFocus={() => this.textInputActiveStyle(this.nicknameInput)}
                         onBlur={() => this.textInputInactiveStyle(this.nicknameInput)}
                         style={styles.loginInput}
@@ -218,7 +220,7 @@ export default class Chat extends Component {
                     />
 
                     <TextInput
-                        ref={component => this.emailInput = component}
+                        ref={(component) => (this.emailInput = component)}
                         onFocus={() => this.textInputActiveStyle(this.emailInput)}
                         onBlur={() => this.textInputInactiveStyle(this.emailInput)}
                         style={styles.loginInput}
@@ -231,15 +233,13 @@ export default class Chat extends Component {
                     />
 
                     <TouchableOpacity
-                        ref={component => this.button = component}
+                        ref={(component) => (this.button = component)}
                         onFocus={() => this.buttonActiveStyle(this.button)}
                         onBlur={() => this.buttonInactiveStyle(this.button)}
                         style={styles.loginButton}
                         onPress={() => this.handleLogin()}
                     >
-                        <Text style={styles.buttonText}>
-                            Sign In
-                        </Text>
+                        <Text style={styles.buttonText}>Sign In</Text>
                     </TouchableOpacity>
                 </KeyboardAvoidingView>
             );
@@ -253,18 +253,18 @@ export default class Chat extends Component {
                     <KeyboardAvoidingView
                         style={{ flex: 1 }}
                         keyboardVerticalOffset={height / 10}
-                        behavior={isPlatformAndroid ? null : "padding"}
+                        behavior={isPlatformAndroid ? null : 'padding'}
                     >
                         <BackButtonMac navigation={navigate} />
                         <View style={styles.chatContainer}>
                             <ScrollView
-                                ref={(view) => { this.scrollView = view; }}
+                                ref={(view) => {
+                                    this.scrollView = view;
+                                }}
                                 style={styles.chatMessagesContainer}
-                                onContentSizeChange={() => (
-                                    this.handleMobileScroll()
-                                )}
+                                onContentSizeChange={() => this.handleMobileScroll()}
                             >
-                                {Object.keys(messages).map(message => (
+                                {Object.keys(messages).map((message) => (
                                     <View key={message}>
                                         {nickname === messages[message].nickname ? (
                                             <View style={styles.userMessageContainer}>
@@ -295,7 +295,7 @@ export default class Chat extends Component {
 
                             <View style={styles.inputContainer}>
                                 <TextInput
-                                    ref={component => this.messageInput = component}
+                                    ref={(component) => (this.messageInput = component)}
                                     onFocus={() => this.textInputActiveStyle(this.messageInput)}
                                     onBlur={() => this.textInputInactiveStyle(this.messageInput)}
                                     value={msg}
@@ -318,7 +318,6 @@ export default class Chat extends Component {
                             </View>
                         </View>
                     </KeyboardAvoidingView>
-
                 )}
             </SafeAreaView>
         );

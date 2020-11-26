@@ -1,8 +1,8 @@
+const fs = require('fs');
 const path = require('path');
-
+const prettierOptions = JSON.parse(fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'));
 module.exports = {
-    parser: 'babel-eslint',
-    extends: ['airbnb'],
+    extends: ['airbnb', 'prettier', 'prettier/react', 'eslint:recommended'],
     env: {
         node: true,
         browser: true,
@@ -15,21 +15,45 @@ module.exports = {
             experimentalObjectRestSpread: true,
         },
     },
-    plugins: ['jest', 'detox', 'mocha'],
+    plugins: ['react-hooks', 'prettier'],
     rules: {
+        'max-len': [
+            'error',
+            100,
+            2,
+            {
+                ignoreUrls: true,
+                ignoreComments: true,
+                ignoreRegExpLiterals: true,
+                ignoreStrings: true,
+                ignoreTemplateLiterals: true,
+            },
+        ],
+        'jsx-a11y/anchor-is-valid': [
+            'error',
+            {
+                components: ['Link'],
+                specialLink: ['hrefLeft', 'hrefRight'],
+                aspects: ['invalidHref', 'preferButton'],
+            },
+        ],
         'arrow-body-style': ['warn', 'as-needed'],
         camelcase: 'off',
         'class-methods-use-this': 'off',
-        indent: ['error', 4],
+        'max-statements': ['warn', 20],
         'new-cap': ['error', { capIsNew: false }],
         'no-duplicate-imports': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
         'no-param-reassign': ['error', { ignorePropertyModificationsFor: ['el', 'ref', 'event'] }],
         'no-plusplus': 'off',
         'no-shadow': ['error', { builtinGlobals: false, hoist: 'functions', allow: ['describe'] }],
-        'react/jsx-filename-extension': ['error', { extensions: ['.js'] }],
-        'react/jsx-indent': ['error', 4],
+        'id-length': 'off',
+        'no-nested-ternary': 'off',
+        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
         'react/jsx-indent-props': ['error', 4],
         'react/require-extension': 'off',
+        'react/prop-types': 'off',
+        'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
         'react/sort-comp': [
             'error',
             {
@@ -45,27 +69,31 @@ module.exports = {
                 ],
             },
         ],
-        'object-curly-newline': [
-            'error',
-            {
-                ObjectExpression: { minProperties: 6, multiline: true, consistent: true },
-                ObjectPattern: { minProperties: 6, multiline: true, consistent: true },
-            },
-        ],
+        'no-use-before-define': 'off',
+        'prettier/prettier': ['error', prettierOptions],
         'import/prefer-default-export': 'off',
         'import/no-extraneous-dependencies': 'off',
         'import/no-duplicates': 'error',
         'import/no-named-as-default': 'off',
-
-        'jsx-a11y/no-static-element-interactions': 'off',
-        'jsx-a11y/no-noninteractive-tabindex': 'off',
-        'jsx-a11y/media-has-caption': 'off',
-        'jsx-a11y/mouse-events-have-key-events': 'off',
-
         'comma-dangle': ['error', 'only-multiline'],
-        'no-underscore-dangle': 'off',
-        'mocha/no-exclusive-tests': 'error',
-        "prefer-destructuring": ["error", {"object": true, "array": false}],
-        "prefer-promise-reject-errors": "off"
+        'react-hooks/rules-of-hooks': 'error',
+        'import/extensions': [
+            'error',
+            'ignorePackages',
+            {
+                js: 'never',
+                jsx: 'never',
+                ts: 'never',
+                tsx: 'never',
+            },
+        ],
+    },
+    settings: {
+        'import/resolver': {
+            // resolver needed for different platforms and platform groups
+            node: {
+                extensions: ['.js', '.smarttv.js', '.jsx', '.ts', '.tsx'],
+            },
+        },
     },
 };

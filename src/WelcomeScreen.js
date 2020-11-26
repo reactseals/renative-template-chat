@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
-import {
-    SafeAreaView, Text, TouchableOpacity, Image,
-} from 'react-native';
+import React from 'react';
+import { SafeAreaView, Text, TouchableOpacity, Image } from 'react-native';
+import { useNavigate } from 'renative';
 import styles from '../platformAssets/runtime/welcome.styles';
-import colors from '../platformAssets/runtime/colors';
-import { useNavigate } from 'renative'
+import splashImg from '../platformAssets/runtime/logoChat.png';
+/* import colors from '../platformAssets/runtime/colors';
+ */
+const WelcomeScreen = (props) => {
+    const navigate = useNavigate(props);
 
-
-console.disableYellowBox = true;
-
-export default class Home extends Component {
     // Set button active style
-    buttonActiveStyle = (element) => {
+    /*     const buttonActiveStyle = (element) => {
         element.setNativeProps({
             style: {
                 backgroundColor: colors.activeColorTertiary,
@@ -21,37 +19,29 @@ export default class Home extends Component {
     };
 
     // Set button inactive style
-    buttonInactiveStyle = (element) => {
+    const buttonInactiveStyle = (element) => {
         element.setNativeProps({
             style: {
                 backgroundColor: colors.activeBackgroundColor,
             },
         });
-    };
+    }; */
 
-    render() {
-        const navigate = useNavigate(this.props);
+    return (
+        <SafeAreaView style={styles.container}>
+            <Image source={splashImg} style={styles.img} resizeMode="contain" />
 
-        return (
-            <SafeAreaView style={styles.container}>
-                <Image
-                    source={require('../platformAssets/runtime/logoChat.png')}
-                    style={styles.img}
-                    resizeMode="contain"
-                />
+            <TouchableOpacity
+                /*              ref={(component) => (button = component)}
+                onFocus={() => buttonActiveStyle(button)}
+                onBlur={() => buttonInactiveStyle(button)} */
+                style={styles.button}
+                onPress={() => navigate('chat', '/chat')}
+            >
+                <Text style={styles.buttonText}>Let&apos;s Chat</Text>
+            </TouchableOpacity>
+        </SafeAreaView>
+    );
+};
 
-                <TouchableOpacity
-                    ref={component => this.button = component}
-                    onFocus={() => this.buttonActiveStyle(this.button)}
-                    onBlur={() => this.buttonInactiveStyle(this.button)}
-                    style={styles.button}
-                    onPress={() => navigate('chat', '/chat')}
-                >
-                    <Text style={styles.buttonText}>
-                        Let's Chat
-                    </Text>
-                </TouchableOpacity>
-            </SafeAreaView>
-        );
-    }
-}
+export default WelcomeScreen;

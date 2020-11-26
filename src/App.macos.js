@@ -1,3 +1,19 @@
+import React from 'react';
+import { View } from 'react-native';
+import { Router } from '@reach/router';
+import WelcomeScreen from './WelcomeScreen';
+import ChatScreen from './ChatScreen';
+
+const App = () => (
+    <View>
+        <Router>
+            <WelcomeScreen path="/" />
+            <ChatScreen path="chat" />
+        </Router>
+    </View>
+);
+export default App;
+
 /* import { createSwitchNavigator } from '@react-navigation/core';
 import { createBrowserApp } from '@react-navigation/web';
 import WelcomeScreen from './WelcomeScreen';
@@ -31,13 +47,3 @@ const AppNavigator = createSwitchNavigator(
 
 export default createBrowserApp(AppNavigator);
  */
-import React from 'react';
-import { useRouter } from 'next/router';
-//import ScreenHome from '../components/screenHome';
-import { View, Text} from 'react-native';
-
-const App = () => (
-    
-    <View><Text>MACOS RUNS HERE{/* <ScreenHome router={useRouter()} /> */}</Text></View>
-);
-export default App;

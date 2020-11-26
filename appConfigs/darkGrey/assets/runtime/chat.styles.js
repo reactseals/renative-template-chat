@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {isPlatformWeb, isPlatformAndroid, isPlatformMacos} from 'renative';
+import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
 import colors from './colors';
 import fonts from './chatFonts';
 
@@ -13,8 +13,8 @@ let loginContainerHeight;
 if (isPlatformWeb) {
     position = 'fixed';
     marginBottom = 30;
-    height = "100vh";
-    loginContainerHeight = "100vh";
+    height = '100vh';
+    loginContainerHeight = '100vh';
 }
 
 if (isPlatformAndroid) {
@@ -23,6 +23,7 @@ if (isPlatformAndroid) {
 
 if (isPlatformMacos) {
     marginTop = 40;
+    loginContainerHeight = '100vh';
 }
 
 export default StyleSheet.create({
@@ -31,7 +32,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: colors.backgroundColor,
-        minHeight:loginContainerHeight,
+        minHeight: loginContainerHeight,
     },
     inputContainer: {
         width: '100%',
@@ -75,7 +76,7 @@ export default StyleSheet.create({
         height,
     },
     chatMessagesContainer: {
-        marginTop
+        marginTop,
     },
     chatInput: {
         flex: 1,
@@ -95,21 +96,21 @@ export default StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         alignSelf: 'flex-start',
-        maxWidth: '98.5%'
+        maxWidth: '98.5%',
     },
     message: {
         backgroundColor: colors.messageBackground,
         borderRadius: 20,
         padding: 8,
         alignSelf: 'flex-start',
-        maxWidth: '100%'
+        maxWidth: '100%',
     },
     nicknameText: {
         color: colors.nicknameColor,
         fontWeight: 'bold',
         marginBottom: 3,
         fontFamily,
-        marginLeft: 8
+        marginLeft: 8,
     },
     text: {
         color: colors.chatTextColor,
@@ -120,14 +121,14 @@ export default StyleSheet.create({
         marginTop: 5,
         marginBottom: 5,
         alignSelf: 'flex-end',
-        maxWidth: '98.5%'
+        maxWidth: '98.5%',
     },
     userMessage: {
         backgroundColor: colors.userMessageBackground,
         borderRadius: 20,
         padding: 8,
         alignSelf: 'flex-end',
-        maxWidth: '100%'
+        maxWidth: '100%',
     },
     userNicknameText: {
         color: colors.userNicknameColor,
@@ -135,10 +136,10 @@ export default StyleSheet.create({
         marginBottom: 3,
         textAlign: 'right',
         fontFamily,
-        marginRight: 8
+        marginRight: 8,
     },
     userText: {
         color: colors.textColor,
-        textAlign: 'right'
+        textAlign: 'right',
     },
 });

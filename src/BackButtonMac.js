@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import {isPlatformMacos} from 'renative';
+import { isPlatformMacos } from 'renative';
+import { navigate } from '@reach/router';
 import colors from '../platformAssets/runtime/colors';
 
 const styles = StyleSheet.create({
@@ -17,22 +18,18 @@ const styles = StyleSheet.create({
     backArrow: {
         color: colors.textColor,
         fontSize: 30,
-        marginLeft: 25
-    }
+        marginLeft: 25,
+    },
 });
-
-const BackButtonMac = props => (
-    (isPlatformMacos ? (
+// maybe make navigate more reusable, this could work not only on mac
+// figure out first if this will be needed in the future
+const BackButtonMac = () =>
+    isPlatformMacos ? (
         <View style={styles.backArrowContainer}>
-            <TouchableOpacity
-                onPress={() => props.navigate('Welcome')}
-            >
-                <Text style={styles.backArrow}>
-                    {'<'}
-                </Text>
+            <TouchableOpacity onPress={() => navigate('/', '/')}>
+                <Text style={styles.backArrow}>{'<'}</Text>
             </TouchableOpacity>
         </View>
-    ) : (null))
-);
+    ) : null;
 
 export default BackButtonMac;

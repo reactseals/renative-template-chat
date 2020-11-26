@@ -1,11 +1,9 @@
-import React from 'react'
-import ChatScreen from '../ChatScreen';
+import React from 'react';
 import { useRouter } from 'next/router';
+import ChatScreen from '../ChatScreenNew';
 
-const Chat = () => {
-    return (
-        <ChatScreen router={useRouter()} headerHeight={1000}/>
-    )
-}
+const Chat = () => (
+    <ChatScreen router={useRouter()} headerHeight={1000} nickname="poggers" email="spoopers" />
+);
 
-export default Chat
+export default Chat;
