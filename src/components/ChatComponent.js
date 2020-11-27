@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {
     View,
-    Text,
     ScrollView,
     KeyboardAvoidingView,
     Dimensions,
@@ -9,84 +8,92 @@ import {
     Keyboard,
 } from 'react-native';
 import { Icon, isPlatformWeb, isPlatformAndroid, useNavigate } from 'renative';
-import styles from '../platformAssets/runtime/chat.styles';
-import firebase from '../projectConfig/firebase';
-import Activity from './ActivityIndicator';
-import BackButtonMac from './BackButtonMac';
-import colors from '../platformAssets/runtime/colors';
-import CustomTextInput from './CustomTextInput';
+import styles from '../../platformAssets/runtime/chat.styles';
+import firebase from '../../projectConfig/firebase';
+import Activity from '../ActivityIndicator';
+import BackButtonMac from '../BackButtonMac';
+import colors from '../../platformAssets/runtime/colors';
+import CustomTextInput from '../CustomTextInput';
+import ChatMessage from './ChatMessage';
 
-const ChatScreenNew = ({ nickname, email, initialUserLogin, ...props }) => {
+const ChatComponent = ({ nickname, email, ...props }) => {
     // should prolly rename msg to currentMsg
     const [chatState, setChatState] = useState({ msg: '', messages: {} });
+    const [textInputVal, setTextInputVal] = useState('');
     const scrollViewRef = useRef(null);
     const chatRoom = firebase.database().ref().child('chatrooms').child('global');
     const navigate = useNavigate(props);
     const { height } = Dimensions.get('window');
     let keyboardDidShowListener;
+
     useEffect(() => {
         chatRoom.on('value', getNewMessages);
         keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyBoardListener);
-
         return () => {
             keyboardDidShowListener.remove();
             chatRoom.off('value', getNewMessages);
         };
-    });
+    }, []);
 
-    // Add message to state
-    const handleMessage = (text) => {
-        setChatState((prevState) => ({ ...prevState, msg: text }));
-    };
+    useEffect(() => {
+        // Scroll handle on new message arrival for Web
+        if (isPlatformWeb) {
+            scrollViewRef.current.scrollToEnd({ animated: true });
+        }
+        // needs refactor/ later
+        // Scroll handle on log in for Web
+        if (isPlatformWeb) {
+            scrollViewRef.current.scrollToEnd({ animated: false });
+        }
+    }, [chatState]);
+
     // Push messsage on 'Enter' press
     const handleKeyPress = (e) => {
-        const { msg } = chatState;
-        if (msg.trim() !== '' && e.key === 'Enter') {
+        if (textInputVal.trim() !== '' && e.key === 'Enter') {
             // Send the message from chat input field
             chatRoom.push({
                 nickname,
                 email,
-                msg,
+                msg: textInputVal,
             });
             // Clear chat message input field
-            setChatState((prevState) => ({ ...prevState, msg: '' }));
+            setTextInputVal('');
         }
     };
     // Get new messages
     const getNewMessages = (snap) => {
         // Update state if not null
         if (snap.val()) {
-            setChatState((prevState) => ({ ...prevState, messages: snap.val() }));
+            setChatState({ messages: snap.val() });
+            console.log(snap.val());
         }
     };
     // Push messsage on press
     const handleButtonPress = () => {
-        const { msg } = chatState;
-        if (msg.trim() !== '') {
+        if (textInputVal.trim() !== '') {
             // Send the message from chat input field
             chatRoom.push({
                 nickname,
                 email,
-                msg,
+                msg: textInputVal,
             });
             // Clear chat message input field
-            setChatState((prevState) => ({ ...prevState, msg: '' }));
+            setTextInputVal('');
         }
     };
     // Scroll handle for mobile
     const handleMobileScroll = () => {
-        if (!isPlatformWeb && initialUserLogin) {
+        if (!isPlatformWeb) {
             scrollViewRef.current.scrollToEnd({ animated: false });
-        } else if (!isPlatformWeb) {
+        } else {
             scrollViewRef.current.scrollToEnd({ animated: true });
         }
     };
     // Keyboard listener
     const keyBoardListener = () => {
-        /*         const { isUserLaggedIn } = this.state;
-        if (isUserLaggedIn) {
-            this.scrollView.scrollToEnd({ animated: false });
-        } */
+        if (nickname) {
+            scrollViewRef.current.scrollToEnd({ animated: false });
+        }
     };
     // in the future export to the json styling configs
     const textInputActiveStyle = {
@@ -123,29 +130,12 @@ const ChatScreenNew = ({ nickname, email, initialUserLogin, ...props }) => {
                         >
                             {Object.keys(chatState.messages).map((message) => (
                                 <View key={message}>
-                                    {nickname === chatState.messages[message].nickname ? (
-                                        <View style={styles.userMessageContainer}>
-                                            <Text style={styles.userNicknameText}>
-                                                {chatState.messages[message].nickname}
-                                            </Text>
-                                            <View style={styles.userMessage}>
-                                                <Text style={styles.userText}>
-                                                    {chatState.messages[message].msg}
-                                                </Text>
-                                            </View>
-                                        </View>
-                                    ) : (
-                                        <View style={styles.messageContainer}>
-                                            <Text style={styles.nicknameText}>
-                                                {chatState.messages[message].nickname}
-                                            </Text>
-                                            <View style={styles.message}>
-                                                <Text style={styles.text}>
-                                                    {chatState.messages[message].msg}
-                                                </Text>
-                                            </View>
-                                        </View>
-                                    )}
+                                    <ChatMessage
+                                        message={chatState.messages[message]}
+                                        belongsToUser={
+                                            nickname === chatState.messages[message].nickname
+                                        }
+                                    />
                                 </View>
                             ))}
                         </ScrollView>
@@ -154,13 +144,17 @@ const ChatScreenNew = ({ nickname, email, initialUserLogin, ...props }) => {
                             <CustomTextInput
                                 blurredStyle={textInputInactiveStyle}
                                 focusedStyle={textInputActiveStyle}
-                                value={chatState.msg}
+                                value={textInputVal}
+                                autofocus={isPlatformWeb}
                                 style={styles.chatInput}
                                 selectionColor={colors.activeColorPrimary}
                                 placeholder="Type a message ..."
                                 placeholderTextColor={colors.activeColorPrimary}
                                 outline="none"
-                                onChangeText={handleMessage}
+                                onChangeText={(value) => {
+                                    setTextInputVal(value);
+                                    console.log(textInputVal);
+                                }}
                                 onKeyPress={handleKeyPress}
                                 maxLength={6018}
                             />
@@ -179,4 +173,4 @@ const ChatScreenNew = ({ nickname, email, initialUserLogin, ...props }) => {
     );
 };
 
-export default ChatScreenNew;
+export default ChatComponent;

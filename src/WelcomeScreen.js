@@ -36,7 +36,7 @@ const WelcomeScreen = (props) => {
                 onFocus={() => buttonActiveStyle(button)}
                 onBlur={() => buttonInactiveStyle(button)} */
                 style={styles.button}
-                onPress={() => navigate('chat', '/chat')}
+                onPress={() => navigate('auth', '/auth')}
             >
                 <Text style={styles.buttonText}>Let&apos;s Chat</Text>
             </TouchableOpacity>

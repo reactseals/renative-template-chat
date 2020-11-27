@@ -3,7 +3,7 @@ import firebase from '@firebase/app'; // UN-COMMENT THIS ONCE CONFIGURED
 import 'firebase/database';
 import 'firebase/storage';
 
-/* const config = {
+const config = {
     apiKey: '<your-api-key>',
     authDomain: '<your-auth-domain>',
     databaseURL: '<your-database-url>',
@@ -12,20 +12,9 @@ import 'firebase/storage';
     messagingSenderId: '<your-sender-id>',
     appId: '<your-app-id>',
 };
- */
-// on push to main/master personal credentials should be removed, here only for testing purposes
-const config = {
-    apiKey: "AIzaSyBe_QxdEBWOr7dJ-xLZuK1ceZCUULKNu0Q",
-    authDomain: "rnv-template-chat.firebaseapp.com",
-    databaseURL: "https://rnv-template-chat.firebaseio.com",
-    projectId: "rnv-template-chat",
-    storageBucket: "rnv-template-chat.appspot.com",
-    messagingSenderId: "654798159212",
-    appId: "1:654798159212:web:04e932e2e4cd42cc158749"
-  };
-  if (!firebase.apps.length) {
+
+if (!firebase.apps.length) {
     firebase.initializeApp(config);
 }
-
 
 export default firebase;

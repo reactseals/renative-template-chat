@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
-import { isPlatformWeb, isPlatformAndroid } from 'renative';
+import { isPlatformWeb, isPlatformAndroid, useNavigate } from 'renative';
 import styles from '../platformAssets/runtime/chat.styles';
 import BackButtonMac from './BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
 import CustomTextInput from './CustomTextInput';
 import CustomTouchableOpacity from './CustomTouchableOpacity';
 
-const AuthScreen = ({ headerHeight }) => {
+const AuthScreen = ({ headerHeight, ...props }) => {
+    const navigate = useNavigate(props);
     const [authFormInfo, setAuthFormInfo] = useState({
         nickname: '',
         email: '',
@@ -26,6 +27,23 @@ const AuthScreen = ({ headerHeight }) => {
                 ...prevState,
                 isUserLoggedIn: true,
             }));
+            /*             if (isPlatformWeb) {
+
+            } else {
+                navigate('chat', '/chat', { nickname, email, ...props });
+            } */
+            navigate(
+                'chat',
+                { pathname: '/chat', query: { nickname, email, ...props } }, // NextJS props Query
+                { nickname, email, ...props } // React Navigation for mobile Props query
+            );
+            /*  props.navigation.navigate('chat', { nickname, email, ...props }); */
+
+            // console.log(nickname, 'pushed nickname');
+            // router.push({
+            //     pathname: '/chat',
+            //     query: { nickname, email, ...props },
+            // });
         }
         /*         setTimeout(() => {
             this.setState({ initialUserLogin: false });
@@ -78,7 +96,7 @@ const AuthScreen = ({ headerHeight }) => {
                 selectionColor={colors.activeColorPrimary}
                 autoCapitalize="none"
                 onChangeText={handleChange}
-                name="nickname"
+                name="nickname" // name of the property in the state object that is gonna be edited
             />
 
             <CustomTextInput
@@ -91,7 +109,7 @@ const AuthScreen = ({ headerHeight }) => {
                 selectionColor={colors.activeColorPrimary}
                 autoCapitalize="none"
                 onChangeText={handleChange}
-                name="email"
+                name="email" // name of the property in the state object that is gonna be edited
             />
 
             <CustomTouchableOpacity

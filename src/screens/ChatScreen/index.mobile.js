@@ -1,5 +1,5 @@
 import React from 'react';
-import Chat from './components/ChatComponent';
+import Chat from '../../components/ChatComponent';
 
 const ChatScreen = ({ route, navigation }) => {
     const { nickname, email } = route.params;

@@ -35,7 +35,7 @@ const MainNavigator = () => (
             component={AuthScreen}
             options={{
                 headerBackground: greyHeaderBackground,
-                title: 'Chat',
+                title: 'Log in',
                 headerTintColor: colors.textColor,
                 headerTitleStyle: {
                     textAlign: 'center',
