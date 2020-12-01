@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
 import { isPlatformWeb, isPlatformAndroid, useNavigate, isPlatformMacos } from 'renative';
 import styles from '../platformAssets/runtime/chat.styles';
-import BackButtonMac from './BackButtonMac';
+import BackButtonMac from './components/BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
-import CustomTextInput from './CustomTextInput';
-import CustomTouchableOpacity from './CustomTouchableOpacity';
+import CustomTextInput from './components/CustomTextInput';
+import CustomTouchableOpacity from './components/CustomTouchableOpacity';
 
 const AuthScreen = ({ headerHeight, ...props }) => {
     const navigate = useNavigate(props);

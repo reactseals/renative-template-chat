@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import ChatScreen from '../components/ChatComponent';
+import ChatScreen from '../components/ChatWithFirebase';
 
 const Chat = () => {
     const router = useRouter();

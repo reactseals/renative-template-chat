@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
 import WelcomeScreen from './WelcomeScreen';
-import ChatScreen from './ChatScreen';
+import ChatScreen from './screens/ChatScreen/index.mobile';
 import colors from '../platformAssets/runtime/colors';
 import AuthScreen from './AuthScreen';
 

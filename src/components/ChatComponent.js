@@ -7,31 +7,23 @@ import {
     SafeAreaView,
     Keyboard,
 } from 'react-native';
-import { Icon, isPlatformWeb, isPlatformAndroid, useNavigate } from 'renative';
+import { Icon, isPlatformWeb, isPlatformAndroid } from 'renative';
 import styles from '../../platformAssets/runtime/chat.styles';
-import firebase from '../../projectConfig/firebase';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
 import colors from '../../platformAssets/runtime/colors';
 import CustomTextInput from './CustomTextInput';
 import ChatMessage from './ChatMessage';
 
-const ChatComponent = ({ nickname, email, ...props }) => {
-    // should prolly rename msg to currentMsg
-    const [chatState, setChatState] = useState({ msg: '', messages: {} });
+const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => {
     const [textInputVal, setTextInputVal] = useState('');
     const scrollViewRef = useRef(null);
-    const chatRoom = firebase.database().ref().child('chatrooms').child('global');
-    const navigate = useNavigate(props);
     const { height } = Dimensions.get('window');
     let keyboardDidShowListener;
-
     useEffect(() => {
-        chatRoom.on('value', getNewMessages);
         keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyBoardListener);
         return () => {
             keyboardDidShowListener.remove();
-            chatRoom.off('value', getNewMessages);
         };
     }, []);
 
@@ -45,38 +37,22 @@ const ChatComponent = ({ nickname, email, ...props }) => {
         if (isPlatformWeb) {
             scrollViewRef.current.scrollToEnd({ animated: false });
         }
-    }, [chatState]);
+    }, [messages]);
 
     // Push messsage on 'Enter' press
     const handleKeyPress = (e) => {
         if (textInputVal.trim() !== '' && e.key === 'Enter') {
             // Send the message from chat input field
-            chatRoom.push({
-                nickname,
-                email,
-                msg: textInputVal,
-            });
+            sendMessage(nickname, email, textInputVal);
             // Clear chat message input field
             setTextInputVal('');
-        }
-    };
-    // Get new messages
-    const getNewMessages = (snap) => {
-        // Update state if not null
-        if (snap.val()) {
-            setChatState({ messages: snap.val() });
-            console.log(snap.val());
         }
     };
     // Push messsage on press
     const handleButtonPress = () => {
         if (textInputVal.trim() !== '') {
             // Send the message from chat input field
-            chatRoom.push({
-                nickname,
-                email,
-                msg: textInputVal,
-            });
+            sendMessage(nickname, email, textInputVal);
             // Clear chat message input field
             setTextInputVal('');
         }
@@ -113,7 +89,7 @@ const ChatComponent = ({ nickname, email, ...props }) => {
 
     return (
         <SafeAreaView style={styles.chatContainer}>
-            {!chatState.messages ? (
+            {!messages ? (
                 <Activity />
             ) : (
                 <KeyboardAvoidingView
@@ -121,20 +97,18 @@ const ChatComponent = ({ nickname, email, ...props }) => {
                     keyboardVerticalOffset={height / 10}
                     behavior={isPlatformAndroid ? null : 'padding'}
                 >
-                    <BackButtonMac navigation={navigate} />
+                    <BackButtonMac />
                     <View style={styles.chatContainer}>
                         <ScrollView
                             ref={scrollViewRef}
                             style={styles.chatMessagesContainer}
                             onContentSizeChange={() => handleMobileScroll()}
                         >
-                            {Object.keys(chatState.messages).map((message) => (
+                            {Object.keys(messages).map((message) => (
                                 <View key={message}>
                                     <ChatMessage
-                                        message={chatState.messages[message]}
-                                        belongsToUser={
-                                            nickname === chatState.messages[message].nickname
-                                        }
+                                        message={messages[message]}
+                                        belongsToUser={nickname === messages[message].nickname}
                                     />
                                 </View>
                             ))}
