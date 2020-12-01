@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
-import { isPlatformWeb, isPlatformAndroid, useNavigate } from 'renative';
+import { isPlatformWeb, isPlatformAndroid, useNavigate, isPlatformMacos } from 'renative';
 import styles from '../platformAssets/runtime/chat.styles';
 import BackButtonMac from './BackButtonMac';
 import colors from '../platformAssets/runtime/colors';
@@ -32,11 +32,16 @@ const AuthScreen = ({ headerHeight, ...props }) => {
             } else {
                 navigate('chat', '/chat', { nickname, email, ...props });
             } */
-            navigate(
-                'chat',
-                { pathname: '/chat', query: { nickname, email, ...props } }, // NextJS props Query
-                { nickname, email, ...props } // React Navigation for mobile Props query
-            );
+            if (isPlatformMacos) {
+                navigate('/chat', {}, { state: { nickname, email } });
+            } else {
+                navigate(
+                    'chat',
+                    { pathname: '/chat', query: { nickname, email, ...props } }, // NextJS props Query
+                    { nickname, email, ...props } // React Navigation for mobile Props query
+                );
+            }
+
             /*  props.navigation.navigate('chat', { nickname, email, ...props }); */
 
             // console.log(nickname, 'pushed nickname');

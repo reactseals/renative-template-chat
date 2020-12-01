@@ -1,5 +1,5 @@
-import firebase from '@firebase/app'; // UN-COMMENT THIS ONCE CONFIGURED
-// import firebase from './firebaseFake'; // REMOVE THIS ONCE CONFIGURED
+// import firebase from '@firebase/app'; // UN-COMMENT THIS ONCE CONFIGURED
+import firebase from './firebaseFake'; // REMOVE THIS ONCE CONFIGURED
 import 'firebase/database';
 import 'firebase/storage';
 

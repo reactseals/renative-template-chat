@@ -10,10 +10,10 @@ import {
 import { Icon, isPlatformWeb, isPlatformAndroid, useNavigate } from 'renative';
 import styles from '../../platformAssets/runtime/chat.styles';
 import firebase from '../../projectConfig/firebase';
-import Activity from '../ActivityIndicator';
-import BackButtonMac from '../BackButtonMac';
+import Activity from './ActivityIndicator';
+import BackButtonMac from './BackButtonMac';
 import colors from '../../platformAssets/runtime/colors';
-import CustomTextInput from '../CustomTextInput';
+import CustomTextInput from './CustomTextInput';
 import ChatMessage from './ChatMessage';
 
 const ChatComponent = ({ nickname, email, ...props }) => {
