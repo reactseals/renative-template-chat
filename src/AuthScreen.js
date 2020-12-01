@@ -27,11 +27,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
                 ...prevState,
                 isUserLoggedIn: true,
             }));
-            /*             if (isPlatformWeb) {
-
-            } else {
-                navigate('chat', '/chat', { nickname, email, ...props });
-            } */
             if (isPlatformMacos) {
                 navigate('/chat', {}, { state: { nickname, email } });
             } else {
@@ -41,18 +36,7 @@ const AuthScreen = ({ headerHeight, ...props }) => {
                     { nickname, email, ...props } // React Navigation for mobile Props query
                 );
             }
-
-            /*  props.navigation.navigate('chat', { nickname, email, ...props }); */
-
-            // console.log(nickname, 'pushed nickname');
-            // router.push({
-            //     pathname: '/chat',
-            //     query: { nickname, email, ...props },
-            // });
         }
-        /*         setTimeout(() => {
-            this.setState({ initialUserLogin: false });
-        }, 1000); */
     };
 
     // in the future export to the json styling configs
@@ -87,9 +71,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
             style={styles.loginContainer}
             keyboardVerticalOffset={headerHeight}
         >
-            <Text>
-                {`${authFormInfo.email} ${authFormInfo.nickname} ${authFormInfo.isUserLoggedIn}`}
-            </Text>
             <BackButtonMac />
             <CustomTextInput
                 blurredStyle={textInputInactiveStyle}
