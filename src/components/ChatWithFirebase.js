@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../projectConfig/firebase';
-import ChatComponent from './ChatComponent.js';
+import ChatComponent from './ChatComponent';
 
 const ChatWithFirebase = (props) => {
     const [messages, setMessages] = useState(null);

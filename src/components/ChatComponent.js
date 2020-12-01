@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
     View,
     ScrollView,
@@ -7,14 +7,11 @@ import {
     SafeAreaView,
     Keyboard,
 } from 'react-native';
-import { Icon, isPlatformWeb, isPlatformAndroid } from 'renative';
+import { isPlatformWeb, isPlatformAndroid } from 'renative';
 import styles from '../sharedStyles/chatStyles';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
-import colors from '../../platformAssets/runtime/colors.json';
-import CustomTextInput from './CustomTextInput';
 import ChatMessage from './ChatMessage';
-import textInputStyles from '../sharedStyles/textInputStyles';
 import ChatInput from './ChatInput';
 
 const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => {
