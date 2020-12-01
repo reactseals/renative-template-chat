@@ -8,10 +8,10 @@ import {
     Keyboard,
 } from 'react-native';
 import { Icon, isPlatformWeb, isPlatformAndroid } from 'renative';
-import styles from '../../platformAssets/runtime/chat.styles';
+import styles from '../sharedStyles/chatStyles';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
-import colors from '../../platformAssets/runtime/colors';
+import colors from '../../platformAssets/runtime/colors.json';
 import CustomTextInput from './CustomTextInput';
 import ChatMessage from './ChatMessage';
 

@@ -7,7 +7,6 @@ const Chat = () => {
     return (
         <ChatScreen
             router={useRouter()}
-            headerHeight={1000}
             nickname={router.query.nickname}
             email={router.query.email}
         />

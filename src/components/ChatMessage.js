@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import styles from '../../platformAssets/runtime/chat.styles';
+import styles from '../sharedStyles/chatStyles';
 
 const ChatMessage = ({ message, belongsToUser }) =>
     // should refactor styling

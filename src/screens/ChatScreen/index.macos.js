@@ -4,7 +4,7 @@ import Chat from '../../components/ChatWithFirebase';
 
 const ChatScreen = ({ location }) => {
     const { nickname, email } = location.state;
-    return <Chat navigate={navigate} headerHeight={1000} nickname={nickname} email={email} />;
+    return <Chat navigate={navigate} nickname={nickname} email={email} />;
 };
 
 export default ChatScreen;

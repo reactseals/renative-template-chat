@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigate } from 'renative';
-import styles from '../platformAssets/runtime/welcome.styles';
+import styles from './sharedStyles/welcomeStyles';
 import splashImg from '../platformAssets/runtime/logoChat.png';
 /* import colors from '../platformAssets/runtime/colors';
  */

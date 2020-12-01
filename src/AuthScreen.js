@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
 import { isPlatformWeb, isPlatformAndroid, useNavigate, isPlatformMacos } from 'renative';
-import styles from '../platformAssets/runtime/chat.styles';
+import styles from './sharedStyles/chatStyles';
 import BackButtonMac from './components/BackButtonMac';
-import colors from '../platformAssets/runtime/colors';
+import colors from '../platformAssets/runtime/colors.json';
 import CustomTextInput from './components/CustomTextInput';
 import CustomTouchableOpacity from './components/CustomTouchableOpacity';
 

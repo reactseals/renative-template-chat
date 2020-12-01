@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { isPlatformMacos, isPlatformWeb } from 'renative';
-import colors from './colors';
+import colors from '../../platformAssets/runtime/colors.json';
 
 let containerHeight = '100%';
 

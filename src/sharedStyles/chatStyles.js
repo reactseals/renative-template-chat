@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
-import colors from './colors';
-import fonts from './chatFonts';
+import colors from '../../platformAssets/runtime/colors.json';
+import fonts from '../../platformAssets/runtime/chatFonts.json';
 
 let position;
 let marginBottom;
