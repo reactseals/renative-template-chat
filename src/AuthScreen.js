@@ -6,6 +6,7 @@ import BackButtonMac from './components/BackButtonMac';
 import colors from '../platformAssets/runtime/colors.json';
 import CustomTextInput from './components/CustomTextInput';
 import CustomTouchableOpacity from './components/CustomTouchableOpacity';
+import textInputStyles from './sharedStyles/textInputStyles';
 
 const AuthScreen = ({ headerHeight, ...props }) => {
     const navigate = useNavigate(props);
@@ -49,22 +50,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
     const buttonInactiveStyle = {
         backgroundColor: colors.activeBackgroundColor,
     };
-
-    // in the future export to the json styling configs
-    const textInputActiveStyle = {
-        backgroundColor: colors.activeColorSecondary,
-        shadowColor: 'rgba(0,0,0, .4)',
-        shadowOffset: { height: 1, width: 1 },
-        shadowOpacity: 1,
-        shadowRadius: 1,
-        outline: 'none',
-    };
-
-    // in the future export to the json styling configs
-    const textInputInactiveStyle = {
-        backgroundColor: colors.backgroundColor,
-        shadowOpacity: isPlatformWeb ? 'none' : 0,
-    };
     return (
         <KeyboardAvoidingView
             behavior={isPlatformAndroid ? null : 'padding'}
@@ -73,8 +58,8 @@ const AuthScreen = ({ headerHeight, ...props }) => {
         >
             <BackButtonMac />
             <CustomTextInput
-                blurredStyle={textInputInactiveStyle}
-                focusedStyle={textInputActiveStyle}
+                blurredStyle={textInputStyles.inActive}
+                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Nickname"
@@ -86,8 +71,8 @@ const AuthScreen = ({ headerHeight, ...props }) => {
             />
 
             <CustomTextInput
-                blurredStyle={textInputInactiveStyle}
-                focusedStyle={textInputActiveStyle}
+                blurredStyle={textInputStyles.inActive}
+                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Email"

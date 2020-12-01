@@ -13,7 +13,7 @@ let loginContainerHeight;
 if (isPlatformWeb) {
     position = 'fixed';
     marginBottom = 30;
-    height = '100vh';
+    height = '100vh - 40';
     loginContainerHeight = '100vh';
 }
 
@@ -24,6 +24,7 @@ if (isPlatformAndroid) {
 if (isPlatformMacos) {
     marginTop = 40;
     loginContainerHeight = '100vh';
+    height = '100vh';
 }
 
 export default StyleSheet.create({
