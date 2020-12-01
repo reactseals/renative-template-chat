@@ -30,12 +30,12 @@ const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => 
     useEffect(() => {
         // Scroll handle on new message arrival for Web
         if (isPlatformWeb) {
-            scrollViewRef.current.scrollToEnd({ animated: true });
+            scrollViewRef.current?.scrollToEnd({ animated: true });
         }
         // needs refactor/ later
         // Scroll handle on log in for Web
         if (isPlatformWeb) {
-            scrollViewRef.current.scrollToEnd({ animated: false });
+            scrollViewRef.current?.scrollToEnd({ animated: false });
         }
     }, [messages]);
 
