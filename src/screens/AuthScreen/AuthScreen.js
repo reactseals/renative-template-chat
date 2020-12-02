@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView } from 'react-native';
-import { isPlatformWeb, isPlatformAndroid, useNavigate, isPlatformMacos } from 'renative';
-import styles from './sharedStyles/chatStyles';
-import BackButtonMac from './components/BackButtonMac';
-import colors from '../platformAssets/runtime/colors.json';
-import CustomTextInput from './components/CustomTextInput';
-import CustomTouchableOpacity from './components/CustomTouchableOpacity';
-import textInputStyles from './sharedStyles/textInputStyles';
+import { isPlatformAndroid, useNavigate, isPlatformMacos } from 'renative';
+import styles from '../../sharedStyles/chatStyles';
+import BackButtonMac from '../../components/BackButtonMac';
+import colors from '../../../platformAssets/runtime/colors.json';
+import CustomTextInput from '../../components/CustomTextInput';
+import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
+import textInputStyles from '../../sharedStyles/textInputStyles';
 
 const AuthScreen = ({ headerHeight, ...props }) => {
     const navigate = useNavigate(props);

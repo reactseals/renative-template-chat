@@ -23,7 +23,6 @@ const ChatInput = ({ handleKeyPress, handleButtonPress }) => {
                 outline="none"
                 onChangeText={(value) => {
                     setTextInputVal(value);
-                    console.log(textInputVal);
                 }}
                 onKeyPress={(e) => handleKeyPress(e, textInputVal, setTextInputVal)}
                 maxLength={6018}

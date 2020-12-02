@@ -1,8 +1,8 @@
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigate } from 'renative';
-import styles from './sharedStyles/welcomeStyles';
-import splashImg from '../platformAssets/runtime/logoChat.png';
+import styles from '../../sharedStyles/welcomeStyles';
+import splashImg from '../../../platformAssets/runtime/logoChat.png';
 
 const WelcomeScreen = (props) => {
     const navigate = useNavigate(props);

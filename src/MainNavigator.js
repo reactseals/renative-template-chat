@@ -1,10 +1,10 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
-import WelcomeScreen from './WelcomeScreen';
+import WelcomeScreen from './screens/WelcomeScreen/WelcomeScreen';
 import ChatScreen from './screens/ChatScreen/index.mobile';
 import colors from '../platformAssets/runtime/colors.json';
-import AuthScreen from './AuthScreen';
+import AuthScreen from './screens/AuthScreen/AuthScreen';
 
 const Stack = createStackNavigator();
 

@@ -21,8 +21,7 @@ const styles = StyleSheet.create({
         marginLeft: 25,
     },
 });
-// maybe make navigate more reusable, this could work not only on mac
-// figure out first if this will be needed in the future
+
 const BackButtonMac = () =>
     isPlatformMacos ? (
         <View style={styles.backArrowContainer}>
