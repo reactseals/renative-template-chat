@@ -33,8 +33,8 @@ const AuthScreen = ({ headerHeight, ...props }) => {
             } else {
                 navigate(
                     'chat',
-                    { pathname: '/chat', query: { nickname, email, ...props } }, // NextJS props Query
-                    { nickname, email, ...props } // React Navigation for mobile Props query
+                    { pathname: '/chat', query: { nickname, email } }, // NextJS props Query
+                    { nickname, email } // React Navigation for mobile Props query
                 );
             }
         }

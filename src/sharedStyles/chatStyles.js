@@ -74,7 +74,8 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: colors.backgroundColor,
         marginBottom,
-        height,
+        maxHeight: height,
+        minHeight: height,
     },
     chatMessagesContainer: {
         marginTop,

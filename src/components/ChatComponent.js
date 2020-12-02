@@ -28,7 +28,9 @@ const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => 
     useEffect(() => {
         // Scroll handle on new message arrival for Web
         if (isPlatformWeb) {
-            scrollViewRef.current?.scrollToEnd({ animated: true });
+            console.log(messages);
+            console.log('slog');
+            scrollViewRef.current?.scrollToEnd({ animated: false });
         }
     }, [messages]);
 
@@ -70,7 +72,7 @@ const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => 
                 <Activity />
             ) : (
                 <KeyboardAvoidingView
-                    style={{ flex: 1 }}
+                    style={{ flex: 1, height: height - 40 }}
                     keyboardVerticalOffset={height / 10}
                     behavior={isPlatformAndroid ? null : 'padding'}
                 >
