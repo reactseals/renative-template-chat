@@ -14,7 +14,7 @@ import BackButtonMac from './BackButtonMac';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 
-const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => {
+const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     const scrollViewRef = useRef(null);
     const { height } = Dimensions.get('window');
     let keyboardDidShowListener;
@@ -28,8 +28,6 @@ const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => 
     useEffect(() => {
         // Scroll handle on new message arrival for Web
         if (isPlatformWeb) {
-            console.log(messages);
-            console.log('slog');
             scrollViewRef.current?.scrollToEnd({ animated: false });
         }
     }, [messages]);
@@ -78,6 +76,7 @@ const ChatComponent = ({ nickname, email, sendMessage, messages, ...props }) => 
                 >
                     <BackButtonMac />
                     <View style={styles.chatContainer}>
+                        {/* Could be changed to FlatList for performance */}
                         <ScrollView
                             ref={scrollViewRef}
                             style={styles.chatMessagesContainer}

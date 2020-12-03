@@ -8,12 +8,14 @@ import AuthScreen from './screens/AuthScreen/AuthScreen';
 
 const Stack = createStackNavigator();
 
-const greyHeaderBackground = () => (
-    <LinearGradient
-        colors={[colors.activeColorSecondary, colors.backgroundColor]}
-        style={{ flex: 1 }}
-    />
-);
+const globalScreenOptions = {
+    headerBackground: greyHeaderBackground,
+    headerTintColor: colors.textColor,
+    headerTitleStyle: {
+        textAlign: 'center',
+        flexGrow: 1,
+    },
+};
 
 const MainNavigator = () => (
     <Stack.Navigator>
@@ -21,42 +23,33 @@ const MainNavigator = () => (
             name="welcome"
             component={WelcomeScreen}
             options={{
-                headerBackground: greyHeaderBackground,
                 title: 'Welcome',
-                headerTintColor: colors.textColor,
-                headerTitleStyle: {
-                    textAlign: 'center',
-                    flexGrow: 1,
-                },
+                ...globalScreenOptions,
             }}
         />
         <Stack.Screen
             name="auth"
             component={AuthScreen}
             options={{
-                headerBackground: greyHeaderBackground,
                 title: 'Log in',
-                headerTintColor: colors.textColor,
-                headerTitleStyle: {
-                    textAlign: 'center',
-                    flexGrow: 1,
-                },
+                ...globalScreenOptions,
             }}
         />
         <Stack.Screen
             name="chat"
             component={ChatScreen}
             options={{
-                headerBackground: greyHeaderBackground,
                 title: 'Chat',
-                headerTintColor: colors.textColor,
-                headerTitleStyle: {
-                    textAlign: 'center',
-                    flexGrow: 1,
-                },
+                ...globalScreenOptions,
             }}
         />
     </Stack.Navigator>
+);
+const greyHeaderBackground = () => (
+    <LinearGradient
+        colors={[colors.activeColorSecondary, colors.backgroundColor]}
+        style={{ flex: 1 }}
+    />
 );
 
 export default MainNavigator;

@@ -4,6 +4,15 @@ import { isPlatformMacos } from 'renative';
 import { navigate } from '@reach/router';
 import colors from '../../platformAssets/runtime/colors.json';
 
+const BackButtonMac = () =>
+    isPlatformMacos ? (
+        <View style={styles.backArrowContainer}>
+            <TouchableOpacity onPress={() => navigate('/', '/')}>
+                <Text style={styles.backArrow}>{'<'}</Text>
+            </TouchableOpacity>
+        </View>
+    ) : null;
+
 const styles = StyleSheet.create({
     backArrowContainer: {
         position: 'absolute',
@@ -21,14 +30,5 @@ const styles = StyleSheet.create({
         marginLeft: 25,
     },
 });
-
-const BackButtonMac = () =>
-    isPlatformMacos ? (
-        <View style={styles.backArrowContainer}>
-            <TouchableOpacity onPress={() => navigate('/', '/')}>
-                <Text style={styles.backArrow}>{'<'}</Text>
-            </TouchableOpacity>
-        </View>
-    ) : null;
 
 export default BackButtonMac;
