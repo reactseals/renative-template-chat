@@ -8,6 +8,13 @@ import AuthScreen from './screens/AuthScreen/AuthScreen';
 
 const Stack = createStackNavigator();
 
+const greyHeaderBackground = () => (
+    <LinearGradient
+        colors={[colors.activeColorSecondary, colors.backgroundColor]}
+        style={{ flex: 1 }}
+    />
+);
+
 const globalScreenOptions = {
     headerBackground: greyHeaderBackground,
     headerTintColor: colors.textColor,
@@ -44,12 +51,6 @@ const MainNavigator = () => (
             }}
         />
     </Stack.Navigator>
-);
-const greyHeaderBackground = () => (
-    <LinearGradient
-        colors={[colors.activeColorSecondary, colors.backgroundColor]}
-        style={{ flex: 1 }}
-    />
 );
 
 export default MainNavigator;
