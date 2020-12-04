@@ -83,6 +83,7 @@
         "prettier": "^2.2.0",
         "renative-template-hello-world": "0.31.3",
         "rnv": "0.31.3",
+        "url-loader": "^4.1.1",
         "xcode": "2.0.0"
     },
     "optionalDependencies": {

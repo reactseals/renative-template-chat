@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Text, KeyboardAvoidingView } from 'react-native';
-import { isPlatformAndroid, useNavigate, isPlatformMacos } from 'renative';
-import styles from '../../sharedStyles/chatStyles';
+import { Text, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { isPlatformAndroid, useNavigate, isPlatformMacos, isPlatformWeb } from 'renative';
 import BackButtonMac from '../../components/BackButtonMac';
 import colors from '../../../platformAssets/runtime/colors.json';
 import CustomTextInput from '../../components/CustomTextInput';
@@ -13,7 +12,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
     const [authFormInfo, setAuthFormInfo] = useState({
         nickname: '',
         email: '',
-        isUserLoggedIn: false,
     });
     // Add required field to state
     const handleChange = (value, propertyName) => {
@@ -95,4 +93,41 @@ const AuthScreen = ({ headerHeight, ...props }) => {
     );
 };
 
+const styles = StyleSheet.create({
+    loginContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: colors.backgroundColor,
+        minHeight: isPlatformWeb || isPlatformMacos ? '100vh' : null,
+    },
+    loginInput: {
+        margin: 15,
+        height: 40,
+        width: 200,
+        borderColor: colors.activeColorSecondary,
+        borderWidth: 1,
+        alignItems: 'center',
+        color: colors.textColor,
+        textAlign: 'center',
+        borderRadius: 10,
+    },
+    loginButton: {
+        backgroundColor: colors.activeBackgroundColor,
+        height: 40,
+        width: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 5,
+        borderRadius: 10,
+        shadowColor: 'rgba(0,0,0, .4)',
+        shadowOffset: { height: 1, width: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 1,
+        elevation: 3,
+    },
+    buttonText: {
+        color: colors.buttonTextColor,
+    },
+});
 export default AuthScreen;

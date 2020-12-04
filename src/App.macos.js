@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Router } from '@reach/router';
 import WelcomeScreen from './screens/WelcomeScreen/WelcomeScreen';
-import ChatScreen from './screens/ChatScreen/index.macos';
+import ChatScreen from './screens/ChatScreen';
 import AuthScreen from './screens/AuthScreen/AuthScreen';
 // Entry for MacOS
 const App = () => (

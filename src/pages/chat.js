@@ -1,16 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import ChatScreen from '../components/ChatWithFirebase';
+import ChatScreen from '../screens/ChatScreen';
 
-const Chat = () => {
-    const router = useRouter();
-    return (
-        <ChatScreen
-            router={useRouter()}
-            nickname={router.query.nickname}
-            email={router.query.email}
-        />
-    );
-};
+const Chat = () => <ChatScreen />;
 
 export default Chat;

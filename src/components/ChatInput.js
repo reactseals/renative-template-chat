@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Icon, isPlatformWeb } from 'renative';
-import styles from '../sharedStyles/chatStyles';
 import colors from '../../platformAssets/runtime/colors.json';
 import CustomTextInput from './CustomTextInput';
 import textInputStyles from '../sharedStyles/textInputStyles';
@@ -37,5 +36,25 @@ const ChatInput = ({ handleKeyPress, handleButtonPress }) => {
         </View>
     );
 };
-
+const styles = StyleSheet.create({
+    inputContainer: {
+        width: '100%',
+        flexDirection: 'row',
+        position: isPlatformWeb ? 'fixed' : null,
+        bottom: 0,
+        backgroundColor: colors.backgroundColor,
+    },
+    chatInput: {
+        flex: 1,
+        height: 40,
+        borderRadius: 20,
+        margin: 10,
+        paddingLeft: 10,
+        borderColor: colors.activeColorSecondary,
+        borderWidth: 1,
+        alignItems: 'center',
+        color: colors.textColor,
+        textAlign: 'left',
+    },
+});
 export default ChatInput;

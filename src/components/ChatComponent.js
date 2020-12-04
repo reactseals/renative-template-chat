@@ -6,13 +6,14 @@ import {
     Dimensions,
     SafeAreaView,
     Keyboard,
+    StyleSheet,
 } from 'react-native';
-import { isPlatformWeb, isPlatformAndroid } from 'renative';
-import styles from '../sharedStyles/chatStyles';
+import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
+import colors from '../../platformAssets/runtime/colors.json';
 
 const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     const scrollViewRef = useRef(null);
@@ -82,15 +83,16 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
                             style={styles.chatMessagesContainer}
                             onContentSizeChange={() => handleMobileScroll()}
                         >
-                            {Object.keys(messages).map((message) => (
-                                <View key={message}>
+                            {Object.keys(messages).map((messageKey) => (
+                                <View key={messageKey}>
                                     <ChatMessage
-                                        message={messages[message]}
-                                        belongsToUser={nickname === messages[message].nickname}
+                                        message={messages[messageKey]}
+                                        belongsToUser={nickname === messages[messageKey].nickname}
                                     />
                                 </View>
                             ))}
                         </ScrollView>
+
                         <ChatInput
                             handleButtonPress={handleButtonPress}
                             handleKeyPress={handleKeyPress}
@@ -102,4 +104,16 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     );
 };
 
+const styles = StyleSheet.create({
+    chatContainer: {
+        flex: 1,
+        backgroundColor: colors.backgroundColor,
+        marginBottom: isPlatformWeb ? 30 : 0,
+        maxHeight: isPlatformWeb || isPlatformMacos ? '100vh - 40' : null,
+        minHeight: isPlatformWeb || isPlatformMacos ? '100vh - 40' : null,
+    },
+    chatMessagesContainer: {
+        marginTop: isPlatformMacos ? 40 : 0,
+    },
+});
 export default ChatComponent;
