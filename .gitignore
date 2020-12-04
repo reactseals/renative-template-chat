@@ -68,3 +68,5 @@ package-lock.json
 .expo/
 
 projectConfig/firebase.js
+appConfigs/base/builds/android/app/google-services.json
+appConfigs/base/builds/ios/GoogleService-Info.plist

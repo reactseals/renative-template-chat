@@ -1,6 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { Router } from '@reach/router';
+import '../platformAssets/runtime/fontManager';
 import WelcomeScreen from './screens/WelcomeScreen/WelcomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import AuthScreen from './screens/AuthScreen/AuthScreen';

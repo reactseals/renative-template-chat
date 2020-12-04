@@ -1,4 +1,4 @@
 import ChatComponent from './ChatComponent';
-import WithFirebase from './WithFirebase';
+import WithFirebase from '../firebase/WithFirebase';
 
 export default WithFirebase(ChatComponent);

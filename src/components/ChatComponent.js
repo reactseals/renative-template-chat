@@ -104,13 +104,20 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     );
 };
 
+let height;
+if (isPlatformWeb) {
+    height = '100vh - 40';
+} else if (isPlatformMacos) {
+    height = '100vh';
+}
+
 const styles = StyleSheet.create({
     chatContainer: {
         flex: 1,
         backgroundColor: colors.backgroundColor,
         marginBottom: isPlatformWeb ? 30 : 0,
-        maxHeight: isPlatformWeb || isPlatformMacos ? '100vh - 40' : null,
-        minHeight: isPlatformWeb || isPlatformMacos ? '100vh - 40' : null,
+        maxHeight: height,
+        minHeight: height,
     },
     chatMessagesContainer: {
         marginTop: isPlatformMacos ? 40 : 0,
