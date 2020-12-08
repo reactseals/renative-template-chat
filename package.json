@@ -62,7 +62,7 @@
         "react-native-web-linear-gradient": "1.0.5",
         "renative": "0.31.3",
         "@react-native-firebase/app": "8.2.0",
-        "@react-native-firebase/database": "10.1.1"
+        "@react-native-firebase/database": "7.3.2"
     },
     "devDependencies": {
         "@rnv/engine-rn": "0.31.3",

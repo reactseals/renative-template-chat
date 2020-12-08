@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>654798159212-abhq729beljed1dj3r6kphd13psjv0se.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.654798159212-abhq729beljed1dj3r6kphd13psjv0se</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB5yQ3sY8x5MejboeYeIRrhDQl5SjGIcfI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>654798159212</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.reactseals.template.chat.debug</string>
+	<key>PROJECT_ID</key>
+	<string>rnv-template-chat</string>
+	<key>STORAGE_BUCKET</key>
+	<string>rnv-template-chat.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:654798159212:ios:248a6d167cf04a54158749</string>
+	<key>DATABASE_URL</key>
+	<string>https://rnv-template-chat.firebaseio.com</string>
+</dict>
+</plist>

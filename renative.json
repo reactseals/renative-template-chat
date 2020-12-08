@@ -72,7 +72,27 @@
         },
         "@reach/router": "1.3.4",
         "@react-native-firebase/app": "source:rnv",
-        "@react-native-firebase/database": "10.1.1"
+        "@react-native-firebase/database": {
+            "version": "7.3.2",
+            "dependsOn": ["@react-native-firebase/app"],
+            "android": {
+                "package": "io.invertase.firebase.database.ReactNativeFirebaseDatabasePackage",
+                "projectName": "@react-native-firebase_database"
+            },
+            "ios": {
+                "isStatic": true,
+                "podName": "RNFBDatabase",
+                "xcodeproj": {
+                    "resourceFiles": ["RNVApp/GoogleService-Info.plist"]
+                },
+                "appDelegateImports": ["Firebase"],
+                "appDelegateMethods": {
+                    "application": {
+                        "didFinishLaunchingWithOptions": ["FirebaseApp.configure()"]
+                    }
+                }
+            }
+        }
     },
     "permissions": {
         "ios": {

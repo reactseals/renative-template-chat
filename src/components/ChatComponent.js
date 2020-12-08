@@ -83,6 +83,7 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
                             style={styles.chatMessagesContainer}
                             onContentSizeChange={() => handleMobileScroll()}
                         >
+                            {console.log(messages)}
                             {Object.keys(messages).map((messageKey) => (
                                 <View key={messageKey}>
                                     <ChatMessage
