@@ -69,4 +69,4 @@ package-lock.json
 
 projectConfig/firebase.js
 appConfigs/base/builds/android/app/google-services.json
-appConfigs/base/builds/ios/GoogleService-Info.plist
+appConfigs/base/builds/ios/RNVApp/GoogleService-Info.plist
