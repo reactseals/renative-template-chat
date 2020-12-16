@@ -11,9 +11,9 @@ import {
 import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
-import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 import colors from '../../platformAssets/runtime/colors.json';
+import ChatListRecycler from './ChatListRecycler';
 
 const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     const scrollViewRef = useRef(null);
@@ -78,12 +78,11 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
                     <BackButtonMac />
                     <View style={styles.chatContainer}>
                         {/* Could be changed to FlatList for performance */}
-                        <ScrollView
+                        {/* <ScrollView
                             ref={scrollViewRef}
                             style={styles.chatMessagesContainer}
                             onContentSizeChange={() => handleMobileScroll()}
                         >
-                            {console.log(messages)}
                             {Object.keys(messages).map((messageKey) => (
                                 <View key={messageKey}>
                                     <ChatMessage
@@ -92,7 +91,10 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
                                     />
                                 </View>
                             ))}
-                        </ScrollView>
+                        </ScrollView> */}
+                        {messages.length > 0 ? (
+                            <ChatListRecycler messageArray={messages} nickname={nickname} />
+                        ) : null}
 
                         <ChatInput
                             handleButtonPress={handleButtonPress}

@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { isPlatformAndroid } from 'renative';
 import colors from '../../platformAssets/runtime/colors.json';
 import fonts from '../../platformAssets/runtime/chatFonts.json';
+
+const { width } = Dimensions.get('window');
 
 const ChatMessage = ({ message, belongsToUser }) =>
     belongsToUser ? (
@@ -24,11 +26,12 @@ const ChatMessage = ({ message, belongsToUser }) =>
 const styles = StyleSheet.create({
     userMessageContainer: {
         marginLeft: 10,
-        marginRight: 10,
+        marginRight: 15,
         marginTop: 5,
         marginBottom: 5,
         alignSelf: 'flex-end',
         maxWidth: '98.5%',
+        minWidth: width * 0.965,
     },
     userMessage: {
         backgroundColor: colors.userMessageBackground,
@@ -56,6 +59,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         alignSelf: 'flex-start',
         maxWidth: '98.5%',
+        minWidth: width * 0.965,
     },
     message: {
         backgroundColor: colors.messageBackground,
