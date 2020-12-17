@@ -1,4 +1,4 @@
-import firebase from '../../../../../projectConfig/firebase';
+import firebase from '../../../../firebase/firebase';
 import { EventRegister } from 'react-native-event-listeners';
 
 const chatroom = firebase.database().ref().child('chatrooms').child('global');

@@ -1,6 +1,8 @@
 import DataProvider from './Provider/Provider';
-import DataProviderInstace from './Provider/instances/FirebaseProvider';
+import DataProviderInstance from './Provider/instances/FirebaseProvider';
+import Comment from './Model/Comment';
 
-const ProviderInstance = new DataProvider(new DataProviderInstace());
+const ProviderInstance = new DataProvider(new DataProviderInstance());
 
 export default ProviderInstance;
+export { Comment };

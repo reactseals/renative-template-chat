@@ -54,15 +54,15 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     // Scroll handle for mobile
     const handleMobileScroll = () => {
         if (!isPlatformWeb) {
-            scrollViewRef.current.scrollToEnd({ animated: false });
+            scrollViewRef.current?.scrollToEnd({ animated: false });
         } else {
-            scrollViewRef.current.scrollToEnd({ animated: true });
+            scrollViewRef.current?.scrollToEnd({ animated: true });
         }
     };
     // Keyboard listener
     const keyBoardListener = () => {
         if (nickname) {
-            scrollViewRef.current.scrollToEnd({ animated: false });
+            scrollViewRef.current?.scrollToEnd({ animated: false });
         }
     };
     return (
