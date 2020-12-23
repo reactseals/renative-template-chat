@@ -67,5 +67,6 @@ package-lock.json
 
 .expo/
 
+src/firebase/firebase.js
 appConfigs/base/builds/android/app/google-services.json
 appConfigs/base/builds/ios/RNVApp/GoogleService-Info.plist
