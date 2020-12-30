@@ -3,12 +3,15 @@ import React from 'react';
 import '../platformAssets/runtime/fontManager';
 import { NavigationContainer } from '@react-navigation/native';
 import MainNavigator from './MainNavigator';
+import { ProvideAuth } from './utils/auth';
 
 // Entry for mobile apps
 export default function App() {
     return (
-        <NavigationContainer>
-            <MainNavigator />
-        </NavigationContainer>
+        <ProvideAuth>
+            <NavigationContainer>
+                <MainNavigator />
+            </NavigationContainer>
+        </ProvideAuth>
     );
 }

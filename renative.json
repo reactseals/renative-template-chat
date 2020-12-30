@@ -74,6 +74,27 @@
         "recyclerlistview": "3.0.0",
         "@reach/router": "1.3.4",
         "@react-native-firebase/app": "source:rnv",
+        "@react-native-firebase/auth": {
+            "version": "9.2.0",
+            "dependsOn": ["@react-native-firebase/app"],
+            "ios": {
+                "isStatic": true,
+                "podName": "RNFBAuth",
+                "xcodeproj": {
+                    "resourceFiles": ["RNVApp/GoogleService-Info.plist"]
+                },
+                "appDelegateImports": ["Firebase"],
+                "appDelegateMethods": {
+                    "application": {
+                        "didFinishLaunchingWithOptions": ["FirebaseApp.configure()"]
+                    }
+                }
+            },
+            "android": {
+                "package": "io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage",
+                "projectName": "@react-native-firebase_auth"
+            }
+        },
         "@react-native-firebase/database": {
             "version": "7.3.2",
             "dependsOn": ["@react-native-firebase/app"],

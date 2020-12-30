@@ -6,9 +6,11 @@ import colors from '../../../platformAssets/runtime/colors.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import textInputStyles from '../../sharedStyles/textInputStyles';
+import { useAuth } from '../../utils/auth';
 
 const AuthScreen = ({ headerHeight, ...props }) => {
     const navigate = useNavigate(props);
+    const auth = useAuth();
     const [authFormInfo, setAuthFormInfo] = useState({
         nickname: '',
         email: '',
@@ -26,15 +28,20 @@ const AuthScreen = ({ headerHeight, ...props }) => {
                 ...prevState,
                 isUserLoggedIn: true,
             }));
-            if (isPlatformMacos) {
-                navigate('/chat', {}, { state: { nickname, email } });
-            } else {
-                navigate(
-                    'chat',
-                    { pathname: '/chat', query: { nickname, email } }, // NextJS props Query
-                    { nickname, email } // React Navigation for mobile Props query
-                );
-            }
+            auth.signIn(email, nickname).then((usr) => {
+                if (usr) {
+                    console.log(usr.displayName);
+                    if (isPlatformMacos) {
+                        navigate('/chat', {}, { state: { nickname, email } });
+                    } else {
+                        navigate(
+                            'chat',
+                            { pathname: '/chat', query: { nickname, email } }, // NextJS props Query
+                            { nickname, email } // React Navigation for mobile Props query
+                        );
+                    }
+                }
+            });
         }
     };
 
