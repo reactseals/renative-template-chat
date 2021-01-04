@@ -12,7 +12,6 @@ class FirebaseProvider {
     listenForMessages = () => {
         chatRoom.on('value', (snap) => {
             if (snap.val()) {
-                console.log('whups');
                 EventRegister.emit('message', this.toArray(snap));
             }
         });
@@ -21,6 +20,7 @@ class FirebaseProvider {
     toArray = (firebaseRes) => {
         // turns firebase response JSON to an array
         let keys = firebaseRes._snapshot.childKeys;
+        keys.reverse();
         let data = firebaseRes.val();
         return keys.map((id) => {
             return { uuid: id, ...data[id] };

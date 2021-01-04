@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { Router } from '@reach/router';
 import '../platformAssets/runtime/fontManager';
 import WelcomeScreen from './screens/WelcomeScreen';

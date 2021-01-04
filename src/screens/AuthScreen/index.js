@@ -6,6 +6,7 @@ import colors from '../../../platformAssets/runtime/colors.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import textInputStyles from '../../sharedStyles/textInputStyles';
+import buttonStyles from '../../sharedStyles/buttonStyles';
 import { useAuth } from '../../utils/auth';
 
 const AuthScreen = ({ headerHeight, ...props }) => {
@@ -40,17 +41,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
                 }
             });
         }
-    };
-
-    // in the future export to the json styling configs
-    const buttonActiveStyle = {
-        backgroundColor: colors.activeColorTertiary,
-        outline: 'none',
-    };
-
-    // in the future export to the json styling configs
-    const buttonInactiveStyle = {
-        backgroundColor: colors.activeBackgroundColor,
     };
     return (
         <KeyboardAvoidingView
@@ -87,8 +77,8 @@ const AuthScreen = ({ headerHeight, ...props }) => {
             />
 
             <CustomTouchableOpacity
-                blurredStyle={buttonInactiveStyle}
-                focusedStyle={buttonActiveStyle}
+                blurredStyle={buttonStyles.inActive}
+                focusedStyle={buttonStyles.active}
                 style={styles.loginButton}
                 onPress={() => handleLogin()}
             >
@@ -100,7 +90,7 @@ const AuthScreen = ({ headerHeight, ...props }) => {
                     navigate('register', { pathname: '/register' });
                 }}
             >
-                Do not have an account? Click here to register
+                Don&apos;t have an account? Click here to register
             </Text>
         </KeyboardAvoidingView>
     );

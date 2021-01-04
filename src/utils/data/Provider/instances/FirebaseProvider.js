@@ -19,9 +19,11 @@ class FirebaseProvider {
 
     toArray = (firebaseRes) => {
         // turns firebase response JSON to an array
-        return Object.keys(firebaseRes).map((id) => {
-            return { uuid: id, ...firebaseRes[id] };
-        });
+        return Object.keys(firebaseRes)
+            .map((id) => {
+                return { uuid: id, ...firebaseRes[id] };
+            })
+            .reverse();
     };
 
     getMessages = async () => {

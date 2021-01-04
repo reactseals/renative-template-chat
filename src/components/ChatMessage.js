@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         maxWidth: '98.5%',
         minWidth: width * 0.965,
+        transform: [{ scaleY: -1 }],
     },
     userMessage: {
         backgroundColor: colors.userMessageBackground,
@@ -60,6 +61,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         maxWidth: '98.5%',
         minWidth: width * 0.965,
+        transform: [{ scaleY: -1 }],
     },
     message: {
         backgroundColor: colors.messageBackground,

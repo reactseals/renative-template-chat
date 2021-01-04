@@ -1,13 +1,5 @@
-import React, { useRef, useEffect } from 'react';
-import {
-    View,
-    ScrollView,
-    KeyboardAvoidingView,
-    Dimensions,
-    SafeAreaView,
-    Keyboard,
-    StyleSheet,
-} from 'react-native';
+import React from 'react';
+import { View, KeyboardAvoidingView, Dimensions, SafeAreaView, StyleSheet } from 'react-native';
 import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
 import Activity from './ActivityIndicator';
 import BackButtonMac from './BackButtonMac';
@@ -16,22 +8,7 @@ import colors from '../../platformAssets/runtime/colors.json';
 import ChatListRecycler from './ChatListRecycler';
 
 const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
-    const scrollViewRef = useRef(null);
     const { height } = Dimensions.get('window');
-    let keyboardDidShowListener;
-    useEffect(() => {
-        keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', keyBoardListener);
-        return () => {
-            keyboardDidShowListener.remove();
-        };
-    }, []);
-
-    useEffect(() => {
-        // Scroll handle on new message arrival for Web
-        if (isPlatformWeb) {
-            scrollViewRef.current?.scrollToEnd({ animated: false });
-        }
-    }, [messages]);
 
     // Push messsage on 'Enter' press
     const handleKeyPress = (e, value, setTextInputVal) => {
@@ -51,20 +28,6 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
             setTextInputVal('');
         }
     };
-    // Scroll handle for mobile
-    const handleMobileScroll = () => {
-        if (!isPlatformWeb) {
-            scrollViewRef.current?.scrollToEnd({ animated: false });
-        } else {
-            scrollViewRef.current?.scrollToEnd({ animated: true });
-        }
-    };
-    // Keyboard listener
-    const keyBoardListener = () => {
-        if (nickname) {
-            scrollViewRef.current?.scrollToEnd({ animated: false });
-        }
-    };
     return (
         <SafeAreaView style={styles.chatContainer}>
             {!messages ? (
@@ -77,21 +40,6 @@ const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
                 >
                     <BackButtonMac />
                     <View style={styles.chatContainer}>
-                        {/* Could be changed to FlatList for performance */}
-                        {/* <ScrollView
-                            ref={scrollViewRef}
-                            style={styles.chatMessagesContainer}
-                            onContentSizeChange={() => handleMobileScroll()}
-                        >
-                            {Object.keys(messages).map((messageKey) => (
-                                <View key={messageKey}>
-                                    <ChatMessage
-                                        message={messages[messageKey]}
-                                        belongsToUser={nickname === messages[messageKey].nickname}
-                                    />
-                                </View>
-                            ))}
-                        </ScrollView> */}
                         {messages.length > 0 ? (
                             <ChatListRecycler messageArray={messages} nickname={nickname} />
                         ) : null}

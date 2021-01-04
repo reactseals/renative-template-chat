@@ -6,6 +6,7 @@ import colors from '../../../platformAssets/runtime/colors.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import textInputStyles from '../../sharedStyles/textInputStyles';
+import buttonStyles from '../../sharedStyles/buttonStyles';
 import { useAuth } from '../../utils/auth';
 
 const RegisterScreen = ({ headerHeight, ...props }) => {
@@ -33,16 +34,6 @@ const RegisterScreen = ({ headerHeight, ...props }) => {
         }
     };
 
-    // in the future export to the json styling configs
-    const buttonActiveStyle = {
-        backgroundColor: colors.activeColorTertiary,
-        outline: 'none',
-    };
-
-    // in the future export to the json styling configs
-    const buttonInactiveStyle = {
-        backgroundColor: colors.activeBackgroundColor,
-    };
     return (
         <KeyboardAvoidingView
             behavior={isPlatformAndroid ? null : 'padding'}
@@ -90,8 +81,8 @@ const RegisterScreen = ({ headerHeight, ...props }) => {
             />
 
             <CustomTouchableOpacity
-                blurredStyle={buttonInactiveStyle}
-                focusedStyle={buttonActiveStyle}
+                blurredStyle={buttonStyles.inActive}
+                focusedStyle={buttonStyles.active}
                 style={styles.loginButton}
                 onPress={() => handleSignUp()}
             >
