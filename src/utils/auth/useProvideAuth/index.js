@@ -9,13 +9,10 @@ const useProvideAuth = () => {
     // ... component that utilizes this hook to re-render with the ...
     // ... latest auth object.
     useEffect(() => {
-        authProvider.signOut(); //testing reasons remove afterwards
         authProvider.onAuthChange((usr) => {
             if (usr) {
-                console.log(usr.email);
                 setUser(usr);
             } else {
-                console.log(usr);
                 setUser(false);
             }
         });

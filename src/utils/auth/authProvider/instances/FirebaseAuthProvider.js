@@ -25,6 +25,9 @@ class FirebaseAuthProvider {
 
     signUp = async (email, password, username) => {
         let response = await firebase.auth().createUserWithEmailAndPassword(email, password);
+        await response.user.updateProfile({
+            displayName: username,
+        });
         return response.user;
     };
 

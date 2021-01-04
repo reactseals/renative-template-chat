@@ -52,6 +52,7 @@ const ChatListRecycler = ({ messageArray, nickname }) => {
             // eslint-disable-next-line react/destructuring-assignment
             dataProvider={dataProvider}
             rowRenderer={_rowRenderer}
+            initialRenderIndex={messageArray.length - 1}
         />
     );
 };

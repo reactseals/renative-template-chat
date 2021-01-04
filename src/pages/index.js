@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen';
+import WelcomeScreen from '../screens/WelcomeScreen';
 
 // Entry for next engine based web
 const App = () => <WelcomeScreen router={useRouter()} />;

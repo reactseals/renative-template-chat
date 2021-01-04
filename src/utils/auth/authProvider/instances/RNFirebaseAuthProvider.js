@@ -24,6 +24,9 @@ class RNFirebaseAuthProvider {
 
     signUp = async (email, password, username) => {
         let response = await auth().createUserWithEmailAndPassword(email, password);
+        await response.user.updateProfile({
+            displayName: username,
+        });
         return response.user;
     };
 

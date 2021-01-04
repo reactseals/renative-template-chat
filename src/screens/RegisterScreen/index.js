@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView, StyleSheet } from 'react-native';
-import { isPlatformAndroid, useNavigate, isPlatformMacos, isPlatformWeb } from 'renative';
+import { isPlatformAndroid, isPlatformMacos, isPlatformWeb, usePop } from 'renative';
 import BackButtonMac from '../../components/BackButtonMac';
 import colors from '../../../platformAssets/runtime/colors.json';
 import CustomTextInput from '../../components/CustomTextInput';
@@ -8,38 +8,26 @@ import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import textInputStyles from '../../sharedStyles/textInputStyles';
 import { useAuth } from '../../utils/auth';
 
-const AuthScreen = ({ headerHeight, ...props }) => {
-    const navigate = useNavigate(props);
+const RegisterScreen = ({ headerHeight, ...props }) => {
+    const pop = usePop(props);
     const auth = useAuth();
     const [authFormInfo, setAuthFormInfo] = useState({
         nickname: '',
         email: '',
+        password: '',
     });
     // Add required field to state
     const handleChange = (value, propertyName) => {
         setAuthFormInfo((prevState) => ({ ...prevState, [propertyName]: value }));
     };
-    // Login
-    const handleLogin = () => {
-        const { nickname, email } = authFormInfo;
+    // Sign Up
+    const handleSignUp = () => {
+        const { nickname, email, password } = authFormInfo;
 
-        if (nickname && email) {
-            setAuthFormInfo((prevState) => ({
-                ...prevState,
-                isUserLoggedIn: true,
-            }));
-            auth.signIn(email, nickname).then((usr) => {
+        if (nickname && email && password) {
+            auth.signUp(email, password, nickname).then((usr) => {
                 if (usr) {
-                    console.log(usr.displayName);
-                    if (isPlatformMacos) {
-                        navigate('/chat', {}, { state: { nickname, email } });
-                    } else {
-                        navigate(
-                            'chat',
-                            { pathname: '/chat', query: { nickname, email } }, // NextJS props Query
-                            { nickname, email } // React Navigation for mobile Props query
-                        );
-                    }
+                    pop();
                 }
             });
         }
@@ -87,14 +75,27 @@ const AuthScreen = ({ headerHeight, ...props }) => {
                 onChangeText={handleChange}
                 name="email" // name of the property in the state object that is gonna be edited
             />
+            <CustomTextInput
+                blurredStyle={textInputStyles.inActive}
+                focusedStyle={textInputStyles.active}
+                style={styles.loginInput}
+                underlineColorAndroid="transparent"
+                placeholder="Password"
+                placeholderTextColor={colors.activeColorPrimary}
+                selectionColor={colors.activeColorPrimary}
+                autoCapitalize="none"
+                onChangeText={handleChange}
+                secureTextEntry
+                name="password" // name of the property in the state object that is gonna be edited
+            />
 
             <CustomTouchableOpacity
                 blurredStyle={buttonInactiveStyle}
                 focusedStyle={buttonActiveStyle}
                 style={styles.loginButton}
-                onPress={() => handleLogin()}
+                onPress={() => handleSignUp()}
             >
-                <Text style={styles.buttonText}>Sign In</Text>
+                <Text style={styles.buttonText}>Register</Text>
             </CustomTouchableOpacity>
         </KeyboardAvoidingView>
     );
@@ -137,4 +138,4 @@ const styles = StyleSheet.create({
         color: colors.buttonTextColor,
     },
 });
-export default AuthScreen;
+export default RegisterScreen;

@@ -2,17 +2,18 @@ import React from 'react';
 import { View } from 'react-native';
 import { Router } from '@reach/router';
 import '../platformAssets/runtime/fontManager';
-import WelcomeScreen from './screens/WelcomeScreen/WelcomeScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 import ChatScreen from './screens/ChatScreen';
-import AuthScreen from './screens/AuthScreen/AuthScreen';
+import AuthScreen from './screens/AuthScreen';
+import { ProvideAuth } from './utils/auth';
 // Entry for MacOS
 const App = () => (
-    <View>
+    <ProvideAuth>
         <Router>
             <WelcomeScreen path="/" />
             <ChatScreen path="chat" />
             <AuthScreen path="auth" />
         </Router>
-    </View>
+    </ProvideAuth>
 );
 export default App;
