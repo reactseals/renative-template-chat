@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     backArrow: {
-        color: colors.textColor,
+        color: colors.buttonTextColor,
         fontSize: 30,
         marginLeft: 25,
     },

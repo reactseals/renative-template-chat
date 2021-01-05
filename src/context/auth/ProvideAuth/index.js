@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AuthContext from '../AuthContext';
 import authProvider from '../authProvider';
-
+// to do: merge with authContext
 export default function ProvideAuth({ children }) {
     const [user, setUser] = useState(null);
-
     // Subscribe to user on mount
     useEffect(() => {
         authProvider.onAuthChange((usr) => {

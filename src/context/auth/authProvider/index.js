@@ -19,6 +19,7 @@ class RNFirebaseAuthProvider {
 
     signIn = async (email, password) => {
         let response = await auth().signInWithEmailAndPassword(email, password);
+        updateAuth(response.user);
         return response.user;
     };
 

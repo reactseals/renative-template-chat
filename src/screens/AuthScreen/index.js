@@ -9,7 +9,7 @@ import textInputStyles from '../../sharedStyles/textInputStyles';
 import buttonStyles from '../../sharedStyles/buttonStyles';
 import { useAuth } from '../../context/auth';
 
-const AuthScreen = ({ headerHeight, ...props }) => {
+const AuthScreen = (props) => {
     const navigate = useNavigate(props);
     const auth = useAuth();
     const [authFormInfo, setAuthFormInfo] = useState({
@@ -27,7 +27,7 @@ const AuthScreen = ({ headerHeight, ...props }) => {
         if (password && email) {
             auth.signIn(email, password).then((usr) => {
                 if (usr) {
-                    // get rid of this, change to use auth for user
+                    // to do: get rid of this, change to use auth for user
                     if (isPlatformMacos) {
                         navigate('/chat', {}, { state: { nickname: usr.displayName, email } });
                     } else {
@@ -45,7 +45,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
         <KeyboardAvoidingView
             behavior={isPlatformAndroid ? null : 'padding'}
             style={styles.loginContainer}
-            keyboardVerticalOffset={headerHeight}
         >
             <BackButtonMac />
             <CustomTextInput

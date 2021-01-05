@@ -5,6 +5,7 @@ import useModel from './useModel';
 
 const ChatScreen = (props) => {
     const router = useRouter(props);
+    //to do: get from useAuth
     const { nickname, email } = router.params;
     const chatProps = useModel();
     // eslint-disable-next-line react/jsx-props-no-spreading

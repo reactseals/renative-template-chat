@@ -1,10 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import DataProvider from '../../data';
 
 const useChatModel = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [messages, setMessages] = useState([]);
+    const [messages, _setMessages] = useState([]);
     // eslint-disable-next-line react-hooks/rules-of-hooks
+    const setMessages = (msgs) => {
+        messagesRef.current = msgs;
+        _setMessages(msgs);
+    };
+    const messagesRef = useRef(messages);
+
     useEffect(() => {
         DataProvider.getMessages().then((msgs) => setMessages(msgs));
         DataProvider.onMessage((msgs) => {
