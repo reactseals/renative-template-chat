@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LinearGradient from 'react-native-linear-gradient';
 import WelcomeScreen from './screens/WelcomeScreen';
 import ChatScreen from './screens/ChatScreen';
-import colors from '../platformAssets/runtime/colors.json';
+import { theme as colors } from '../platformAssets/renative.runtime.json';
 import AuthScreen from './screens/AuthScreen';
 import RegisterScreen from './screens/RegisterScreen';
 

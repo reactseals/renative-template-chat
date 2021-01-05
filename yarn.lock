@@ -14460,6 +14460,13 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-dotenv@2.4.3:
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-2.4.3.tgz#1d04043ecbba185dc1ddc01fd22b5aec162b891c"
+  integrity sha512-SsJZGAIYVsqdddgGh2P95q0wlrolh7oFDqynXdIK/JBRSuRo/8qbOVgzfVvB3d7zs+PgexE5UQiMOgZ6kHdpdQ==
+  dependencies:
+    dotenv "^8.0.0"
+
 react-native-event-listeners@1.0.7:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/react-native-event-listeners/-/react-native-event-listeners-1.0.7.tgz#486d856dfebf295a7aeda97bc36d1cf81cee0623"

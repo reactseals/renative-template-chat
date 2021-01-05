@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import { useNavigate, isPlatformWeb, isPlatformMacos } from 'renative';
 import splashImg from '../../../platformAssets/runtime/logoChat.png';
-import colors from '../../../platformAssets/runtime/colors.json';
+import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 
 const WelcomeScreen = (props) => {
     const navigate = useNavigate(props);

@@ -1,5 +1,5 @@
 import { isPlatformWeb } from 'renative';
-import colors from '../../platformAssets/runtime/colors.json';
+import { theme as colors } from '../../platformAssets/renative.runtime.json';
 
 export default {
     active: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import colors from '../../platformAssets/runtime/colors.json';
+import { theme as colors } from '../../platformAssets/renative.runtime.json';
 
 const Activity = () => (
     <View style={styles.activityindicator}>

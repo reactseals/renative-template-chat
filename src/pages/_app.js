@@ -2,7 +2,7 @@
 import React from 'react';
 import '../sharedStyles/globalWebStyles.css';
 import '../sharedStyles/webFonts.css';
-import { ProvideAuth } from '../utils/auth';
+import ProvideAuth from '../context/auth';
 // This default export is required in a new `pages/_app.js` file.
 export default function MyApp({ Component, pageProps }) {
     return (

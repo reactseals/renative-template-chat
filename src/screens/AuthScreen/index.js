@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { isPlatformAndroid, useNavigate, isPlatformMacos, isPlatformWeb } from 'renative';
 import BackButtonMac from '../../components/BackButtonMac';
-import colors from '../../../platformAssets/runtime/colors.json';
+import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import textInputStyles from '../../sharedStyles/textInputStyles';
 import buttonStyles from '../../sharedStyles/buttonStyles';
-import { useAuth } from '../../utils/auth';
+import { useAuth } from '../../context/auth';
 
 const AuthScreen = ({ headerHeight, ...props }) => {
     const navigate = useNavigate(props);
@@ -27,7 +27,6 @@ const AuthScreen = ({ headerHeight, ...props }) => {
         if (password && email) {
             auth.signIn(email, password).then((usr) => {
                 if (usr) {
-                    console.log(usr.displayName);
                     // get rid of this, change to use auth for user
                     if (isPlatformMacos) {
                         navigate('/chat', {}, { state: { nickname: usr.displayName, email } });
@@ -87,7 +86,10 @@ const AuthScreen = ({ headerHeight, ...props }) => {
             <Text
                 style={{ color: colors.textColor, paddingTop: 10 }}
                 onPress={() => {
-                    navigate('register', { pathname: '/register' });
+                    // eslint-disable-next-line no-unused-expressions
+                    isPlatformMacos
+                        ? navigate('/register')
+                        : navigate('register', { pathname: '/register' });
                 }}
             >
                 Don&apos;t have an account? Click here to register

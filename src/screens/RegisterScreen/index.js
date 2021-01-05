@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { isPlatformAndroid, isPlatformMacos, isPlatformWeb, usePop } from 'renative';
 import BackButtonMac from '../../components/BackButtonMac';
-import colors from '../../../platformAssets/runtime/colors.json';
+import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import textInputStyles from '../../sharedStyles/textInputStyles';
 import buttonStyles from '../../sharedStyles/buttonStyles';
-import { useAuth } from '../../utils/auth';
+import { useAuth } from '../../context/auth';
 
 const RegisterScreen = ({ headerHeight, ...props }) => {
     const pop = usePop(props);
