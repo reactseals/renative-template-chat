@@ -1,15 +1,14 @@
 import React from 'react';
 import Chat from '../../components/ChatComponent';
-import useRouter from '../../utils/Router/useRouter';
 import useModel from './useModel';
+import { useAuth } from '../../context/auth';
 
 const ChatScreen = (props) => {
-    const router = useRouter(props);
-    //to do: get from useAuth
-    const { nickname, email } = router.params;
+    const auth = useAuth();
+    const { displayName, email } = auth.user;
     const chatProps = useModel();
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <Chat nickname={nickname} email={email} {...chatProps} />;
+    return <Chat nickname={displayName} email={email} {...chatProps} />;
 };
 
 export default ChatScreen;

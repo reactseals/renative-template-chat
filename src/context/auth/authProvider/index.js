@@ -4,10 +4,10 @@ import { listenForAuthChange, removeEventListener, updateAuth } from '../../../u
 class RNFirebaseAuthProvider {
     constructor(instance) {
         this.instance = instance;
-        this.listenForAuthChange();
+        this.listenForAuthChanges();
     }
 
-    listenForAuthChange = () => {
+    listenForAuthChanges = () => {
         auth().onAuthStateChanged((usr) => {
             if (usr) {
                 updateAuth(usr);

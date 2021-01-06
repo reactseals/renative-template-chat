@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import AuthContext from '../AuthContext';
+import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import authProvider from '../authProvider';
-// to do: merge with authContext
+
+const AuthContext = createContext();
+
 export default function ProvideAuth({ children }) {
-    const [user, setUser] = useState(null);
+    const [user, _setUser] = useState(null);
+
+    const setUser = (usr) => {
+        userRef.current = usr;
+        _setUser(usr);
+    };
+
+    const userRef = useRef(user);
     // Subscribe to user on mount
     useEffect(() => {
         authProvider.onAuthChange((usr) => {
@@ -31,3 +39,7 @@ export default function ProvideAuth({ children }) {
         </AuthContext.Provider>
     );
 }
+
+const useAuth = () => useContext(AuthContext);
+
+export { useAuth };

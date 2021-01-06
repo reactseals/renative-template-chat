@@ -1,5 +1,4 @@
-import ProvideAuth from './ProvideAuth';
-import { useAuth } from './AuthContext';
+import ProvideAuth, { useAuth } from './ProvideAuth';
 
 export default ProvideAuth;
 export { useAuth };

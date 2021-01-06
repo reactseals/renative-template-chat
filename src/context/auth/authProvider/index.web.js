@@ -5,10 +5,10 @@ import 'firebase/auth';
 class FirebaseAuthProvider {
     constructor(instance) {
         this.instance = instance;
-        this.listenForAuthChange();
+        this.listenForAuthChanges();
     }
 
-    listenForAuthChange = () => {
+    listenForAuthChanges = () => {
         firebase.auth().onAuthStateChanged((usr) => {
             if (usr) {
                 updateAuth(usr);

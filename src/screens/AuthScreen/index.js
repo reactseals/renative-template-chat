@@ -27,15 +27,10 @@ const AuthScreen = (props) => {
         if (password && email) {
             auth.signIn(email, password).then((usr) => {
                 if (usr) {
-                    // to do: get rid of this, change to use auth for user
                     if (isPlatformMacos) {
-                        navigate('/chat', {}, { state: { nickname: usr.displayName, email } });
+                        navigate('/chat');
                     } else {
-                        navigate(
-                            'chat',
-                            { pathname: '/chat', query: { nickname: usr.displayName, email } }, // NextJS props Query
-                            { nickname: usr.displayName, email } // React Navigation for mobile Props query
-                        );
+                        navigate('chat', { pathname: '/chat' });
                     }
                 }
             });
