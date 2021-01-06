@@ -7,8 +7,8 @@
   <p align='center'>build universal cross-platform apps with <a href="https://facebook.github.io/react-native/">react native</a></p>
   <p align='center'>
     <img src="https://img.shields.io/badge/Platforms_Supported-14-blue.svg" />
-    <img src="https://img.shields.io/badge/React_Native-0.59.5-blue.svg" />
-    <img src="https://img.shields.io/badge/React-16.8.6-blue.svg" />
+    <img src="https://img.shields.io/badge/React_Native-0.61.2-blue.svg" />
+    <img src="https://img.shields.io/badge/React-16.13.1-blue.svg" />
     <img src="https://img.shields.io/badge/Plugins-45-red.svg" />
   </p>
 </p>
@@ -68,7 +68,7 @@
 
 #### Requirements
 
--   [ReNative](https://renative.org/) `0.28.0` or newer
+-   [ReNative](https://renative.org/) `0.31.3` or newer
 -   [Node](https://nodejs.org) `10.13.0` or newer
 -   [NPM](https://npmjs.com/) `6.4.1` or newer
 -   [Android Studio](https://developer.android.com/studio) (if you want to develop for Android)
@@ -80,29 +80,68 @@
 
 ## Firebase Setup
 
-1. Create Firebase project: https://firebase.google.com/docs/storage/web/start
+Below you will find steps to enable Firebase on your chat app.
+These are platform specific steps, if you do not care about performance, 
+you may only do the WEB & MacOS section and make data/Provider/instances/FirebaseProvider/index.web.js your main data provider,
+this will ignore React-Native-Firebase package, and iOS with Android will operate on the JS thread.
 
-2. Get your Firebase config file or object: https://support.google.com/firebase/answer/7015592 and edit firebase.js with it
+### General
 
-3. Create a RealTime Database on your firebase console (IMPORTANT)
+1. Create Firebase project, documentation:
+    1. WEB: https://firebase.google.com/docs/storage/web/start
+    2. iOS: https://firebase.google.com/docs/storage/ios/start
+    3. Android: https://firebase.google.com/docs/storage/android/start
+2. Create Firebase RealTime Database on your project console (IMPORTANT, by default it will be used for message storage)
+3. Enable Firebase Authentication on your project console (IMPORTANT, used for user authentication)
 
-## Configuration
 
-`rnv` will create Firebase config file at this location: `<your-project>/projectConfig/firebase.js`
+#### WEB & MacOS
 
-Open the file and edit Firebase configuration with:
-
+1. Register your WEB App with Firebase on your project
+2. Get Firebase config file, documentation: https://support.google.com/firebase/answer/7015592
+3. Create a .env file in the root directory, you can find the example in .env.test, file should look something like this:
 ```
-const config = {
-  apiKey: '<your-api-key>',
-  authDomain: '<your-auth-domain>',
-  databaseURL: '<your-database-url>',
-  projectId: '<your-cloud-firestore-project>',
-  storageBucket: '<your-storage-bucket>',
-  messagingSenderId: '<your-sender-id>',
-  appId: '<your-app-id>',
-};
+API_KEY=<your-api-key>
+AUTH_DOMAIN=<your-auth-domain>'
+DATABASE_URL=<your-database-url>
+PROJECT_ID=<your-cloud-firestore-project>
+STORAGE_BUCKET=<your-storage-bucket>
+MESSAGING_SENDER_ID=<your-sender-id>
+APP_ID=<your-app-id> 
 ```
+
+#### Android
+
+1. Register your Android App with Firebase on your project
+2. Make sure your Android App package name on Firebase matches your projects, you can find it in platformBuilds/android/app/src/main/AndroidManifest.xml
+3. Get google-services.json Firebase config file, documentation: https://support.google.com/firebase/answer/7015592
+4. Place the file in /appConfigs/base/builds/android/app
+
+#### iOS
+
+1. Register your iOS App with Firebase on your project
+2. Make sure your iOS bundle id on Firebase matches your projects
+3. Get GoogleService-Info.plist Firebase config file, documentation: https://support.google.com/firebase/answer/7015592
+4. Place the file in /platformBuilds/ios/RNVApp/GoogleService-Info.plist
+
+## Project structure
+
+You may read this section if you feel confused how all platforms come together.
+These are the the things specific to ReNative and this template specifically.
+
+All of the Authentication logic is kept in src/context/auth
+All of the data manipulation and managing logic is kept in src/data
+If you wish to change data provider from Firebase to some other, all you need to do is create your own
+provider implementation in src/data/Provider/instances.
+
+Most of the components in this app are used by all of the supported platforms, you may read
+how it works in ReNative documentation. What you need to know here, is that main difference
+between the platforms is the navigation technology used.
+    1. For WEB we use the NextJS native navigation, so all the routes are in src/pages/ folder
+    2. For Mobile we use React-Navigation, we keep all the routes in src/MainNavigator.js
+    3. For MacOS we use the Reach Router, you can find the entry file in src/app.macos.js
+
+Everything else should be understandable if you have any experience with React/React Native projects
 
 ---
 
