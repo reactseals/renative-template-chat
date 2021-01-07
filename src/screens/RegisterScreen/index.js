@@ -9,7 +9,7 @@ import textInputStyles from '../../sharedStyles/textInputStyles';
 import buttonStyles from '../../sharedStyles/buttonStyles';
 import { useAuth } from '../../context/auth';
 
-const RegisterScreen = ({ headerHeight, ...props }) => {
+const RegisterScreen = (props) => {
     const pop = usePop(props);
     const auth = useAuth();
     const [authFormInfo, setAuthFormInfo] = useState({
@@ -38,7 +38,6 @@ const RegisterScreen = ({ headerHeight, ...props }) => {
         <KeyboardAvoidingView
             behavior={isPlatformAndroid ? null : 'padding'}
             style={styles.loginContainer}
-            keyboardVerticalOffset={headerHeight}
         >
             <BackButtonMac />
             <CustomTextInput

@@ -1,3 +1,4 @@
+// If you need to pass props,
 const useRouter = (props) => {
     getParams = () => {
         // Reach router
