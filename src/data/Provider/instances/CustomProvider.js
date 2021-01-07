@@ -8,6 +8,8 @@ class CustomProvider {
     }
 
     listenForMessages = () => {
+        // Here you should implement your own state update logic,
+        // and call updateMessages when you want to update
         //setTimeout(() => {
         //    updateMessages(this.messages);
         //}, 100);
@@ -15,11 +17,13 @@ class CustomProvider {
 
     getMessages = async () => {
         this.messages?.push({ msg: 'firstMsgTest', nickname: 'nicks', email: 'emailas' });
-        return this.messages;
+        let reversedArray = [...this.messages];
+        return reversedArray.reverse();
     };
     sendMessage = (nickname, email, message) => {
         this.messages?.push({ msg: message, nickname: nickname, email: email });
-        updateMessages(this.messages);
+        let reversedArray = [...this.messages];
+        updateMessages(reversedArray.reverse());
     };
 }
 

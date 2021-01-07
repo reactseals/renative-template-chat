@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, KeyboardAvoidingView, Dimensions, SafeAreaView, StyleSheet } from 'react-native';
 import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
 import Activity from '../ActivityIndicator';
@@ -9,7 +9,6 @@ import ChatListRecycler from './ChatListRecycler';
 
 const ChatComponent = ({ nickname, email, sendMessage, messages }) => {
     const { height } = Dimensions.get('window');
-
     // Push messsage on 'Enter' press
     const handleKeyPress = (e, value, setTextInputVal) => {
         if (value.trim() !== '' && e.key === 'Enter') {

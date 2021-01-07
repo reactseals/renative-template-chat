@@ -14,10 +14,11 @@ const useChatModel = () => {
     useEffect(() => {
         DataProvider.getMessages().then((msgs) => setMessages(msgs));
         DataProvider.onMessage((msgs) => {
-            setMessages(msgs);
+            setMessages([...msgs]);
         });
     }, []);
     // eslint-disable-next-line react/jsx-props-no-spreading
+    // Make sure your messages are in correct order, the array will be rendered inverted, cause chat starts from the bottom
     return { messages, sendMessage: DataProvider.sendMessage };
 };
 export default useChatModel;
