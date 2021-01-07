@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
 import { isPlatformMacos } from 'renative';
 import { navigate } from '@reach/router';
-import { theme as colors } from '../../platformAssets/renative.runtime.json';
+import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 
 const BackButtonMac = () =>
     isPlatformMacos ? (

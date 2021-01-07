@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, KeyboardAvoidingView, Dimensions, SafeAreaView, StyleSheet } from 'react-native';
 import { isPlatformWeb, isPlatformAndroid, isPlatformMacos } from 'renative';
 import Activity from '../ActivityIndicator';
-import BackButtonMac from '../BackButtonMac';
+import BackButtonMac from '../BackButton';
 import ChatInput from './ChatInput';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import ChatListRecycler from './ChatListRecycler';

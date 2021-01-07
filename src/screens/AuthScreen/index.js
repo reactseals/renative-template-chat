@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { isPlatformAndroid, useNavigate, isPlatformMacos, isPlatformWeb } from 'renative';
-import BackButtonMac from '../../components/BackButtonMac';
+import BackButtonMac from '../../components/BackButton';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
