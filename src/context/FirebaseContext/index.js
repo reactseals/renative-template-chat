@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
-import authFirebase from '../utils/authFirebase';
+import auth from './firebaseAuth';
 
 const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ export default function ProvideAuth({ children }) {
     const userRef = useRef(user);
     // Subscribe to user on mount
     useEffect(() => {
-        authFirebase.onAuthChange((usr) => {
+        const unsubscribe = auth.onAuthStateChanged((usr) => {
             if (usr) {
                 setUser(usr);
             } else {
@@ -23,16 +23,34 @@ export default function ProvideAuth({ children }) {
         });
 
         // Cleanup subscription on unmount
-        return () => authFirebase.offAuthChange();
+        return () => unsubscribe();
     }, []);
+
+    const signIn = async (email, password) => {
+        const response = await auth.signInWithEmailAndPassword(email, password);
+        return response.user;
+    };
+
+    const signUp = async (email, password, username) => {
+        const response = await auth.createUserWithEmailAndPassword(email, password);
+        await response.user.updateProfile({
+            displayName: username,
+        });
+        return response.user;
+    };
+
+    const signOut = async () => {
+        await auth.signOut();
+        return false;
+    };
 
     return (
         <AuthContext.Provider
             value={{
                 user,
-                signIn: authFirebase.signIn,
-                signUp: authFirebase.signUp,
-                signOut: authFirebase.signOut,
+                signIn,
+                signUp,
+                signOut,
             }}
         >
             {children}

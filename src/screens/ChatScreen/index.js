@@ -1,7 +1,7 @@
 import React from 'react';
 import Chat from '../../components/ChatComponent';
 import useModel from './useModel';
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../../context/FirebaseContext';
 
 const ChatScreen = () => {
     const auth = useAuth();

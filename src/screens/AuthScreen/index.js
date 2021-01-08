@@ -5,7 +5,7 @@ import BackButtonMac from '../../components/BackButton';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
-import { useAuth } from '../../AuthContext';
+import { useAuth } from '../../context/FirebaseContext';
 
 const AuthScreen = (props) => {
     const navigate = useNavigate(props);

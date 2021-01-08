@@ -3,7 +3,7 @@ import React from 'react';
 import '../platformAssets/runtime/fontManager';
 import { NavigationContainer } from '@react-navigation/native';
 import MainNavigator from './MainNavigator';
-import ProvideAuth from './AuthContext';
+import ProvideAuth from './context/FirebaseContext';
 
 // Entry for mobile apps
 export default function App() {

@@ -5,7 +5,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import AuthScreen from './screens/AuthScreen';
 import RegisterScreen from './screens/RegisterScreen';
-import ProvideAuth from './AuthContext';
+import ProvideAuth from './context/FirebaseContext';
 
 // Entry for MacOS
 const App = () => (
