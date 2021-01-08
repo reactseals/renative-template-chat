@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import DataProvider from '../../data';
+import DataProvider from '../../../platformAssets/runtime/dataProvider';
 
 const useChatModel = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks

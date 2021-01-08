@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
-import authProvider from './authProvider';
+import authFirebase from '../utils/authFirebase';
 
 const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ export default function ProvideAuth({ children }) {
     const userRef = useRef(user);
     // Subscribe to user on mount
     useEffect(() => {
-        authProvider.onAuthChange((usr) => {
+        authFirebase.onAuthChange((usr) => {
             if (usr) {
                 setUser(usr);
             } else {
@@ -23,16 +23,16 @@ export default function ProvideAuth({ children }) {
         });
 
         // Cleanup subscription on unmount
-        return () => authProvider.offAuthChange();
+        return () => authFirebase.offAuthChange();
     }, []);
 
     return (
         <AuthContext.Provider
             value={{
                 user,
-                signIn: authProvider.signIn,
-                signUp: authProvider.signUp,
-                signOut: authProvider.signOut,
+                signIn: authFirebase.signIn,
+                signUp: authFirebase.signUp,
+                signOut: authFirebase.signOut,
             }}
         >
             {children}

@@ -1,4 +1,4 @@
-import { listenForMessages } from '../utils/EventHandler';
+import { listenForMessages } from '../utils/eventHandler';
 
 class Provider {
     constructor(instance) {
