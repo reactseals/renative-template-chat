@@ -128,9 +128,9 @@
             "activeColorTertiary": "#016FB9",
             "textColor": "#171D1C",
             "buttonTextColor": "#F1FFFA",
-            "userNicknameColor": "#17632e",
+            "userNicknameColor": "#007991",
             "userMessageBackground": "#c3e6fc",
-            "nicknameColor": "#611eac",
+            "nicknameColor": "#000",
             "messageBackground": "#ecf8ec",
             "chatTextColor": "#171D1C"
         },
