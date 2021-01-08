@@ -5,9 +5,7 @@ import BackButtonMac from '../../components/BackButton';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
-import textInputStyles from '../../sharedStyles/textInputStyles';
-import buttonStyles from '../../sharedStyles/buttonStyles';
-import { useAuth } from '../../context/auth';
+import { useAuth } from '../../AuthContext';
 
 const RegisterScreen = (props) => {
     const pop = usePop(props);
@@ -41,8 +39,6 @@ const RegisterScreen = (props) => {
         >
             <BackButtonMac />
             <CustomTextInput
-                blurredStyle={textInputStyles.inActive}
-                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Nickname"
@@ -54,8 +50,6 @@ const RegisterScreen = (props) => {
             />
 
             <CustomTextInput
-                blurredStyle={textInputStyles.inActive}
-                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Email"
@@ -66,8 +60,6 @@ const RegisterScreen = (props) => {
                 name="email" // name of the property in the state object that is gonna be edited
             />
             <CustomTextInput
-                blurredStyle={textInputStyles.inActive}
-                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Password"
@@ -79,12 +71,7 @@ const RegisterScreen = (props) => {
                 name="password" // name of the property in the state object that is gonna be edited
             />
 
-            <CustomTouchableOpacity
-                blurredStyle={buttonStyles.inActive}
-                focusedStyle={buttonStyles.active}
-                style={styles.loginButton}
-                onPress={() => handleSignUp()}
-            >
+            <CustomTouchableOpacity style={styles.loginButton} onPress={() => handleSignUp()}>
                 <Text style={styles.buttonText}>Register</Text>
             </CustomTouchableOpacity>
         </KeyboardAvoidingView>

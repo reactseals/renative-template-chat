@@ -1,5 +1,5 @@
 import database from '@react-native-firebase/database';
-import { updateMessages } from '../../../../utils/EventHandler';
+import { updateMessages } from '../../../utils/EventHandler';
 
 const chatRoom = database().ref('/chatrooms/global');
 

@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { TouchableOpacity } from 'react-native';
+import buttonStyles from './styles';
 
-const CustomTouchableOpacity = ({ focusedStyle, blurredStyle, ...rest }) => {
+const CustomTouchableOpacity = (props) => {
     const buttonRef = useRef(null);
 
     const setNativeStyles = (component, newStyle) => {
@@ -13,10 +14,10 @@ const CustomTouchableOpacity = ({ focusedStyle, blurredStyle, ...rest }) => {
     return (
         <TouchableOpacity
             // eslint-disable-next-line react/jsx-props-no-spreading
-            {...rest}
+            {...props}
             ref={buttonRef}
-            onFocus={() => setNativeStyles(buttonRef.current, focusedStyle)}
-            onBlur={() => setNativeStyles(buttonRef.current, blurredStyle)}
+            onFocus={() => setNativeStyles(buttonRef.current, buttonStyles.active)}
+            onBlur={() => setNativeStyles(buttonRef.current, buttonStyles.inActive)}
         />
     );
 };

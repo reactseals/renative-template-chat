@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { TextInput } from 'react-native';
+import textInputStyles from './styles';
 
-const CustomTextInput = ({ focusedStyle, blurredStyle, name, onChangeText, ...rest }) => {
+const CustomTextInput = ({ name, onChangeText, ...rest }) => {
     const InputRef = useRef(null);
 
     const setNativeStyles = (component, newStyle) => {
@@ -13,8 +14,8 @@ const CustomTextInput = ({ focusedStyle, blurredStyle, name, onChangeText, ...re
     return (
         <TextInput
             ref={InputRef}
-            onFocus={() => setNativeStyles(InputRef.current, focusedStyle)}
-            onBlur={() => setNativeStyles(InputRef.current, blurredStyle)}
+            onFocus={() => setNativeStyles(InputRef.current, textInputStyles.active)}
+            onBlur={() => setNativeStyles(InputRef.current, textInputStyles.inActive)}
             onChangeText={(value) => onChangeText(value, name)}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...rest}

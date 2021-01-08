@@ -1,5 +1,5 @@
-import firebase from '../../../../initializeApp/firebase';
-import { updateMessages } from '../../../../utils/EventHandler';
+import firebase from '../../../initializeApp';
+import { updateMessages } from '../../../utils/EventHandler';
 
 const chatroom = firebase.database().ref().child('chatrooms').child('global');
 

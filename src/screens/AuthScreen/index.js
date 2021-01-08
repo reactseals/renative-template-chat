@@ -5,9 +5,7 @@ import BackButtonMac from '../../components/BackButton';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../../components/CustomTextInput';
 import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
-import textInputStyles from '../../sharedStyles/textInputStyles';
-import buttonStyles from '../../sharedStyles/buttonStyles';
-import { useAuth } from '../../context/auth';
+import { useAuth } from '../../AuthContext';
 
 const AuthScreen = (props) => {
     const navigate = useNavigate(props);
@@ -43,8 +41,6 @@ const AuthScreen = (props) => {
         >
             <BackButtonMac />
             <CustomTextInput
-                blurredStyle={textInputStyles.inActive}
-                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Email"
@@ -56,8 +52,6 @@ const AuthScreen = (props) => {
             />
 
             <CustomTextInput
-                blurredStyle={textInputStyles.inActive}
-                focusedStyle={textInputStyles.active}
                 style={styles.loginInput}
                 underlineColorAndroid="transparent"
                 placeholder="Password"
@@ -69,12 +63,7 @@ const AuthScreen = (props) => {
                 name="password" // name of the property in the state object that is gonna be edited
             />
 
-            <CustomTouchableOpacity
-                blurredStyle={buttonStyles.inActive}
-                focusedStyle={buttonStyles.active}
-                style={styles.loginButton}
-                onPress={() => handleLogin()}
-            >
+            <CustomTouchableOpacity style={styles.loginButton} onPress={() => handleLogin()}>
                 <Text style={styles.buttonText}>Sign In</Text>
             </CustomTouchableOpacity>
             <Text

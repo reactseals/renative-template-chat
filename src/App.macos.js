@@ -5,7 +5,7 @@ import WelcomeScreen from './screens/WelcomeScreen';
 import ChatScreen from './screens/ChatScreen';
 import AuthScreen from './screens/AuthScreen';
 import RegisterScreen from './screens/RegisterScreen';
-import ProvideAuth from './context/auth';
+import ProvideAuth from './AuthContext';
 
 // Entry for MacOS
 const App = () => (

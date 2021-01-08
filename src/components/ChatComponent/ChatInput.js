@@ -3,7 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import { Icon, isPlatformWeb } from 'renative';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 import CustomTextInput from '../CustomTextInput';
-import textInputStyles from '../../sharedStyles/textInputStyles';
 
 const ChatInput = ({ handleKeyPress, handleButtonPress }) => {
     const [textInputVal, setTextInputVal] = useState('');
@@ -11,8 +10,6 @@ const ChatInput = ({ handleKeyPress, handleButtonPress }) => {
     return (
         <View style={styles.inputContainer}>
             <CustomTextInput
-                blurredStyle={textInputStyles.inActive}
-                focusedStyle={textInputStyles.active}
                 value={textInputVal}
                 autofocus={isPlatformWeb}
                 style={styles.chatInput}

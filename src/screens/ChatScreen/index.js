@@ -1,9 +1,9 @@
 import React from 'react';
 import Chat from '../../components/ChatComponent';
 import useModel from './useModel';
-import { useAuth } from '../../context/auth';
+import { useAuth } from '../../AuthContext';
 
-const ChatScreen = (props) => {
+const ChatScreen = () => {
     const auth = useAuth();
     const { displayName, email } = auth.user;
     const chatProps = useModel();

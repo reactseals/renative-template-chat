@@ -1,6 +1,7 @@
 import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, Image, StyleSheet } from 'react-native';
 import { useNavigate, isPlatformWeb, isPlatformMacos } from 'renative';
+import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
 import splashImg from '../../../platformAssets/runtime/logoChat.png';
 import { theme as colors } from '../../../platformAssets/renative.runtime.json';
 
@@ -11,9 +12,9 @@ const WelcomeScreen = (props) => {
         <SafeAreaView style={styles.container}>
             <Image source={splashImg} style={styles.img} resizeMode="contain" />
 
-            <TouchableOpacity style={styles.button} onPress={() => navigate('auth', '/auth')}>
+            <CustomTouchableOpacity style={styles.button} onPress={() => navigate('auth', '/auth')}>
                 <Text style={styles.buttonText}>Let&apos;s Chat</Text>
-            </TouchableOpacity>
+            </CustomTouchableOpacity>
         </SafeAreaView>
     );
 };
