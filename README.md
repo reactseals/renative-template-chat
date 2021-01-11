@@ -110,6 +110,17 @@ MESSAGING_SENDER_ID=<your-sender-id>
 APP_ID=<your-app-id> 
 ```
 
+4. Add the code below to your babel.config.js plugins array in the root dir
+```        
+[
+    'module:react-native-dotenv',
+    {
+        moduleName: '@env',
+        path: '.env',
+    },
+],
+```
+
 #### Android
 
 1. Register your Android App with Firebase on your project
@@ -126,19 +137,20 @@ APP_ID=<your-app-id>
 
 ## Project structure
 
-You may read this section if you feel confused how all platforms come together.
+You may read this section if you feel confused how all platforms come together.\
 These are the the things specific to ReNative and this template specifically.
 
-All of the Authentication logic is kept in src/context/auth
-All of the data manipulation and managing logic is kept in src/data
-If you wish to change data provider from Firebase to some other, all you need to do is create your own
-provider implementation in src/data/Provider/instances.
+All of the Authentication logic is kept in src/context/auth.\
+All of the data manipulation and managing logic is kept in src/data.\
+If you wish to change data provider from Firebase to some other, all you need to do is create your own\
+provider implementation in src/data/Provider/instances.  
 
 Most of the components in this app are used by all of the supported platforms, you may read
-how it works in ReNative documentation. What you need to know here, is that main difference
+how it works in ReNative documentation. What you need to know here, is that main difference. 
 between the platforms is the navigation technology used.
-    1. For WEB we use the NextJS native navigation, so all the routes are in src/pages/ folder
-    2. For Mobile we use React-Navigation, we keep all the routes in src/MainNavigator.js
+
+    1. For WEB we use the NextJS native navigation, so all the routes are in src/pages/ folder\
+    2. For Mobile we use React-Navigation, we keep all the routes in src/MainNavigator.js\
     3. For MacOS we use the Reach Router, you can find the entry file in src/app.macos.js
 
 Everything else should be understandable if you have any experience with React/React Native projects
